@@ -1,0 +1,3 @@
+# Root-level legacy files (not part of the project)
+default.conf
+equipment_iqas.sql
