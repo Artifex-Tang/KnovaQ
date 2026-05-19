@@ -1,0 +1,157 @@
+services:
+
+  # ── ragflow core ─────────────────────────────────────────────────────────
+  ragflow:
+    image: infiniflow/ragflow:${RAGFLOW_VERSION:-v0.18.0}
+    container_name: ragflow-server
+    depends_on:
+      mysql:
+        condition: service_healthy
+      es01:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - TZ=${TIMEZONE:-Asia/Shanghai}
+      - HF_ENDPOINT=${HF_ENDPOINT:-}
+      - MACOS=${MACOS:-0}
+    volumes:
+      - ragflow_logs:/ragflow/logs
+      - ragflow_upload:/ragflow/public/upload
+    networks:
+      - ragflow
+    restart: always
+
+  # ── Elasticsearch ────────────────────────────────────────────────────────
+  es01:
+    image: elasticsearch:${ELASTIC_VERSION:-8.11.3}
+    container_name: ragflow-es-01
+    environment:
+      - node.name=ragflow-es-01
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:-infini_rag_flow}
+      - bootstrap.memory_lock=false
+      - discovery.type=single-node
+      - xpack.security.enabled=true
+      - xpack.security.enrollment.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - cluster.routing.allocation.disk.watermark.low=85%
+      - cluster.routing.allocation.disk.watermark.high=90%
+      - cluster.routing.allocation.disk.watermark.flood_stage=95%
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata01:/usr/share/elasticsearch/data
+    networks:
+      - ragflow
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -E '\"status\":\"(green|yellow)\"'"]
+      interval: 10s
+      timeout: 10s
+      retries: 120
+    restart: always
+
+  # ── MySQL ────────────────────────────────────────────────────────────────
+  mysql:
+    image: mysql:${MYSQL_VERSION:-8.0.39}
+    container_name: ragflow-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD:-infini_rag_flow}
+      MYSQL_DATABASE: rag_flow
+      MYSQL_CHARACTER_SET_SERVER: utf8mb4
+      MYSQL_COLLATION_SERVER: utf8mb4_unicode_ci
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d   # equipment_iqas.sql runs on first boot only
+    networks:
+      - ragflow
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-uroot", "-p${MYSQL_PASSWORD:-infini_rag_flow}"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    restart: always
+
+  # ── MinIO ────────────────────────────────────────────────────────────────
+  minio:
+    image: quay.io/minio/minio:${MINIO_VERSION:-RELEASE.2023-12-20T01-00-02Z}
+    container_name: ragflow-minio
+    environment:
+      MINIO_ROOT_USER: ${MINIO_USER:-rag_flow}
+      MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD:-infini_rag_flow}
+    command: server --console-address ":9001" /data
+    volumes:
+      - minio_data:/data
+    networks:
+      - ragflow
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    restart: always
+
+  # ── Redis (Valkey) ───────────────────────────────────────────────────────
+  redis:
+    image: valkey/valkey:${VALKEY_VERSION:-8}
+    container_name: ragflow-redis
+    command: valkey-server --requirepass ${REDIS_PASSWORD:-infini_rag_flow}
+    volumes:
+      - redis_data:/data
+    networks:
+      - ragflow
+    healthcheck:
+      test: ["CMD", "valkey-cli", "-a", "${REDIS_PASSWORD:-infini_rag_flow}", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    restart: always
+
+  # ── gaisoft-server (Spring Boot) ─────────────────────────────────────────
+  gaisoft-server:
+    image: gaisoftmes
+    container_name: equipment-server
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./gaisoft/jar:/usr/soft
+      - ./gaisoft/uploadfile:/ragflow/uploadPath
+    networks:
+      - ragflow
+    ports:
+      - "${GAISOFT_SERVER_PORT:-8080}:8080"
+    restart: always
+
+  # ── gaisoft-frontend (nginx) ─────────────────────────────────────────────
+  gaisoft-frontend:
+    image: nginx
+    container_name: equipment-front
+    depends_on:
+      - gaisoft-server
+    volumes:
+      - ./gaisoft/nginx/html:/usr/share/nginx/html
+      - ./gaisoft/nginx/logs:/var/log/nginx
+      - ./gaisoft/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - ragflow
+    ports:
+      - "${GAISOFT_FRONTEND_PORT:-8899}:80"
+    restart: always
+
+networks:
+  ragflow:
+    driver: bridge
+
+volumes:
+  esdata01:
+  mysql_data:
+  minio_data:
+  redis_data:
+  ragflow_logs:
+  ragflow_upload:
