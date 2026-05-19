@@ -28,6 +28,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ./docker/scripts/offline-load.sh
 ```
 
+> **Note:** After `git clone`, run `chmod +x docker/scripts/*.sh` — git does not track executable permissions across platforms.
+
 ## Adding a New Customer Project
 
 ```bash

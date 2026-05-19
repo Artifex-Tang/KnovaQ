@@ -21,5 +21,8 @@ echo "✓ Copied gaisoftmes.jar"
 
 # Restart to pick up new jar
 cd "$DOCKER_DIR"
-docker compose --env-file "projects/$PROJECT/.env" restart gaisoft-server
+docker compose \
+  --env-file "$DOCKER_DIR/.env" \
+  --env-file "projects/$PROJECT/.env" \
+  restart gaisoft-server
 echo "✓ gaisoft-server restarted"

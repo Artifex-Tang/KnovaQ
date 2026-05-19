@@ -129,8 +129,11 @@ services:
     restart: always
 
   # ── gaisoft-frontend (nginx) ─────────────────────────────────────────────
+  # IMPORTANT: Run via ./scripts/start.sh <project>, not docker compose up directly.
+  # start.sh copies the customer nginx config into gaisoft/nginx/conf.d/ first.
+  # Running docker compose up directly leaves conf.d/ empty — nginx will serve no routes.
   gaisoft-frontend:
-    image: nginx
+    image: nginx:${NGINX_VERSION:-1.27-alpine}
     container_name: equipment-front
     depends_on:
       - gaisoft-server

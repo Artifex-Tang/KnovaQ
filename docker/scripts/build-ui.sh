@@ -23,5 +23,8 @@ echo "✓ html updated from dist"
 
 # Reload nginx (no full restart needed)
 cd "$DOCKER_DIR"
-docker compose --env-file "projects/$PROJECT/.env" exec gaisoft-frontend nginx -s reload
+docker compose \
+  --env-file "$DOCKER_DIR/.env" \
+  --env-file "projects/$PROJECT/.env" \
+  exec gaisoft-frontend nginx -s reload
 echo "✓ nginx reloaded"
