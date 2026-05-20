@@ -6,7 +6,7 @@ $DockerDir  = Split-Path $ScriptDir -Parent
 $RepoRoot   = Split-Path $DockerDir -Parent
 $MesDir     = Join-Path (Split-Path $RepoRoot -Parent) "gaisoft-mes"
 
-$JarSrc = Join-Path $MesDir "gaisoft-admin\target\gaisoft-admin.jar"
+$JarSrc = Join-Path $MesDir "gaisoft-admin\target\gaisoftmes.jar"
 $JarDst = Join-Path $DockerDir "gaisoft\jar\gaisoftmes.jar"
 
 if (-not (Test-Path $JarSrc)) {

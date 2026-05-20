@@ -7,7 +7,7 @@ DOCKER_DIR="$(dirname "$SCRIPT_DIR")"
 REPO_ROOT="$(dirname "$DOCKER_DIR")"         # KnovaQ/
 MES_DIR="$REPO_ROOT/../gaisoft-mes"          # sibling: E:/ccode/gaisoft-mes
 
-JAR_SRC="$MES_DIR/gaisoft-admin/target/gaisoft-admin.jar"
+JAR_SRC="$MES_DIR/gaisoft-admin/target/gaisoftmes.jar"
 JAR_DST="$DOCKER_DIR/gaisoft/jar/gaisoftmes.jar"
 
 if [ ! -f "$JAR_SRC" ]; then
