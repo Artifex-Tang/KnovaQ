@@ -4,13 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOCKER_DIR="$(dirname "$SCRIPT_DIR")"
 
-PROJECT="${1:-}"
-if [ -z "$PROJECT" ]; then
-    echo "Usage: $0 <project>"
-    echo "Available projects:"
-    ls "$SCRIPT_DIR/../projects/" | grep -v '^_' || true
-    exit 1
-fi
+PROJECT="${1:-demo}"
 
 PROJECT_DIR="$DOCKER_DIR/projects/$PROJECT"
 

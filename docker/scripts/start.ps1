@@ -3,15 +3,7 @@ $ErrorActionPreference = 'Stop'
 $ScriptDir = $PSScriptRoot
 $DockerDir = Split-Path $ScriptDir -Parent
 
-$Project = $args[0]
-if (-not $Project) {
-    Write-Host "Usage: .\start.ps1 <project>"
-    Write-Host "Available projects:"
-    Get-ChildItem (Join-Path $ScriptDir "..\projects") -Directory |
-        Where-Object { $_.Name -notmatch '^_' } |
-        Select-Object -ExpandProperty Name
-    exit 1
-}
+$Project = if ($args[0]) { $args[0] } else { 'demo' }
 
 $ProjectDir = Join-Path $DockerDir "projects\$Project"
 
