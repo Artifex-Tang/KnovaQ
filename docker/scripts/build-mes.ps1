@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 
-$Project = if ($args[0]) { $args[0] } else { 'demo' }
+$Project    = $args[0]
 $ScriptDir  = $PSScriptRoot
 $DockerDir  = Split-Path $ScriptDir -Parent
 $RepoRoot   = Split-Path $DockerDir -Parent
@@ -20,7 +20,11 @@ Write-Host "✓ Copied gaisoftmes.jar"
 
 Push-Location $DockerDir
 try {
-    & docker compose --env-file "$DockerDir\.env" --env-file "projects\$Project\.env" restart gaisoft-server
+    if ($Project) {
+        & docker compose --env-file "$DockerDir\.env" --env-file "projects\$Project\.env" restart gaisoft-server
+    } else {
+        & docker compose --env-file "$DockerDir\.env" restart gaisoft-server
+    }
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 } finally {
     Pop-Location

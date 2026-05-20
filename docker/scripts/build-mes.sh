@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT="${1:-demo}"
+PROJECT="${1:-}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOCKER_DIR="$(dirname "$SCRIPT_DIR")"
-REPO_ROOT="$(dirname "$DOCKER_DIR")"         # KnovaQ/
-MES_DIR="$REPO_ROOT/../gaisoft-mes"          # sibling: E:/ccode/gaisoft-mes
+REPO_ROOT="$(dirname "$DOCKER_DIR")"
+MES_DIR="$REPO_ROOT/../gaisoft-mes"
 
 JAR_SRC="$MES_DIR/gaisoft-admin/target/gaisoftmes.jar"
 JAR_DST="$DOCKER_DIR/gaisoft/jar/gaisoftmes.jar"
@@ -19,10 +19,10 @@ fi
 cp "$JAR_SRC" "$JAR_DST"
 echo "✓ Copied gaisoftmes.jar"
 
-# Restart to pick up new jar
 cd "$DOCKER_DIR"
-docker compose \
-  --env-file "$DOCKER_DIR/.env" \
-  --env-file "projects/$PROJECT/.env" \
-  restart gaisoft-server
+if [ -n "$PROJECT" ]; then
+    docker compose --env-file "$DOCKER_DIR/.env" --env-file "projects/$PROJECT/.env" restart gaisoft-server
+else
+    docker compose --env-file "$DOCKER_DIR/.env" restart gaisoft-server
+fi
 echo "✓ gaisoft-server restarted"
