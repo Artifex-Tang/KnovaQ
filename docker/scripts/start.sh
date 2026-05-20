@@ -18,6 +18,10 @@ if [ -n "$PROJECT" ]; then
     docker compose --env-file "$DOCKER_DIR/.env" --env-file "$PROJECT_DIR/.env" up -d
     echo "✓ KnovaQ started for project: $PROJECT"
 else
+    if [ -f "$DOCKER_DIR/nginx/default.conf" ]; then
+        cp "$DOCKER_DIR/nginx/default.conf" "$DOCKER_DIR/gaisoft/nginx/conf.d/default.conf"
+        echo "✓ nginx config copied from docker/nginx/default.conf"
+    fi
     docker compose --env-file "$DOCKER_DIR/.env" up -d
     echo "✓ KnovaQ started"
 fi

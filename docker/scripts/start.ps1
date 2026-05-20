@@ -18,6 +18,11 @@ try {
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
         Write-Host "✓ KnovaQ started for project: $Project"
     } else {
+        $DefaultConf = "$DockerDir\nginx\default.conf"
+        if (Test-Path $DefaultConf) {
+            Copy-Item $DefaultConf "$DockerDir\gaisoft\nginx\conf.d\default.conf" -Force
+            Write-Host "✓ nginx config copied from docker\nginx\default.conf"
+        }
         & docker compose --env-file "$DockerDir\.env" up -d
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
         Write-Host "✓ KnovaQ started"
