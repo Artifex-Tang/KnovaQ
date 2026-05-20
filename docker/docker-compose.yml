@@ -48,7 +48,7 @@ services:
     networks:
       - ragflow
     healthcheck:
-      test: ["CMD-SHELL", "curl -s http://localhost:9200/_cluster/health | grep -E '\"status\":\"(green|yellow)\"'"]
+      test: ["CMD-SHELL", "curl -s -u elastic:$ELASTIC_PASSWORD http://localhost:9200/_cluster/health | grep -E '\"status\":\"(green|yellow)\"'"]
       interval: 10s
       timeout: 10s
       retries: 120
