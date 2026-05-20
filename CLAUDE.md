@@ -8,27 +8,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Common Commands
 
+**Linux / macOS (bash):**
 ```bash
-# Start a customer environment
-./docker/scripts/start.sh demo
-
-# Stop all services
-./docker/scripts/stop.sh
-
-# Update backend jar (after mvn build in gaisoft-mes)
-./docker/scripts/build-mes.sh demo
-
-# Update frontend html (after npm build in gaisoft-ui)
-./docker/scripts/build-ui.sh demo
-
-# Save all images for offline delivery
-./docker/scripts/offline-save.sh
-
-# Load images on offline customer machine
-./docker/scripts/offline-load.sh
+./docker/scripts/start.sh demo          # Start customer environment
+./docker/scripts/stop.sh                # Stop all services
+./docker/scripts/build-mes.sh demo      # Update backend jar
+./docker/scripts/build-ui.sh demo       # Update frontend html
+./docker/scripts/offline-save.sh        # Save images for offline delivery
+./docker/scripts/offline-load.sh        # Load images on offline machine
 ```
 
-> **Note:** After `git clone`, run `chmod +x docker/scripts/*.sh` — git does not track executable permissions across platforms.
+> **Note:** After `git clone` on Linux/macOS, run `chmod +x docker/scripts/*.sh`.
+
+**Windows (PowerShell):**
+```powershell
+.\docker\scripts\start.ps1 demo         # Start customer environment
+.\docker\scripts\stop.ps1               # Stop all services
+.\docker\scripts\build-mes.ps1 demo     # Update backend jar
+.\docker\scripts\build-ui.ps1 demo      # Update frontend html
+.\docker\scripts\offline-save.ps1       # Save images for offline delivery
+.\docker\scripts\offline-load.ps1       # Load images on offline machine
+```
 
 ## Adding a New Customer Project
 
