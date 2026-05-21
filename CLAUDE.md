@@ -47,11 +47,17 @@ docker/
 ├── docker-compose.yml        ragflow 0.18.0 full + gaisoft-server + gaisoft-frontend
 ├── .env                      global defaults (image versions, default passwords/ports)
 ├── projects/<customer>/      per-customer .env overrides + nginx/default.conf
+├── nginx/
+│   ├── ragflow.conf          ragflow web UI + API proxy (mounted into ragflow container)
+│   ├── nginx.conf            nginx main config (mounted into ragflow container)
+│   ├── proxy.conf            proxy headers/timeouts (mounted into ragflow container)
+│   └── default.conf          fallback — used when no project is specified
 ├── gaisoft/
 │   ├── jar/gaisoftmes.jar    Spring Boot jar (updated by build-mes.sh)
 │   ├── uploadfile/           persistent upload storage
-│   └── nginx/                runtime nginx config, html, logs
+│   └── nginx/                runtime nginx config, html, logs (for gaisoft-frontend)
 ├── init/
+│   ├── ragflow-init.sql      creates rag_flow DB on every MySQL boot (--init-file)
 │   └── equipment_iqas.sql    gaisoft-mes DB init (runs once on first MySQL boot)
 └── scripts/                  start, stop, build, offline scripts
 ```
@@ -62,7 +68,10 @@ All services share the `ragflow` bridge network (Docker names it `docker_ragflow
 
 ## DB Init Behavior
 
-`docker/init/equipment_iqas.sql` is mounted to MySQL's `/docker-entrypoint-initdb.d/`. MySQL runs it exactly once — when the data volume is first created. Re-running init requires deleting the `mysql_data` Docker volume (`docker volume rm docker_mysql_data`), which destroys all data.
+Two separate mechanisms:
+
+- **`docker/init/ragflow-init.sql`** — mounted as MySQL's `--init-file`. Creates the `rag_flow` database on **every** MySQL startup (idempotent `CREATE DATABASE IF NOT EXISTS`).
+- **`docker/init/equipment_iqas.sql`** — mounted in `/docker-entrypoint-initdb.d/`. MySQL runs it **once** when the data volume is first created, initializing the `equipment_iqas` schema. Re-running requires deleting the `mysql_data` Docker volume (`docker volume rm docker_mysql_data`), which destroys all data.
 
 ## gaisoft-server Environment (from gaisoft-mes config)
 
