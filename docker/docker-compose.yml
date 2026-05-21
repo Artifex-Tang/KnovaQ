@@ -122,6 +122,8 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+      ragflow:
+        condition: service_started
     volumes:
       - ./gaisoft/jar:/usr/soft
       - ./gaisoft/uploadfile:/ragflow/uploadPath
