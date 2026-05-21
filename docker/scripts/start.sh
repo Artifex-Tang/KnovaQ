@@ -7,8 +7,17 @@ PROJECT="${1:-}"
 
 cd "$DOCKER_DIR"
 
-# Source env files into shell; docker compose inherits from environment.
-# Avoids --env-file which requires Docker Compose >= v2.2.
+# Detect compose command: prefer v2 plugin, fall back to v1 standalone
+if docker compose version >/dev/null 2>&1; then
+    DC=(docker compose)
+elif command -v docker-compose >/dev/null 2>&1; then
+    DC=(docker-compose)
+else
+    echo "Error: docker compose plugin or docker-compose not found"
+    exit 1
+fi
+
+# Source env files into shell; compose inherits from environment
 set -a
 . "$DOCKER_DIR/.env"
 if [ -n "$PROJECT" ]; then
@@ -29,5 +38,5 @@ elif [ -f "$DOCKER_DIR/nginx/default.conf" ]; then
     echo "✓ nginx config copied from docker/nginx/default.conf"
 fi
 
-docker compose up -d
+"${DC[@]}" up -d
 echo "✓ KnovaQ started${PROJECT:+ for project: $PROJECT}"

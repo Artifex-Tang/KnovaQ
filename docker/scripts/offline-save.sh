@@ -9,8 +9,16 @@ mkdir -p "$IMAGES_DIR"
 
 cd "$DOCKER_DIR"
 
-# Get full list of images from compose (includes all service images)
-IMAGES=$(docker compose config --images 2>/dev/null)
+if docker compose version >/dev/null 2>&1; then
+    DC=(docker compose)
+elif command -v docker-compose >/dev/null 2>&1; then
+    DC=(docker-compose)
+else
+    echo "Error: docker compose plugin or docker-compose not found"
+    exit 1
+fi
+
+IMAGES=$("${DC[@]}" config --images 2>/dev/null)
 
 if [ -z "$IMAGES" ]; then
     echo "Error: could not read images from docker-compose.yml"
@@ -18,7 +26,6 @@ if [ -z "$IMAGES" ]; then
 fi
 
 for IMAGE in $IMAGES; do
-    # Convert image name to safe filename: replace / and : with _
     FILENAME="${IMAGE//\//_}"
     FILENAME="${FILENAME//:/_}.tar"
     echo "Saving $IMAGE → images/$FILENAME"
