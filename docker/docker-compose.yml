@@ -25,6 +25,12 @@ services:
       - ragflow
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://localhost:9380 -o /dev/null"]
+      interval: 15s
+      timeout: 10s
+      retries: 30
+      start_period: 60s
     restart: on-failure
 
   # ── Elasticsearch ────────────────────────────────────────────────────────
@@ -111,6 +117,11 @@ services:
       - redis_data:/data
     networks:
       - ragflow
+    healthcheck:
+      test: ["CMD-SHELL", "valkey-cli --no-auth-warning -a ${REDIS_PASSWORD:-infini_rag_flow} ping | grep PONG"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
     restart: on-failure
 
   # ── gaisoft-server (Spring Boot) ─────────────────────────────────────────
@@ -123,7 +134,7 @@ services:
       redis:
         condition: service_healthy
       ragflow:
-        condition: service_started
+        condition: service_healthy
     volumes:
       - ./gaisoft/jar:/usr/soft
       - ./gaisoft/uploadfile:/ragflow/uploadPath
