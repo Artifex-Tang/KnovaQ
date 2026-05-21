@@ -14,6 +14,9 @@
  Date: 08/08/2025 09:57:05
 */
 
+CREATE DATABASE IF NOT EXISTS `equipment_iqas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `equipment_iqas`;
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
