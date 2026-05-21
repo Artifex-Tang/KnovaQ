@@ -21,9 +21,11 @@ cp -r "$DIST_SRC"/. "$HTML_DST/"
 echo "✓ html updated from dist"
 
 cd "$DOCKER_DIR"
-if [ -n "$PROJECT" ]; then
-    docker compose --env-file "$DOCKER_DIR/.env" --env-file "projects/$PROJECT/.env" exec gaisoft-frontend nginx -s reload
-else
-    docker compose --env-file "$DOCKER_DIR/.env" exec gaisoft-frontend nginx -s reload
-fi
+
+set -a
+. "$DOCKER_DIR/.env"
+[ -n "$PROJECT" ] && . "$DOCKER_DIR/projects/$PROJECT/.env"
+set +a
+
+docker compose exec gaisoft-frontend nginx -s reload
 echo "✓ nginx reloaded"

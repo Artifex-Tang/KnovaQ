@@ -20,9 +20,11 @@ cp "$JAR_SRC" "$JAR_DST"
 echo "✓ Copied gaisoftmes.jar"
 
 cd "$DOCKER_DIR"
-if [ -n "$PROJECT" ]; then
-    docker compose --env-file "$DOCKER_DIR/.env" --env-file "projects/$PROJECT/.env" restart gaisoft-server
-else
-    docker compose --env-file "$DOCKER_DIR/.env" restart gaisoft-server
-fi
+
+set -a
+. "$DOCKER_DIR/.env"
+[ -n "$PROJECT" ] && . "$DOCKER_DIR/projects/$PROJECT/.env"
+set +a
+
+docker compose restart gaisoft-server
 echo "✓ gaisoft-server restarted"
