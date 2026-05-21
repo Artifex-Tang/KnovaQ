@@ -9,7 +9,11 @@ services:
         condition: service_healthy
     ports:
       - "${SVR_HTTP_PORT:-9380}:9380"
-      - "${RAGFLOW_HTTP_PORT:-8080}:80"
+      - "${RAGFLOW_HTTP_PORT:-8070}:80"
+      - "${RAGFLOW_HTTPS_PORT:-8443}:443"
+      - "${RAGFLOW_DEBUG_PORT1:-5678}:5678"
+      - "${RAGFLOW_DEBUG_PORT2:-5679}:5679"
+      - "${RAGFLOW_MCP_PORT:-9382}:9382"
     volumes:
       - ragflow_logs:/ragflow/logs
       - ragflow_upload:/ragflow/public/upload
@@ -56,6 +60,8 @@ services:
         hard: -1
     volumes:
       - esdata01:/usr/share/elasticsearch/data
+    ports:
+      - "${ES_PORT:-1200}:9200"
     networks:
       - ragflow
     healthcheck:
@@ -84,6 +90,8 @@ services:
       - mysql_data:/var/lib/mysql
       - ./init/ragflow-init.sql:/data/application/init.sql
       - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - "${MYSQL_PORT:-5455}:3306"
     networks:
       - ragflow
     healthcheck:
@@ -104,6 +112,9 @@ services:
     command: server --console-address ":9001" /data
     volumes:
       - minio_data:/data
+    ports:
+      - "${MINIO_PORT:-9000}:9000"
+      - "${MINIO_CONSOLE_PORT:-9002}:9001"
     networks:
       - ragflow
     restart: on-failure
@@ -115,6 +126,8 @@ services:
     command: redis-server --requirepass ${REDIS_PASSWORD:-infini_rag_flow} --maxmemory 128mb --maxmemory-policy allkeys-lru
     volumes:
       - redis_data:/data
+    ports:
+      - "${REDIS_PORT:-6380}:6379"
     networks:
       - ragflow
     healthcheck:
