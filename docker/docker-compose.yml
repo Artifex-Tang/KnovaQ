@@ -35,7 +35,7 @@ services:
       timeout: 10s
       retries: 30
       start_period: 60s
-    restart: on-failure
+    restart: unless-stopped
 
   # ── Elasticsearch ────────────────────────────────────────────────────────
   es01:
@@ -69,7 +69,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 120
-    restart: on-failure
+    restart: unless-stopped
 
   # ── MySQL ────────────────────────────────────────────────────────────────
   mysql:
@@ -99,7 +99,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 3
-    restart: on-failure
+    restart: unless-stopped
 
   # ── MinIO ────────────────────────────────────────────────────────────────
   minio:
@@ -117,7 +117,7 @@ services:
       - "${MINIO_CONSOLE_PORT:-9002}:9001"
     networks:
       - ragflow
-    restart: on-failure
+    restart: unless-stopped
 
   # ── Redis (Valkey) ───────────────────────────────────────────────────────
   redis:
@@ -135,7 +135,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
-    restart: on-failure
+    restart: unless-stopped
 
   # ── gaisoft-server (Spring Boot) ─────────────────────────────────────────
   gaisoft-server:
@@ -155,7 +155,7 @@ services:
       - ragflow
     ports:
       - "${GAISOFT_SERVER_PORT:-8088}:8080"
-    restart: always
+    restart: unless-stopped
 
   # ── gaisoft-frontend (nginx) ─────────────────────────────────────────────
   # IMPORTANT: Run via ./scripts/start.sh <project>, not docker compose up directly.
@@ -174,7 +174,7 @@ services:
       - ragflow
     ports:
       - "${GAISOFT_FRONTEND_PORT:-8899}:80"
-    restart: always
+    restart: unless-stopped
 
 networks:
   ragflow:
