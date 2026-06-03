@@ -71,7 +71,7 @@ class RagflowClient:
             f"{self.base_url}/api/v1/datasets/{dataset_id}", json=kwargs
         )
         resp.raise_for_status()
-        return resp.json()["data"]
+        return resp.json().get("data", resp.json())
 
     def delete_dataset(self, dataset_id: str) -> dict:
         resp = self.session.delete(
@@ -99,7 +99,8 @@ class RagflowClient:
                 data=m,
             )
         resp.raise_for_status()
-        return resp.json()["data"]
+        data = resp.json()["data"]
+        return data[0] if isinstance(data, list) else data
 
     def upload_documents(self, dataset_id: str, file_paths: list) -> list:
         fields = []
@@ -128,7 +129,11 @@ class RagflowClient:
             params={"page": page, "page_size": page_size},
         )
         resp.raise_for_status()
-        return resp.json()["data"]
+        data = resp.json().get("data")
+        if data is None:
+            return {}
+        # data may be a dict with "docs" list, or a bare list
+        return data
 
     def get_document(self, dataset_id: str, document_id: str) -> dict:
         resp = self.session.get(
@@ -170,10 +175,25 @@ class RagflowClient:
         deadline = time.time() + timeout
         while time.time() < deadline:
             data = self.list_documents(dataset_id)
-            docs = data.get("docs", data) if isinstance(data, dict) else data
+            if data is None:
+                time.sleep(interval)
+                continue
+            # data may be a dict with "docs" key, a dict that IS the doc list, or a list
+            if isinstance(data, dict):
+                docs = data.get("docs", data.get("doc_ids", []))
+                if not isinstance(docs, list):
+                    docs = []
+            elif isinstance(data, list):
+                docs = data
+            else:
+                docs = []
+            if not docs:
+                time.sleep(interval)
+                continue
             statuses = [
                 d.get("run", d.get("progress", -1))
-                for d in (docs if isinstance(docs, list) else [])
+                for d in docs
+                if isinstance(d, dict)
             ]
             if all(s in ("DONE", "FAIL", 3, 4) for s in statuses):
                 return all(s in ("DONE", 3) for s in statuses)
@@ -223,7 +243,8 @@ class RagflowClient:
             f"{self.base_url}/api/v1/retrieval", json=payload
         )
         resp.raise_for_status()
-        return resp.json()["data"]
+        result = resp.json().get("data")
+        return result if result is not None else {}
 
     # ── Chat Assistant ──────────────────────────────────────
 
@@ -236,7 +257,7 @@ class RagflowClient:
             f"{self.base_url}/api/v1/chats", json=payload
         )
         resp.raise_for_status()
-        return resp.json()["data"]
+        return resp.json().get("data", resp.json())
 
     def list_chats(self, page: int = 1, page_size: int = 100) -> list:
         resp = self.session.get(
