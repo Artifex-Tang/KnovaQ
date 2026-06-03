@@ -21,7 +21,11 @@ class RagflowClient:
     # ── System ──────────────────────────────────────────────
 
     def health_check(self) -> dict:
-        resp = self.session.get(f"{self.base_url}/api/v1/system/healthz")
+        """Check ragflow health. v0.18.0 lacks /healthz, use dataset listing."""
+        resp = self.session.get(
+            f"{self.base_url}/api/v1/datasets",
+            params={"page": 1, "page_size": 1},
+        )
         resp.raise_for_status()
         return resp.json()
 
@@ -30,7 +34,7 @@ class RagflowClient:
         while time.time() < deadline:
             try:
                 data = self.health_check()
-                if all(v == "ok" for v in data.get("data", {}).values()):
+                if data.get("code") == 0:
                     return True
             except Exception:
                 pass
