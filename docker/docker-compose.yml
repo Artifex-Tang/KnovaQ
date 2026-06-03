@@ -176,6 +176,35 @@ services:
       - "${GAISOFT_FRONTEND_PORT:-8899}:80"
     restart: unless-stopped
 
+  # ── test-runner (pytest + Playwright) ────────────────────────────────────
+  test-runner:
+    build:
+      context: ./test-runner
+      dockerfile: Dockerfile
+    container_name: knovaq-test-runner
+    depends_on:
+      ragflow:
+        condition: service_healthy
+      gaisoft-server:
+        condition: service_started
+      gaisoft-frontend:
+        condition: service_started
+    environment:
+      - RAGFLOW_BASE_URL=http://ragflow:9380
+      - RAGFLOW_API_KEY=${RAGFLOW_API_KEY:-}
+      - RAGFLOW_EMAIL=${RAGFLOW_EMAIL:-admin@ragflow.com}
+      - RAGFLOW_PASSWORD=${RAGFLOW_PASSWORD:-admin}
+      - GAISOFT_API_URL=http://gaisoft-server:8080
+      - GAISOFT_FRONTEND_URL=http://gaisoft-frontend:80
+      - GAISOFT_LOGIN_USER=${GAISOFT_LOGIN_USER:-admin}
+      - GAISOFT_LOGIN_PASS=${GAISOFT_LOGIN_PASS:-admin123}
+    volumes:
+      - ./test-runner/reports:/tests/reports
+    networks:
+      - ragflow
+    profiles:
+      - test
+
 networks:
   ragflow:
     driver: bridge
