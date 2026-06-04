@@ -49,7 +49,10 @@ class RagflowClient:
             f"{self.base_url}/api/v1/datasets", json=payload
         )
         resp.raise_for_status()
-        return resp.json()["data"]
+        result = resp.json()
+        if "data" in result:
+            return result["data"]
+        raise RuntimeError(f"create_dataset failed: {result.get('message', result)}")
 
     def list_datasets(self, page: int = 1, page_size: int = 100) -> list:
         resp = self.session.get(
@@ -209,7 +212,10 @@ class RagflowClient:
             json=payload,
         )
         resp.raise_for_status()
-        return resp.json()["data"]
+        result = resp.json()
+        if "data" in result:
+            return result["data"]
+        return result
 
     def list_chunks(self, dataset_id: str, document_id: str, page: int = 1, page_size: int = 100) -> dict:
         resp = self.session.get(
@@ -225,7 +231,10 @@ class RagflowClient:
             json=kwargs,
         )
         resp.raise_for_status()
-        return resp.json()["data"]
+        result = resp.json()
+        if "data" in result:
+            return result["data"]
+        return result
 
     def delete_chunks(self, dataset_id: str, document_id: str, chunk_ids: list) -> dict:
         resp = self.session.delete(
@@ -252,12 +261,18 @@ class RagflowClient:
         payload = {"name": name}
         if dataset_ids:
             payload["dataset_ids"] = dataset_ids
+        # Strip prompt/prompt_config — ragflow 0.18.0 doesn't support them during creation
+        kwargs.pop("prompt_config", None)
+        kwargs.pop("prompt", None)
         payload.update(kwargs)
         resp = self.session.post(
             f"{self.base_url}/api/v1/chats", json=payload
         )
         resp.raise_for_status()
-        return resp.json().get("data", resp.json())
+        result = resp.json()
+        if "data" in result:
+            return result["data"]
+        raise RuntimeError(f"create_chat failed: {result.get('message', result)}")
 
     def list_chats(self, page: int = 1, page_size: int = 100) -> list:
         resp = self.session.get(
@@ -275,11 +290,19 @@ class RagflowClient:
         return resp.json()["data"]
 
     def update_chat(self, chat_id: str, **kwargs) -> dict:
+        # Map prompt_config → prompt for ragflow 0.18.0 compat
+        if "prompt_config" in kwargs:
+            kwargs["prompt"] = kwargs.pop("prompt_config")
         resp = self.session.put(
             f"{self.base_url}/api/v1/chats/{chat_id}", json=kwargs
         )
         resp.raise_for_status()
-        return resp.json()["data"]
+        result = resp.json()
+        if "data" in result and isinstance(result["data"], dict) and "id" in result["data"]:
+            return result["data"]
+        if "data" in result:
+            return result["data"]
+        return result
 
     def delete_chat(self, chat_id: str) -> dict:
         resp = self.session.delete(

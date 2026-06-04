@@ -88,13 +88,16 @@ def test_chat_assistant(ragflow_api, prepared_dataset):
     )
     # Try to set prompt config — may fail on 0.18.0
     try:
-        chat = ragflow_api.update_chat(
+        updated = ragflow_api.update_chat(
             chat["id"],
             prompt_config={
                 "system": "你是DARPA装备分析专家，基于提供的知识库内容回答问题。请用中文回答。",
                 "empty_response": "抱歉，知识库中没有找到相关信息。",
             },
         )
+        # Only replace if update returned a valid chat with id
+        if isinstance(updated, dict) and "id" in updated:
+            chat = updated
     except Exception:
         pass  # prompt_config not supported, use default
     yield chat

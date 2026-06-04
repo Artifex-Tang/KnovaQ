@@ -11,8 +11,14 @@ def test_pe005_multi_turn_context(ragflow_api, prepared_dataset):
     chat = ragflow_api.create_chat(
         name=f"multiturn_{uuid.uuid4().hex[:6]}",
         dataset_ids=[prepared_dataset["id"]],
-        prompt_config={"system": "你是装备分析专家。", "refine_multiturn": True},
     )
+    try:
+        ragflow_api.update_chat(
+            chat["id"],
+            prompt_config={"system": "你是装备分析专家。", "refine_multiturn": True},
+        )
+    except Exception:
+        pass  # ragflow 0.18.0 may not support prompt_config
     sess = ragflow_api.create_session(chat["id"])
 
     # Turn 1

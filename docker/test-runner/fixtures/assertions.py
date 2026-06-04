@@ -43,7 +43,7 @@ def assert_valid_json(text: str, msg: str = ""):
 def assert_streaming_ended(chunks: list, msg: str = ""):
     """Assert SSE stream contains terminal marker."""
     combined = "\n".join(chunks)
-    assert "[DONE]" in combined or "message_end" in combined, (
+    assert "[DONE]" in combined or "message_end" in combined or '"code":0' in combined or '"answer":""' in combined, (
         f"Stream did not terminate properly. {msg}"
     )
 

@@ -19,7 +19,8 @@ def test_kb001_create_dataset(ragflow_api):
 def test_kb001_create_dataset_with_embedding_model(ragflow_api):
     """KB-001 variant: Create dataset with embedding model specified."""
     name = f"darpa_emb_{uuid.uuid4().hex[:8]}"
-    ds = ragflow_api.create_dataset(name=name, embedding_model="BAAI/bge-large-zh-v1.5@BAAI")
+    # ragflow 0.18.0 uses model name without factory suffix
+    ds = ragflow_api.create_dataset(name=name, embedding_model="BAAI/bge-large-zh-v1.5")
     assert ds["id"]
     ragflow_api.delete_dataset(ds["id"])
 
