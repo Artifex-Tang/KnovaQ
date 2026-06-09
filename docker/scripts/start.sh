@@ -40,3 +40,8 @@ fi
 
 "${DC[@]}" up -d
 echo "✓ KnovaQ started${PROJECT:+ for project: $PROJECT}"
+
+# Auto-sync ragflow auth after containers are up
+echo ""
+echo "Syncing ragflow authentication..."
+bash "$SCRIPT_DIR/sync-ragflow-auth.sh" && echo "✓ ragflow auth synced" || echo "⚠ ragflow auth sync failed (non-fatal)"
