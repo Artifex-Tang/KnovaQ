@@ -24,17 +24,20 @@ class RagflowClient:
         return f"{self.base_url}{path}"
 
     def _get(self, path: str, **kwargs) -> dict:
-        resp = self.session.get(self._url(path), timeout=60, **kwargs)
+        kwargs.setdefault("timeout", 60)
+        resp = self.session.get(self._url(path), **kwargs)
         resp.raise_for_status()
         return resp.json()
 
     def _post(self, path: str, **kwargs) -> dict:
-        resp = self.session.post(self._url(path), timeout=60, **kwargs)
+        kwargs.setdefault("timeout", 60)
+        resp = self.session.post(self._url(path), **kwargs)
         resp.raise_for_status()
         return resp.json()
 
     def _delete(self, path: str, **kwargs) -> dict:
-        resp = self.session.delete(self._url(path), timeout=60, **kwargs)
+        kwargs.setdefault("timeout", 60)
+        resp = self.session.delete(self._url(path), **kwargs)
         resp.raise_for_status()
         return resp.json()
 

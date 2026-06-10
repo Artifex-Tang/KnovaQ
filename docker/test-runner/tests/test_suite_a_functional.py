@@ -633,7 +633,7 @@ class TestChat:
             }),
         }
         try:
-            resp = api_session.post(f"{API_URL}/ragflow/common", json=payload, timeout=300)
+            resp = api_session.post(f"{API_URL}/ragflow/common", json=payload, timeout=270)
         except requests.exceptions.ReadTimeout:
             pytest.skip("Non-streaming chat timed out (LLM slow through proxy, known limitation)")
         assert resp.status_code == 200, f"HTTP {resp.status_code}: {resp.text}"
