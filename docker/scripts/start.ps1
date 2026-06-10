@@ -27,16 +27,6 @@ try {
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
         Write-Host "✓ KnovaQ started"
     }
-
-    # Auto-sync ragflow auth after containers are up
-    Write-Host ""
-    Write-Host "Syncing ragflow authentication..."
-    & bash "$ScriptDir\sync-ragflow-auth.sh"
-    if ($LASTEXITCODE -eq 0) {
-        Write-Host "✓ ragflow auth synced"
-    } else {
-        Write-Host "⚠ ragflow auth sync failed (non-fatal)"
-    }
 } finally {
     Pop-Location
 }
