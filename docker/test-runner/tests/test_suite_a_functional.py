@@ -865,8 +865,14 @@ class TestUI:
 
     def test_ui001_login_page(self, browser_page, screenshot_dir):
         """UI-001: Login page loads and renders correctly."""
-        # If already past login, go back to check login page
-        browser_page.goto(f"{FRONTEND_URL}/#/login", wait_until="networkidle", timeout=15000)
+        # SPA redirects / → /index, so use /index/#/login to avoid navigation conflict
+        try:
+            browser_page.goto(f"{FRONTEND_URL}/index#/#/login", wait_until="load", timeout=15000)
+        except Exception:
+            # Fallback: just check current page state
+            browser_page.goto(f"{FRONTEND_URL}/index", wait_until="load", timeout=15000)
+            browser_page.evaluate("window.location.hash = '#/login'")
+        browser_page.wait_for_load_state("networkidle", timeout=10000)
         self._take_screenshot(browser_page, "ui001_login_page", screenshot_dir)
 
         # Verify page has loaded content

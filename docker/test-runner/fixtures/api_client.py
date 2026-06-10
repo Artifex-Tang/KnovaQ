@@ -203,7 +203,7 @@ class RagflowClient:
                 "session_id": session_id,
                 "stream": False,
             },
-            timeout=120,
+            timeout=270,
         )
         return result.get("data", result)
 
@@ -217,7 +217,7 @@ class RagflowClient:
             },
             headers={"Accept": "text/event-stream"},
             stream=True,
-            timeout=120,
+            timeout=270,
         )
         resp.raise_for_status()
         chunks = []

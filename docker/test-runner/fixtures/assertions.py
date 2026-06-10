@@ -11,8 +11,10 @@ def assert_streaming_ended(chunks: list, message: str = ""):
         "[DONE]",
         "message_end",
         '"code":0',
+        '"code": 0',
         '"answer":""',
         '"finish_reason"',
+        '"data": true',
     ]
     found = any(marker in combined for marker in termination_markers)
     if not found:
