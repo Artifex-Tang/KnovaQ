@@ -1,0 +1,13 @@
+Technical Specification: Radar System RS-200
+
+The RS-200 radar system is a phased array radar designed for air defense surveillance and target tracking. It operates in the X-band frequency range and provides 360-degree coverage with a detection range of up to 400km.
+
+Key specifications:
+- Operating frequency: 8-12 GHz (X-band)
+- Detection range: 400km (fighter-size target)
+- Tracking capacity: up to 100 simultaneous targets
+- Scan rate: 6 RPM
+- Resolution: 30m range, 0.5 degree azimuth
+
+Maintenance Schedule:
+Monthly checks include antenna alignment verification, transmitter power output measurement, and receiver sensitivity testing. Annual overhaul requires complete system calibration and component replacement as needed.

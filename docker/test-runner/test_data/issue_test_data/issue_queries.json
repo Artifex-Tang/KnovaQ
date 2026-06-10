@@ -1,0 +1,46 @@
+{
+  "ISS-001_paper_parsing": {
+    "doc_file": "academic_paper.txt",
+    "query": "改进后的YOLOv8模型的mAP是多少？",
+    "expected_keywords": [
+      "94.3"
+    ]
+  },
+  "ISS-002_cross_language": {
+    "doc_file": "bilingual_doc.txt",
+    "chinese_query": "TN800设备的发射功率是多少？",
+    "english_query": "What is the weight of TN800?",
+    "expected_keywords_power": [
+      "5W",
+      "25W"
+    ],
+    "expected_keywords_weight": [
+      "2.5kg"
+    ]
+  },
+  "ISS-003_domain_constraint": {
+    "system_prompt_file": "domain_prompt.txt",
+    "in_domain_query": "TN800的工作频率范围是多少？",
+    "out_of_domain_queries": [
+      "如何制作红烧肉？",
+      "推荐一部好电影",
+      "今天天气怎么样？"
+    ],
+    "expected": "in_domain answered, out_of_domain rejected"
+  },
+  "ISS-004_sse_streaming": {
+    "queries": [
+      "请详细介绍TN800通信设备的维护规程"
+    ],
+    "expected": "SSE format with data: prefix, ending with data:[DONE]"
+  },
+  "ISS-005_multi_turn": {
+    "turns": [
+      "TN800的工作频率范围是多少？",
+      "它的最大发射功率是多少？",
+      "工作温度范围呢？",
+      "请结合前面提到的频率、功率和温度，总结这个设备的适用场景"
+    ],
+    "expected": "4th turn references info from turn 1-3"
+  }
+}

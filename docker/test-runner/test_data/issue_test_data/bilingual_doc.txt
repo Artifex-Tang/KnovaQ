@@ -1,0 +1,9 @@
+Communication Equipment Specification / 通信设备规格说明书
+
+This document describes the specifications for the TN800 tactical radio.
+本文档描述TN800战术通信设备的技术规格。
+
+Frequency Range / 频率范围: 30-512 MHz
+Transmit Power / 发射功率: 5W/25W selectable / 可调
+Operating Temperature / 工作温度: -40°C to +55°C
+Weight / 重量: ≤2.5kg (including battery / 含电池)

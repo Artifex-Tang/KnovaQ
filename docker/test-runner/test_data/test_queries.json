@@ -1,0 +1,111 @@
+{
+  "basic_queries": [
+    {
+      "id": "Q001",
+      "query": "TN800通信设备的主要技术参数有哪些？",
+      "expected_keywords": [
+        "30MHz",
+        "512MHz",
+        "2.5kg"
+      ]
+    },
+    {
+      "id": "Q002",
+      "query": "E01错误代码怎么处理？",
+      "expected_keywords": [
+        "天线",
+        "开路",
+        "检查"
+      ]
+    },
+    {
+      "id": "Q003",
+      "query": "RS-200雷达的探测距离是多少？",
+      "expected_keywords": [
+        "400km"
+      ]
+    },
+    {
+      "id": "Q004",
+      "query": "雷达日常维护包括哪些？",
+      "expected_keywords": [
+        "天线",
+        "功率",
+        "灵敏度"
+      ]
+    }
+  ],
+  "cross_language_queries": [
+    {
+      "id": "CL001",
+      "query": "雷达系统的探测范围",
+      "expected_keywords": [
+        "400km",
+        "detection range"
+      ],
+      "doc_language": "en"
+    },
+    {
+      "id": "CL002",
+      "query": "What is the operating frequency of TN800?",
+      "expected_keywords": [
+        "30MHz",
+        "512MHz"
+      ],
+      "doc_language": "zh"
+    }
+  ],
+  "domain_constraint_queries": [
+    {
+      "id": "DC001",
+      "query": "如何制作红烧肉？",
+      "expected": "should_reject_or_decline"
+    },
+    {
+      "id": "DC002",
+      "query": "推荐一部好看的电影",
+      "expected": "should_reject_or_decline"
+    },
+    {
+      "id": "DC003",
+      "query": "TN800的操作维护步骤",
+      "expected": "should_answer"
+    }
+  ],
+  "multi_turn_queries": [
+    {
+      "turn": 1,
+      "id": "MT001-1",
+      "query": "TN800设备的工作频率范围是多少？",
+      "context_key": "TN800频率"
+    },
+    {
+      "turn": 2,
+      "id": "MT001-2",
+      "query": "它的最大通信距离是多少？",
+      "context_key": "TN800距离"
+    },
+    {
+      "turn": 3,
+      "id": "MT001-3",
+      "query": "工作温度范围呢？",
+      "context_key": "TN800温度"
+    },
+    {
+      "turn": 4,
+      "id": "MT001-4",
+      "query": "结合前面提到的频率和通信距离，总结一下这个设备的优缺点",
+      "context_key": "综合"
+    }
+  ],
+  "sse_queries": [
+    {
+      "id": "SSE001",
+      "query": "请详细介绍TN800的故障排除方法"
+    },
+    {
+      "id": "SSE002",
+      "query": "RS-200雷达系统的维护计划是什么？"
+    }
+  ]
+}
