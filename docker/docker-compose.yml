@@ -192,8 +192,6 @@ services:
     environment:
       - RAGFLOW_BASE_URL=http://ragflow:9380
       - RAGFLOW_API_KEY=${RAGFLOW_API_KEY:-}
-      - RAGFLOW_EMAIL=${RAGFLOW_EMAIL:-admin@ragflow.com}
-      - RAGFLOW_PASSWORD=${RAGFLOW_PASSWORD:-admin}
       - GAISOFT_API_URL=http://gaisoft-server:8080
       - GAISOFT_FRONTEND_URL=http://gaisoft-frontend:80
       - GAISOFT_LOGIN_USER=${GAISOFT_LOGIN_USER:-admin}
