@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2761" />
+      <stop offset="100%" stop-color="#2A3A7E" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F8FAFC" />
+  <rect width="1280" height="65" fill="url(#headerGrad)" />
+  <text x="60" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="28" fill="#FFFFFF" font-weight="bold">功能组成</text>
+  <text x="230" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC">三大核心模块 + 集成部署基础设施</text>
+
+  
+  <path fill="#1E2761" fill-opacity="0.04" stroke="#1E2761" stroke-width="2" d="M50,85 H400 A10,10 0 0 1 410,95 V505 A10,10 0 0 1 400,515 H50 A10,10 0 0 1 40,505 V95 A10,10 0 0 1 50,85 Z" />
+  <path fill="#1E2761" d="M50,85 H400 A10,10 0 0 1 410,95 V125 A10,10 0 0 1 400,135 H50 A10,10 0 0 1 40,125 V95 A10,10 0 0 1 50,85 Z" />
+  <rect x="40" y="115" width="370" height="20" fill="#1E2761" />
+  <text x="225" y="116" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M1 外挂知识库模块</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M66,155 H384 A6,6 0 0 1 390,161 V193 A6,6 0 0 1 384,199 H66 A6,6 0 0 1 60,193 V161 A6,6 0 0 1 66,155 Z" />
+  <text x="225" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">知识库 CRUD 管理</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M66,215 H384 A6,6 0 0 1 390,221 V253 A6,6 0 0 1 384,259 H66 A6,6 0 0 1 60,253 V221 A6,6 0 0 1 66,215 Z" />
+  <text x="225" y="242" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">文档上传（PDF/Word/Excel/TXT/图片）</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M66,275 H384 A6,6 0 0 1 390,281 V313 A6,6 0 0 1 384,319 H66 A6,6 0 0 1 60,313 V281 A6,6 0 0 1 66,275 Z" />
+  <text x="225" y="302" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">文档解析（版面分析/表格提取/OCR）</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M66,335 H384 A6,6 0 0 1 390,341 V373 A6,6 0 0 1 384,379 H66 A6,6 0 0 1 60,373 V341 A6,6 0 0 1 66,335 Z" />
+  <text x="225" y="362" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">智能分块（通用/手册/Q&amp;A/论文/法律）</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M66,395 H384 A6,6 0 0 1 390,401 V433 A6,6 0 0 1 384,439 H66 A6,6 0 0 1 60,433 V401 A6,6 0 0 1 66,395 Z" />
+  <text x="225" y="422" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">元数据标注 · 分块预览</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M66,455 H384 A6,6 0 0 1 390,461 V493 A6,6 0 0 1 384,499 H66 A6,6 0 0 1 60,493 V461 A6,6 0 0 1 66,455 Z" />
+  <text x="225" y="482" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">多源异构数据整合</text>
+
+  
+  <path fill="#2DD4A8" fill-opacity="0.04" stroke="#2DD4A8" stroke-width="2" d="M440,85 H790 A10,10 0 0 1 800,95 V505 A10,10 0 0 1 790,515 H440 A10,10 0 0 1 430,505 V95 A10,10 0 0 1 440,85 Z" />
+  <path fill="#2DD4A8" d="M440,85 H790 A10,10 0 0 1 800,95 V125 A10,10 0 0 1 790,135 H440 A10,10 0 0 1 430,125 V95 A10,10 0 0 1 440,85 Z" />
+  <rect x="430" y="115" width="370" height="20" fill="#2DD4A8" />
+  <text x="615" y="116" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M2 RAG检索增强模块</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M456,155 H774 A6,6 0 0 1 780,161 V193 A6,6 0 0 1 774,199 H456 A6,6 0 0 1 450,193 V161 A6,6 0 0 1 456,155 Z" />
+  <text x="615" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">向量语义检索</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M456,215 H774 A6,6 0 0 1 780,221 V253 A6,6 0 0 1 774,259 H456 A6,6 0 0 1 450,253 V221 A6,6 0 0 1 456,215 Z" />
+  <text x="615" y="242" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">混合检索（向量 + 关键词双路召回）</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M456,275 H774 A6,6 0 0 1 780,281 V313 A6,6 0 0 1 774,319 H456 A6,6 0 0 1 450,313 V281 A6,6 0 0 1 456,275 Z" />
+  <text x="615" y="302" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">相似度阈值动态调节</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M456,335 H774 A6,6 0 0 1 780,341 V373 A6,6 0 0 1 774,379 H456 A6,6 0 0 1 450,373 V341 A6,6 0 0 1 456,335 Z" />
+  <text x="615" y="362" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">检索结果语义重排序</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M456,395 H774 A6,6 0 0 1 780,401 V433 A6,6 0 0 1 774,439 H456 A6,6 0 0 1 450,433 V401 A6,6 0 0 1 456,395 Z" />
+  <text x="615" y="422" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">知识图谱辅助检索（GraphRAG）</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M456,455 H774 A6,6 0 0 1 780,461 V493 A6,6 0 0 1 774,499 H456 A6,6 0 0 1 450,493 V461 A6,6 0 0 1 456,455 Z" />
+  <text x="615" y="482" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">跨语言检索（中英文混合）</text>
+
+  
+  <path fill="#4A7BF7" fill-opacity="0.04" stroke="#4A7BF7" stroke-width="2" d="M830,85 H1230 A10,10 0 0 1 1240,95 V505 A10,10 0 0 1 1230,515 H830 A10,10 0 0 1 820,505 V95 A10,10 0 0 1 830,85 Z" />
+  <path fill="#4A7BF7" d="M830,85 H1230 A10,10 0 0 1 1240,95 V125 A10,10 0 0 1 1230,135 H830 A10,10 0 0 1 820,125 V95 A10,10 0 0 1 830,85 Z" />
+  <rect x="820" y="115" width="420" height="20" fill="#4A7BF7" />
+  <text x="1030" y="116" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M3 交互式提示词工程模块</text>
+
+  <path fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1" d="M846,155 H1214 A6,6 0 0 1 1220,161 V193 A6,6 0 0 1 1214,199 H846 A6,6 0 0 1 840,193 V161 A6,6 0 0 1 846,155 Z" />
+  <text x="1030" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">聊天助手创建与管理</text>
+
+  <path fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1" d="M846,215 H1214 A6,6 0 0 1 1220,221 V253 A6,6 0 0 1 1214,259 H846 A6,6 0 0 1 840,253 V221 A6,6 0 0 1 846,215 Z" />
+  <text x="1030" y="242" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">系统提示词配置 · 角色定制</text>
+
+  <path fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1" d="M846,275 H1214 A6,6 0 0 1 1220,281 V313 A6,6 0 0 1 1214,319 H846 A6,6 0 0 1 840,313 V281 A6,6 0 0 1 846,275 Z" />
+  <text x="1030" y="302" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">多轮上下文对话</text>
+
+  <path fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1" d="M846,335 H1214 A6,6 0 0 1 1220,341 V373 A6,6 0 0 1 1214,379 H846 A6,6 0 0 1 840,373 V341 A6,6 0 0 1 846,335 Z" />
+  <text x="1030" y="362" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">流式响应输出（SSE）</text>
+
+  <path fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1" d="M846,395 H1214 A6,6 0 0 1 1220,401 V433 A6,6 0 0 1 1214,439 H846 A6,6 0 0 1 840,433 V401 A6,6 0 0 1 846,395 Z" />
+  <text x="1030" y="422" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">引用溯源 · 来源文档可追溯</text>
+
+  <path fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1" d="M846,455 H1214 A6,6 0 0 1 1220,461 V493 A6,6 0 0 1 1214,499 H846 A6,6 0 0 1 840,493 V461 A6,6 0 0 1 846,455 Z" />
+  <text x="1030" y="482" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">动态提示模板 · 结构化约束</text>
+
+  
+  <path fill="#94A3B8" fill-opacity="0.08" stroke="#94A3B8" stroke-width="1" d="M48,540 H1232 A8,8 0 0 1 1240,548 V612 A8,8 0 0 1 1232,620 H48 A8,8 0 0 1 40,612 V548 A8,8 0 0 1 48,540 Z" />
+  <text x="60" y="570" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#64748B" font-weight="bold">集成部署基础设施</text>
+
+  <path fill="#E0E7FF" d="M73,585 H227 A13,13 0 0 1 240,598 V598 A13,13 0 0 1 227,611 H73 A13,13 0 0 1 60,598 V598 A13,13 0 0 1 73,585 Z" />
+  <text x="150" y="603" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">用户认证 (JWT)</text>
+
+  <path fill="#E0E7FF" d="M273,585 H427 A13,13 0 0 1 440,598 V598 A13,13 0 0 1 427,611 H273 A13,13 0 0 1 260,598 V598 A13,13 0 0 1 273,585 Z" />
+  <text x="350" y="603" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">离线Docker部署</text>
+
+  <path fill="#E0E7FF" d="M473,585 H627 A13,13 0 0 1 640,598 V598 A13,13 0 0 1 627,611 H473 A13,13 0 0 1 460,598 V598 A13,13 0 0 1 473,585 Z" />
+  <text x="550" y="603" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">多客户环境隔离</text>
+
+  <path fill="#D1FAE5" d="M673,585 H827 A13,13 0 0 1 840,598 V598 A13,13 0 0 1 827,611 H673 A13,13 0 0 1 660,598 V598 A13,13 0 0 1 673,585 Z" />
+  <text x="750" y="603" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#059669" text-anchor="middle">数据安全保障</text>
+
+  <path fill="#D1FAE5" d="M873,585 H1027 A13,13 0 0 1 1040,598 V598 A13,13 0 0 1 1027,611 H873 A13,13 0 0 1 860,598 V598 A13,13 0 0 1 873,585 Z" />
+  <text x="950" y="603" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#059669" text-anchor="middle">服务自动恢复</text>
+
+  
+  <line x1="410" y1="300" x2="430" y2="300" stroke="#2DD4A8" stroke-width="2" />
+  <polygon points="425,295 435,300 425,305" fill="#2DD4A8" />
+
+  <line x1="800" y1="300" x2="820" y2="300" stroke="#4A7BF7" stroke-width="2" />
+  <polygon points="815,295 825,300 815,305" fill="#4A7BF7" />
+
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="end">6 / 14</text>
+</svg>

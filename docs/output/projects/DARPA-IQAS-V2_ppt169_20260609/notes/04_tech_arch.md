@@ -1,0 +1,1 @@
+系统分为四层：用户交互层包括Vue 3前端和Nginx反向代理；应用服务层包括Spring Boot业务服务和ragflow RAG引擎以及GLM-9B本地LLM；数据存储层包括MySQL、Elasticsearch、Redis和MinIO；基础设施层基于Docker Compose容器编排，支持离线镜像包交付。

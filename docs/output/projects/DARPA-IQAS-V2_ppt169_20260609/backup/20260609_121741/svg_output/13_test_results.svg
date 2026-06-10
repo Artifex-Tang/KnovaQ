@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2761"/>
+      <stop offset="100%" stop-color="#2A3A7E"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F8FAFC"/>
+  <rect width="1280" height="65" fill="url(#headerGrad)"/>
+  <text x="60" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="28" fill="#FFFFFF" font-weight="bold">测试验证</text>
+  <text x="215" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC">64条自动化测试用例 · 92%通过率 · 6大测试模块</text>
+
+  <!-- Left: Big stat -->
+  <rect x="40" y="85" width="350" height="250" rx="10" fill="#1E2761" filter="url(#shadow)"/>
+  <text x="215" y="170" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="80" fill="#2DD4A8" text-anchor="middle" font-weight="bold">92%</text>
+  <text x="215" y="210" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="22" fill="#FFFFFF" text-anchor="middle">综合通过率</text>
+  <text x="215" y="245" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC" text-anchor="middle">64条用例 · 59条通过 · 5条待优化</text>
+
+  <!-- Right: Module cards 2x3 -->
+  <!-- M1 -->
+  <rect x="420" y="85" width="260" height="115" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="420" y="85" width="260" height="4" fill="#4A7BF7"/>
+  <text x="440" y="115" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">M1 知识库测试</text>
+  <text x="440" y="148" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#4A7BF7" font-weight="bold">90%</text>
+  <text x="440" y="180" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">9/10 通过</text>
+
+  <!-- M2 -->
+  <rect x="700" y="85" width="260" height="115" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="700" y="85" width="260" height="4" fill="#2DD4A8"/>
+  <text x="720" y="115" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">M2 RAG检索测试</text>
+  <text x="720" y="148" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#2DD4A8" font-weight="bold">90%</text>
+  <text x="720" y="180" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">9/10 通过</text>
+
+  <!-- M3 -->
+  <rect x="980" y="85" width="260" height="115" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="980" y="85" width="260" height="4" fill="#4A7BF7"/>
+  <text x="1000" y="115" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">M3 交互式测试</text>
+  <text x="1000" y="148" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#4A7BF7" font-weight="bold">92%</text>
+  <text x="1000" y="180" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">11/12 通过</text>
+
+  <!-- Auth -->
+  <rect x="420" y="220" width="260" height="115" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="420" y="220" width="260" height="4" fill="#2DD4A8"/>
+  <text x="440" y="250" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">身份认证测试</text>
+  <text x="440" y="283" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#2DD4A8" font-weight="bold">100%</text>
+  <text x="440" y="315" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">10/10 通过</text>
+
+  <!-- UI -->
+  <rect x="700" y="220" width="260" height="115" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="700" y="220" width="260" height="4" fill="#4A7BF7"/>
+  <text x="720" y="250" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">UI 端到端测试</text>
+  <text x="720" y="283" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#4A7BF7" font-weight="bold">93%</text>
+  <text x="720" y="315" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">13/14 通过</text>
+
+  <!-- Menu -->
+  <rect x="980" y="220" width="260" height="115" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="980" y="220" width="260" height="4" fill="#1E2761"/>
+  <text x="1000" y="250" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">菜单验证测试</text>
+  <text x="1000" y="283" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#1E2761" font-weight="bold">88%</text>
+  <text x="1000" y="315" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">7/8 通过</text>
+
+  <!-- Bottom: Test tools -->
+  <rect x="40" y="360" width="1200" height="80" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <text x="60" y="390" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#1E2761" font-weight="bold">测试技术栈</text>
+
+  <rect x="60" y="405" width="170" height="26" rx="13" fill="#1E2761"/>
+  <text x="145" y="423" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle">pytest 自动化框架</text>
+
+  <rect x="250" y="405" width="160" height="26" rx="13" fill="#4A7BF7"/>
+  <text x="330" y="423" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle">Playwright UI</text>
+
+  <rect x="430" y="405" width="160" height="26" rx="13" fill="#2DD4A8"/>
+  <text x="510" y="423" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle">Allure 报告</text>
+
+  <rect x="610" y="405" width="160" height="26" rx="13" fill="#E0E7FF"/>
+  <text x="690" y="423" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">Docker 容器化</text>
+
+  <!-- Test approach summary -->
+  <rect x="40" y="460" width="1200" height="80" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="40" y="460" width="6" height="80" fill="#2DD4A8"/>
+  <text x="65" y="488" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E2761" font-weight="bold">测试方法</text>
+  <text x="65" y="512" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B">API 接口测试（pytest + requests）— 验证后端 API 功能正确性</text>
+  <text x="65" y="530" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B">UI 端到端测试（Playwright）— 验证前端交互与业务流程完整性</text>
+
+  <!-- Quality note -->
+  <rect x="40" y="560" width="1200" height="55" rx="8" fill="#D1FAE5" fill-opacity="0.5" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="60" y="585" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#059669" font-weight="bold">质量保障</text>
+  <text x="170" y="585" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#059669">自动化测试覆盖全链路 · CI/CD 集成 · Allure 详细报告 · 5条待优化用例已定位根因</text>
+
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="end">13 / 14</text>
+</svg>

@@ -1,0 +1,778 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Generate DARPA智能问答服务工具-软件用户手册.docx
+using the template 软件用户手册.docx as base.
+Preserves cover page, styles, tables; replaces placeholder content.
+"""
+import sys, os
+sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
+from copy import deepcopy
+from pathlib import Path
+from docx import Document
+from docx.shared import Pt, Cm, RGBColor, Emu
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.oxml.ns import qn
+from docx.oxml import OxmlElement
+
+ROOT = Path(__file__).resolve().parent
+TEMPLATE = ROOT / "软件用户手册.docx"
+OUT = ROOT / "output" / "DARPA智能问答服务工具-软件用户手册.docx"
+
+# ── helpers ──────────────────────────────────────────────────────────
+
+def fill_cell(cell, text, bold=False, size=Pt(10.5), align=None):
+    """Fill a table cell with text."""
+    # Clear existing
+    for p in cell.paragraphs:
+        for r in p.runs:
+            r.text = ""
+    cell.paragraphs[0].text = ""
+    run = cell.paragraphs[0].add_run(text)
+    run.font.size = size
+    run.font.name = "宋体"
+    run.element.rPr.rFonts.set(qn("w:eastAsia"), "宋体")
+    run.font.bold = bold
+    if align:
+        cell.paragraphs[0].alignment = align
+
+
+def add_row(table, cells_text, bold=False):
+    """Add a row to a table."""
+    row = table.add_row()
+    for i, txt in enumerate(cells_text):
+        if i < len(row.cells):
+            fill_cell(row.cells[i], txt, bold=bold)
+    return row
+
+
+def clear_body(doc):
+    """Remove all content after TOC (keep cover + revision + TOC)."""
+    body = doc.element.body
+    # Find the TOC table (Table 3 - "目 次") and remove everything after it
+    # Strategy: find the last TOC-related element, remove all after it
+    found_toc_end = False
+    to_remove = []
+    for child in body:
+        # After we see the TOC table, mark remaining for removal
+        if found_toc_end:
+            to_remove.append(child)
+            continue
+        # Detect the TOC section table - it has "目 次" text
+        if child.tag == qn("w:tbl"):
+            tbl_text = "".join(t.text or "" for t in child.iter(qn("w:t")))
+            if "目" in tbl_text and "次" in tbl_text:
+                found_toc_end = True
+                # Keep this table, remove everything after
+    for elem in to_remove:
+        body.remove(elem)
+
+
+def add_heading(doc, text, level):
+    """Add heading using template styles."""
+    h = doc.add_heading(text, level=level)
+    return h
+
+
+def add_para(doc, text, bold=False):
+    """Add paragraph with 正文格式 style."""
+    p = doc.add_paragraph()
+    try:
+        p.style = doc.styles["正文格式"]
+    except:
+        pass  # fallback to Normal
+    run = p.add_run(text)
+    run.font.name = "宋体"
+    run.element.rPr.rFonts.set(qn("w:eastAsia"), "宋体")
+    run.font.size = Pt(10.5)
+    if bold:
+        run.font.bold = True
+    return p
+
+
+def add_list_item(doc, text):
+    """Add a list item (a/b/c or numbered style)."""
+    p = doc.add_paragraph()
+    try:
+        p.style = doc.styles["正文格式"]
+    except:
+        pass
+    run = p.add_run(text)
+    run.font.name = "宋体"
+    run.element.rPr.rFonts.set(qn("w:eastAsia"), "宋体")
+    run.font.size = Pt(10.5)
+    p.paragraph_format.left_indent = Cm(0.74)
+    return p
+
+
+def add_code(doc, code):
+    """Add code block."""
+    for line in code.split("\n"):
+        p = doc.add_paragraph()
+        run = p.add_run(line)
+        run.font.name = "Consolas"
+        run.font.size = Pt(9)
+        run.font.color.rgb = RGBColor(0x1A, 0x1A, 0x2E)
+        p.paragraph_format.left_indent = Cm(1)
+        p.paragraph_format.space_before = Pt(1)
+        p.paragraph_format.space_after = Pt(1)
+        # shading
+        pPr = p._p.get_or_add_pPr()
+        shd = OxmlElement("w:shd")
+        shd.set(qn("w:val"), "clear")
+        shd.set(qn("w:fill"), "F5F5F5")
+        shd.set(qn("w:color"), "auto")
+        pPr.append(shd)
+
+
+def add_caption(doc, text):
+    """Add table/figure caption."""
+    p = doc.add_paragraph()
+    try:
+        p.style = doc.styles["Caption"]
+    except:
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    run = p.add_run(text)
+    run.font.bold = True
+    run.font.size = Pt(10.5)
+
+
+def add_table(doc, headers, rows, caption_text=None):
+    """Add a formatted table with optional caption."""
+    if caption_text:
+        add_caption(doc, caption_text)
+    ncols = len(headers)
+    table = doc.add_table(rows=1, cols=ncols, style="Table Grid")
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    # header
+    for i, h in enumerate(headers):
+        fill_cell(table.rows[0].cells[i], h, bold=True, size=Pt(10),
+                  align=WD_ALIGN_PARAGRAPH.CENTER)
+    # rows
+    for row_data in rows:
+        row = table.add_row()
+        for i, val in enumerate(row_data):
+            if i < len(row.cells):
+                fill_cell(row.cells[i], val)
+    return table
+
+
+# ── main build ───────────────────────────────────────────────────────
+
+def build():
+    doc = Document(str(TEMPLATE))
+
+    # ── Fill cover page tables ──
+    # Table 0: identification
+    t0 = doc.tables[0]
+    # Row 0 has system identification
+    fill_cell(t0.rows[0].cells[0], "标识：DARPA-IQAS-SUM\n版本：V1.0", bold=True)
+    fill_cell(t0.rows[0].cells[1], "编号：      \n密级：内部", bold=True)
+    # Row 1-2: title
+    for cell in t0.rows[1].cells:
+        fill_cell(cell, "")
+    for cell in t0.rows[2].cells:
+        fill_cell(cell, "")
+    fill_cell(t0.rows[1].cells[0], "DARPA智能问答服务工具", bold=True, size=Pt(18))
+    t0.rows[1].cells[0].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+    # Table 1: subtitle
+    t1 = doc.tables[1]
+    fill_cell(t1.rows[1].cells[0], "软件用户手册", bold=True, size=Pt(22))
+    t1.rows[1].cells[0].paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+    # Table 2: revision history
+    t2 = doc.tables[2]
+    fill_cell(t2.rows[1].cells[0], "V1.0")
+    fill_cell(t2.rows[1].cells[1], "2026-06-04")
+    fill_cell(t2.rows[1].cells[2], "初始版本")
+    fill_cell(t2.rows[1].cells[3], "开发团队")
+    # remove extra empty rows
+    while len(t2.rows) > 2:
+        tr = t2.rows[-1]._tr
+        t2._tbl.remove(tr)
+
+    # ── Clear template body content after TOC ──
+    clear_body(doc)
+
+    # ════════════════════════════════════════════════════════════════
+    # CHAPTER 1: 范围
+    # ════════════════════════════════════════════════════════════════
+    add_heading(doc, "范围", 1)
+    add_heading(doc, "标识", 2)
+    add_para(doc, "本文档适用的系统为：")
+    add_list_item(doc, "a）系统标识：DARPA-IQAS；")
+    add_list_item(doc, "b）系统名称：DARPA智能问答服务工具；")
+    add_list_item(doc, "c）软件版本号：V1.0。")
+
+    add_heading(doc, "系统概述", 2)
+    add_para(doc, "DARPA智能问答服务工具是\"研究内容四——DARPA智能问答服务工具开发\"的研究成果，由开发方联合军事科学院军事科学信息研究中心共同研制。系统是一套面向军事科研人员的离线智能问答系统，围绕DARPA相关军事文档，突破多源异构数据整合瓶颈，融合结构化知识管理与检索增强生成（RAG）技术，为用户提供高精度、领域适应的智能问答服务。")
+    add_para(doc, "系统核心特性：")
+    add_list_item(doc, "a）离线运行：基于Docker容器化部署，完全在局域网内运行，无外网依赖；")
+    add_list_item(doc, "b）本地大模型：采用智谱GLM-9B本地部署，数据不出服务器；")
+    add_list_item(doc, "c）三级架构：外挂知识库—RAG检索增强—交互式提示词工程；")
+    add_list_item(doc, "d）多格式支持：支持PDF、Word、Excel、TXT、图片等军事文档格式；")
+    add_list_item(doc, "e）混合检索：向量语义检索与关键词检索多特征融合。")
+    add_para(doc, "系统采用\"外挂知识库—RAG检索增强—交互式提示\"三级架构设计：第一级为外挂知识库模块（M1），实现军事文档的解析、分块与元数据标注；第二级为RAG文档检索增强模块（M2），提供向量检索、混合检索、重排序等多维度检索能力；第三级为交互式提示词工程模块（M3），通过动态模板引擎与结构化约束机制，将用户意图与DARPA文档知识精准对齐。")
+
+    add_heading(doc, "文档概述", 2)
+    add_para(doc, "本文档主要供以下人员使用：系统管理员（负责部署维护）、知识工程师（负责知识库管理与检索调优）、普通用户（进行智能问答交互）。本文档详细描述DARPA智能问答服务工具的安装部署、配置启动和操作使用全过程，帮助用户全面了解系统的使用方法、操作规范和维护流程。")
+    add_para(doc, "本文档密级为内部。")
+
+    # ════════════════════════════════════════════════════════════════
+    # CHAPTER 2: 软件综述
+    # ════════════════════════════════════════════════════════════════
+    add_heading(doc, "软件综述", 1)
+    add_heading(doc, "软件应用", 2)
+    add_para(doc, "DARPA智能问答服务工具主要应用于以下场景：")
+    add_list_item(doc, "a）DARPA军事文档知识管理：对大量非结构化军事科研文档进行统一管理、深度解析与语义化加工，构建可检索的领域知识库。")
+    add_list_item(doc, "b）军事科研智能问答：面向军事科研人员，基于已构建的知识库，提供精准的文档检索与智能问答服务，辅助科研决策。")
+    add_list_item(doc, "c）离线环境知识服务：在无外网连接的保密网络环境中，提供完整的智能问答服务，所有数据处理和模型推理均在本地完成。")
+
+    add_heading(doc, "软件清单", 2)
+    add_para(doc, "软件清单见表1。")
+    add_table(doc,
+        ["序号", "构件名称", "版本号", "用途"],
+        [
+            ["1", "ragflow（RAG引擎）", "v0.18.0", "文档解析、向量索引、混合检索、LLM对话核心"],
+            ["2", "gaisoftmes（应用服务）", "V1.0", "Spring Boot后端，业务逻辑与API服务"],
+            ["3", "nginx（前端界面）", "1.27-alpine", "Vue 3前端静态资源托管与反向代理"],
+            ["4", "elasticsearch（搜索引擎）", "8.11.3", "向量索引与全文检索"],
+            ["5", "mysql（数据库）", "8.0.39", "结构化数据存储（rag_flow + darpa_iqas）"],
+            ["6", "valkey（缓存）", "8", "会话缓存与检索缓存"],
+            ["7", "minio（对象存储）", "RELEASE.2023-12-20", "文档文件对象存储"],
+        ],
+        "表1  软件清单"
+    )
+
+    add_heading(doc, "软件环境", 2)
+    add_heading(doc, "硬件环境要求", 3)
+    add_para(doc, "硬件环境要求见表2。")
+    add_table(doc,
+        ["要求", "计算机", "最低配置", "推荐配置"],
+        [
+            ["服务器", "CPU", "4核", "8核及以上"],
+            ["", "内存", "16GB", "32GB及以上"],
+            ["", "硬盘", "200GB可用空间", "500GB及以上（SSD优先）"],
+            ["", "网络", "局域网（无需外网）", "千兆局域网"],
+            ["", "显卡", "无（CPU推理）", "可选NVIDIA GPU"],
+            ["客户机", "浏览器", "Chrome 90+", "Chrome最新版"],
+        ],
+        "表2  硬件环境要求"
+    )
+
+    add_heading(doc, "软件环境要求", 3)
+    add_para(doc, "软件环境要求见表3。")
+    add_table(doc,
+        ["序号", "软件名称", "版本号", "备注"],
+        [
+            ["1", "操作系统", "Ubuntu 20.04+/CentOS 7+", "推荐Ubuntu 22.04"],
+            ["2", "Docker", "24.0+", "容器引擎"],
+            ["3", "Docker Compose", "V2", "编排工具（docker compose插件）"],
+            ["4", "浏览器", "Chrome 90+/Firefox 88+", "推荐Chrome最新版"],
+            ["5", "离线镜像包", "—", "由开发方提供"],
+        ],
+        "表3  软件环境要求"
+    )
+
+    add_heading(doc, "软件组织和操作概述", 2)
+    add_para(doc, "DARPA智能问答服务工具包括M1外挂知识库、M2 RAG检索增强、M3交互式提示词工程三大功能模块，其软件组织如图 1所示。")
+    add_para(doc, "（图 1 系统功能组织图：M1外挂知识库—知识库管理/文档上传/文档解析/智能分块/元数据标注/分块预览；M2 RAG检索增强—向量语义检索/混合检索/相似度阈值调节/检索结果重排序/知识图谱辅助/跨语言检索；M3交互式提示词工程—聊天助手创建管理/系统提示词配置/多轮上下文对话/流式响应输出/引用溯源查看/提示模板定制）")
+    add_caption(doc, "图 1  软件功能组织图")
+    add_para(doc, "各个部件的用途及操作概述见表4。")
+    add_table(doc,
+        ["序号", "软件逻辑部件", "用途", "操作概述"],
+        [
+            ["1", "M1外挂知识库模块", "军事文档解析与语义化重构", "创建知识库、上传文档、监控解析、管理分块"],
+            ["2", "M2 RAG检索增强模块", "多文本特征融合混合检索", "配置检索策略、调节阈值、验证检索效果"],
+            ["3", "M3交互式提示词工程模块", "用户意图与知识精准对齐", "创建助手、配置提示词、开展对话、查看引用"],
+        ],
+        "表4  部件用途及操作概述"
+    )
+
+    add_heading(doc, "保密性和私密性", 2)
+    add_list_item(doc, "a）离线部署安全：系统采用完全离线部署模式，所有服务运行在封闭的Docker容器网络内，无外网连接，杜绝数据外泄风险。")
+    add_list_item(doc, "b）用户认证：系统提供基于JWT的用户登录认证机制，用户需输入账号密码方可使用。")
+    add_list_item(doc, "c）数据隔离：不同客户项目的数据通过独立的项目目录和数据库实例隔离，互不可见。")
+    add_list_item(doc, "d）本地模型：大语言模型（智谱GLM-9B）本地部署运行，所有问答推理均在服务器本地完成，不向外部发送任何数据。")
+    add_list_item(doc, "e）访问控制：系统API接口需通过认证令牌访问，未授权请求将被拒绝。")
+
+    add_heading(doc, "帮助和问题报告", 2)
+    add_para(doc, "使用本系统过程中如遇问题，可直接参考本手册，也可以通过以下联系方式与系统的开发方联系解决。")
+    add_list_item(doc, "a）售后服务电话：（由部署方提供）；")
+    add_list_item(doc, "b）软件开发人员联系方式：1）联系电话：（由部署方提供）；2）联系单位：开发方技术支持团队；3）联系人：（由部署方指定）；4）通信地址：（由部署方提供）；5）邮编：（由部署方提供）；")
+    add_list_item(doc, "c）投诉监督热线：（由部署方提供）。")
+
+    # ════════════════════════════════════════════════════════════════
+    # CHAPTER 3: 软件入门
+    # ════════════════════════════════════════════════════════════════
+    add_heading(doc, "软件入门", 1)
+    add_heading(doc, "软件的首次用户", 2)
+    add_heading(doc, "熟悉设备", 3)
+    add_para(doc, "使用本系统前，请确认以下硬件已就绪：")
+    add_list_item(doc, "a）服务器已按表2硬件要求配置完毕，电源和网络线缆连接正常；")
+    add_list_item(doc, "b）服务器已安装Docker 24.0+和Docker Compose V2，可通过以下命令验证：")
+    add_code(doc, "docker --version\ndocker compose version")
+    add_list_item(doc, "c）浏览器可正常访问服务器IP地址（端口8899为前端界面，端口8070为RAG引擎管理界面）。")
+
+    add_heading(doc, "访问控制", 3)
+    add_para(doc, "系统部署前需获取以下授权信息：")
+    add_list_item(doc, "a）离线镜像包：由开发方提供的包含全部Docker镜像的tar文件包；")
+    add_list_item(doc, "b）项目配置：客户专属的.env文件和nginx配置文件，由开发方按项目定制；")
+    add_list_item(doc, "c）登录凭据：系统管理员账号密码，初始为admin/admin123，首次登录后请立即修改。")
+
+    add_heading(doc, "安装和设置", 2)
+    add_heading(doc, "安装", 3)
+    add_heading(doc, "安装前准备", 4)
+    add_para(doc, "a）将开发方提供的离线交付包（包含docker/完整目录）复制到服务器指定位置，例如/opt/knovaq/；")
+    add_para(doc, "b）确认Docker环境可用：")
+    add_code(doc, "docker --version        # 确认版本 >= 24.0\ndocker compose version  # 确认 Compose V2 已安装")
+    add_para(doc, "c）确认目录结构完整：")
+    add_code(doc, "ls /opt/knovaq/docker/\n# 应包含：docker-compose.yml  .env  images/  scripts/  init/  nginx/  gaisoft/")
+
+    add_heading(doc, "安装步骤", 4)
+    add_para(doc, "第一步：离线镜像加载。离线环境无需联网下载镜像，通过以下命令从本地tar文件加载。")
+    add_para(doc, "Linux/macOS执行：")
+    add_code(doc, "cd /opt/knovaq/docker\nbash scripts/offline-load.sh")
+    add_para(doc, "Windows (PowerShell)执行：")
+    add_code(doc, "cd E:\\knovaq\\docker\n.\\scripts\\offline-load.ps1")
+    add_para(doc, "脚本自动扫描docker/images/目录下所有.tar文件并逐一加载。加载完成后显示\"All images loaded\"。")
+    add_para(doc, "第二步：启动系统。")
+    add_para(doc, "Linux/macOS执行：")
+    add_code(doc, "cd /opt/knovaq/docker\nbash scripts/start.sh <项目名>")
+    add_para(doc, "Windows (PowerShell)执行：")
+    add_code(doc, "cd E:\\knovaq\\docker\n.\\scripts\\start.ps1 <项目名>")
+    add_para(doc, "其中<项目名>为docker/projects/目录下的客户项目文件夹名称（如demo）。如果使用默认配置，可省略项目名参数。启动过程约需1-3分钟（首次启动较慢），脚本会依次完成：读取全局.env配置和项目专属.env配置→复制项目对应的nginx配置文件→启动所有Docker容器（MySQL→Elasticsearch→Redis→MinIO→ragflow→gaisoft-server→gaisoft-frontend）。启动成功后显示\"KnovaQ started for project: <项目名>\"。")
+
+    add_heading(doc, "安装后验证", 4)
+    add_para(doc, "系统启动后，等待约1分钟让所有服务完成初始化，然后通过浏览器访问验证：")
+
+    add_table(doc,
+        ["服务", "访问地址", "说明"],
+        [
+            ["前端主界面", "http://<服务器IP>:8899", "用户操作界面"],
+            ["RAG引擎管理", "http://<服务器IP>:8070", "ragflow管理后台（知识库、助手配置）"],
+        ],
+        None
+    )
+    add_list_item(doc, "a）访问前端主界面http://<服务器IP>:8899，应显示登录页面；")
+    add_list_item(doc, "b）使用初始管理员账号登录：用户名admin，密码admin123；")
+    add_list_item(doc, "c）登录成功后进入系统主界面，表示安装验证通过。")
+
+    add_heading(doc, "设置", 3)
+    add_para(doc, "如需修改系统配置（如端口、密码），编辑以下文件后重新启动：")
+    add_list_item(doc, "a）全局配置：docker/.env——修改端口号、数据库密码等；")
+    add_list_item(doc, "b）项目配置：docker/projects/<项目名>/.env——覆盖全局配置中的特定参数。")
+    add_para(doc, "关键配置参数：")
+    add_table(doc,
+        ["参数", "默认值", "说明"],
+        [
+            ["GAISOFT_FRONTEND_PORT", "8899", "前端界面端口"],
+            ["GAISOFT_SERVER_PORT", "8088", "后端服务端口"],
+            ["RAGFLOW_HTTP_PORT", "8070", "RAG引擎Web端口"],
+            ["MYSQL_PASSWORD", "infini_rag_flow", "MySQL root密码"],
+            ["REDIS_PASSWORD", "infini_rag_flow", "Redis密码"],
+        ],
+        None
+    )
+    add_para(doc, "注意：修改端口或密码后需重启系统才能生效。修改MySQL密码会丢失已有数据（需删除volume重建）。")
+
+    add_heading(doc, "启动过程", 2)
+    add_para(doc, "系统正常启动流程（非首次安装）：")
+    add_code(doc, "# Linux/macOS\ncd /opt/knovaq/docker\nbash scripts/start.sh <项目名>\n\n# Windows (PowerShell)\ncd E:\\knovaq\\docker\n.\\scripts\\start.ps1 <项目名>")
+    add_para(doc, "脚本自动读取环境配置、复制nginx配置并启动所有容器。启动完成后通过浏览器访问http://<服务器IP>:8899即可使用。")
+
+    add_heading(doc, "停止和挂起工作", 2)
+    add_code(doc, "# Linux/macOS\ncd /opt/knovaq/docker\nbash scripts/stop.sh\n\n# Windows (PowerShell)\ncd E:\\knovaq\\docker\n.\\scripts\\stop.ps1")
+    add_para(doc, "执行后系统优雅停止所有服务容器。停止不会删除数据，再次执行start命令即可恢复运行，所有数据保持不变。")
+
+    add_heading(doc, "卸载", 2)
+    add_para(doc, "如需完全卸载系统并清除所有数据：")
+    add_code(doc, "cd /opt/knovaq/docker\ndocker compose down -v")
+    add_para(doc, "警告：down -v会删除所有Docker卷（包括MySQL数据、ES索引、上传文件等），此操作不可恢复。执行前请确认已备份重要数据。")
+    add_para(doc, "仅停止服务但保留数据：")
+    add_code(doc, "docker compose down    # 不加 -v，数据保留")
+
+    # ════════════════════════════════════════════════════════════════
+    # CHAPTER 4: 软件使用指南
+    # ════════════════════════════════════════════════════════════════
+    add_heading(doc, "软件使用指南", 1)
+    add_para(doc, "本章向用户提供使用DARPA智能问答服务工具的完整操作过程。")
+
+    add_heading(doc, "能力", 2)
+    add_para(doc, "系统三大核心模块的协作关系：用户提问后，M3交互式提示词工程模块构建提示请求，调用M2 RAG检索增强模块从M1外挂知识库模块中检索知识片段，最终由本地大语言模型（智谱GLM-9B）生成精准答案并返回用户。")
+    add_para(doc, "M1外挂知识库模块提供知识库全生命周期管理能力：创建/删除/修改知识库，上传PDF/Word/Excel/TXT/图片等多格式军事文档，自动进行文档深度解析、智能语义化分块、元数据标注与过滤、文档解析状态监控。")
+    add_para(doc, "M2 RAG文档检索增强模块提供多维度检索能力：向量语义检索、混合检索（向量+关键词多特征融合）、相似度阈值动态调节、检索结果重排序、知识图谱辅助检索、跨语言检索。")
+    add_para(doc, "M3交互式提示词工程模块提供智能对话能力：聊天助手创建与管理、系统提示词配置、多轮上下文对话、流式响应输出、引用溯源、动态提示模板引擎。")
+
+    add_heading(doc, "约定", 2)
+    add_list_item(doc, "a）浏览器要求：推荐使用Chrome浏览器最新版，分辨率建议1920x1080及以上；")
+    add_list_item(doc, "b）用户角色：系统管理员（负责系统部署、维护、用户管理）、知识工程师（负责知识库创建、文档上传、检索调优）、普通用户（使用智能问答功能进行知识检索和对话）；")
+    add_list_item(doc, "c）界面约定：菜单项统一位于页面顶部导航栏或左侧菜单栏；操作按钮统一位于对应功能区域上方或右侧；列表页面支持翻页浏览，每页默认显示20条记录；必填字段以红色星号（*）标识；")
+    add_list_item(doc, "d）操作术语：\"点击\"为鼠标左键单击；\"输入\"为在文本框中键入内容；\"选择\"为在下拉列表中选取选项；\"勾选\"为在复选框中打勾。")
+
+    # ── 4.3 处理过程 ──
+    add_heading(doc, "处理过程", 2)
+
+    # 4.3.1 智能问答
+    add_heading(doc, "智能问答", 3)
+    add_para(doc, "智能问答是系统核心功能。用户在对话界面中输入自然语言问题，系统自动从知识库检索相关文档片段，由大语言模型生成精准回答。")
+    add_para(doc, "（智能问答主界面：展示对话历史和底部输入框，用户输入问题后点击发送，系统流式返回回答并标注引用来源。）")
+    add_caption(doc, "图 2  智能问答主界面")
+    add_para(doc, "操作步骤：第一步，点击顶部导航菜单中的"智能问答"进入问答界面。第二步，在底部输入框中输入问题。第三步，点击"发送"按钮或按Enter键提交问题。第四步，系统开始处理，回答以流式方式逐字显示，回答中包含引用标记。第五步，可在同一对话中继续提问，或点击"新建对话"开始全新会话。")
+
+    # 4.3.2 知识检索
+    add_heading(doc, "知识检索", 3)
+    add_para(doc, "知识检索功能允许用户对知识库中的文档进行关键词和语义检索，快速定位所需信息。")
+    add_para(doc, "（知识检索界面：提供检索输入框，用户输入关键词后系统返回匹配的文档片段列表，每条结果显示相似度分数和来源文档。）")
+    add_caption(doc, "图 3  知识检索界面")
+
+    # 4.3.3 配置助理
+    add_heading(doc, "配置助理", 3)
+    add_para(doc, "配置助理功能用于创建和管理智能问答助手。每个助手可绑定不同知识库、配置不同提示词，实现特定领域的精准问答。")
+    add_para(doc, "（配置助理列表页面：展示所有已创建的问答助手，显示名称、关联知识库、模型等关键信息。支持新增、编辑、删除操作。）")
+    add_caption(doc, "图 4  配置助理列表")
+    add_para(doc, "新增助理操作：第一步，点击列表上方"新增"按钮，弹出新增助理配置对话框。第二步，在弹窗中填写助手名称、选择LLM模型、编写系统提示词。第三步，勾选需要关联的知识库，点击"确定"保存。")
+    add_para(doc, "（新增助理配置弹窗：填写助手名称、选择模型、编写提示词、关联知识库后点击确定。）")
+    add_caption(doc, "图 5  新增助理配置弹窗")
+
+    # 4.3.4 文件查看
+    add_heading(doc, "文件查看", 3)
+    add_para(doc, "文件查看功能展示知识库中已上传的全部文件资源，支持按条件筛选浏览。")
+    add_para(doc, "（文件查看列表页面：展示知识库全部文件，显示文件名、类型、大小、上传时间、解析状态等信息。支持按文件名、类型、上传时间筛选。）")
+    add_caption(doc, "图 6  文件查看列表")
+    add_para(doc, "点击文件记录可查看文件详情和解析结果。")
+    add_para(doc, "（文件详情页面：展示文件解析状态和分块信息。）")
+    add_caption(doc, "图 7  文件详情")
+
+    # 4.3.5 文件管理
+    add_heading(doc, "文件管理", 3)
+    add_para(doc, "文件管理功能提供知识库文件的增删改操作，包括上传新文件、创建文件夹、文件解析控制等。")
+    add_para(doc, "（文件管理列表页面：展示当前知识库下的所有文件和文件夹，支持上传、解析、重命名、删除等操作。）")
+    add_caption(doc, "图 8  文件管理列表")
+    add_para(doc, "新建文件夹操作：点击"新建文件夹"按钮，弹出创建对话框。输入文件夹名称后点击"确定"创建，用于按分类组织知识库文件。")
+    add_para(doc, "（新建文件夹弹窗：输入文件夹名称后创建。）")
+    add_caption(doc, "图 9  新建文件夹弹窗")
+    add_para(doc, "文件上传操作：进入目标知识库的文件管理页面，点击"上传文件"按钮，选择待上传文档（支持PDF/Word/Excel/TXT/图片格式）。文件上传后自动进入解析队列，状态列显示解析进度。解析完成后文件变为可检索状态。")
+
+    # 4.3.6 文件分类
+    add_heading(doc, "文件分类", 3)
+    add_para(doc, "文件分类功能支持创建多级分类目录，按主题或类型组织知识库文档。")
+    add_para(doc, "（文件分类管理页面：左侧显示分类树结构，右侧显示当前分类下的文件列表。支持新增、编辑、删除分类节点。）")
+    add_caption(doc, "图 10  文件分类管理")
+    add_para(doc, "新增分类操作：选中父级分类节点，点击"新增"按钮，填写分类名称和上级分类后创建。")
+    add_para(doc, "（新增分类弹窗：填写分类名称后创建。）")
+    add_caption(doc, "图 11  新增分类弹窗")
+
+    # 4.3.7 模型管理
+    add_heading(doc, "模型管理", 3)
+    add_para(doc, "模型管理功能用于配置系统可用的LLM推理模型和嵌入模型，支持添加多种模型提供商。")
+    add_para(doc, "（模型管理列表页面：按模型类型分组展示已配置的LLM、嵌入、重排序等模型。每个模型显示名称、类型、API配置和操作按钮。）")
+    add_caption(doc, "图 12  模型管理列表")
+    add_para(doc, "设置默认模型：点击"设置默认模型"按钮，在弹窗中为每种模型类型指定默认使用的模型。")
+    add_para(doc, "（设置默认模型弹窗：为LLM对话、嵌入向量、重排序等类型指定默认模型。）")
+    add_caption(doc, "图 13  设置默认模型弹窗")
+
+    # 4.3.8 知识库管理
+    add_heading(doc, "知识库管理", 3)
+    add_para(doc, "知识库管理功能是系统的核心管理入口，用于创建、配置和监控知识库。")
+    add_para(doc, "（知识库管理列表页面：以卡片形式展示所有知识库，显示名称、文档数量、解析状态概要。）")
+    add_caption(doc, "图 14  知识库管理列表")
+    add_para(doc, "新增知识库操作：点击列表上方"新增"按钮，弹出创建对话框。填写知识库名称、描述信息，选择分块方法和嵌入模型，点击"确定"创建。")
+    add_para(doc, "（新增知识库弹窗：填写名称、描述、分块方法和嵌入模型后创建。）")
+    add_caption(doc, "图 15  新增知识库弹窗")
+    add_para(doc, "创建完成后可进入知识库配置页面，查看文档列表和分块统计，上传文档和调整参数。")
+    add_para(doc, "（知识库配置详情页面：展示文档列表和分块统计。）")
+    add_caption(doc, "图 16  知识库配置详情")
+
+    # 4.3.9 (old 4.3.1)
+    add_heading(doc, "知识库创建与军事文档上传", 3)
+    add_para(doc, "功能说明：创建知识库是使用系统的第一步。知识库是管理军事文档和知识片段的容器，所有文档必须归属于某个知识库。")
+    add_para(doc, "操作步骤：")
+    add_para(doc, "第一步：打开浏览器，访问RAG引擎管理界面http://<服务器IP>:8070。")
+    add_para(doc, "第二步：使用管理员账号登录系统。首次使用需注册：点击页面顶部\"注册\"链接→输入邮箱地址和密码→点击【注册】→使用注册的邮箱和密码登录。")
+    add_para(doc, "第三步：进入知识库管理页面。登录后，点击页面顶部导航栏中的\"知识库\"菜单项，进入知识库列表页面。")
+    add_para(doc, "第四步：创建新知识库。点击知识库列表页面右上角的【创建知识库】按钮，在弹出的创建表单中填写以下信息：")
+    add_list_item(doc, "- 知识库名称：输入知识库的名称，如\"DARPA项目文档库\"；")
+    add_list_item(doc, "- 知识库描述（可选）：输入简要描述；")
+    add_list_item(doc, "- 分块方法：推荐选择\"自动\"（系统根据文档结构自动选择最佳分块方式）；")
+    add_list_item(doc, "- 嵌入模型：选择向量化模型，默认使用系统内置模型。")
+    add_para(doc, "填写完成后点击【确定】，完成知识库创建。")
+    add_para(doc, "第五步：上传军事文档。在知识库列表中点击刚创建的知识库名称进入详情页→点击【上传文件】按钮→在文件选择对话框中选择需要上传的军事文档文件（支持PDF/Word/Excel/TXT/图片，可一次选择多个文件批量上传）→点击【上传】。上传完成后文件出现在文档列表中。")
+
+    # 4.3.2
+    add_heading(doc, "文档解析状态监控", 3)
+    add_para(doc, "功能说明：上传的文档需要经过自动解析才能被检索使用。解析过程包括文档内容提取、表格识别、图片处理、文本分块、向量化。大型文档解析可能需要数分钟。")
+    add_para(doc, "操作步骤：")
+    add_para(doc, "第一步：在知识库列表中点击目标知识库名称进入详情页。")
+    add_para(doc, "第二步：查看文档状态。文档列表中每条记录的\"状态\"列显示解析状态：")
+    add_list_item(doc, "- 排队中（黄色）：文档在解析队列中等待；")
+    add_list_item(doc, "- 解析中（蓝色）：文档正在被处理，可能显示进度百分比；")
+    add_list_item(doc, "- 已完成（绿色）：文档解析成功，知识分块已入库，可被检索；")
+    add_list_item(doc, "- 失败（红色）：文档解析出错，需检查文件是否损坏。")
+    add_para(doc, "第三步：处理解析失败的文档。点击状态为\"失败\"的文档记录→查看失败原因→常见原因包括文件格式不支持（确认文件为支持的格式）、文件内容为空（检查文件是否损坏或加密）、文件过大（尝试拆分为多个较小文件后重新上传）→处理完成后点击【重新解析】。")
+
+    # 4.3.3
+    add_heading(doc, "分块预览与元数据管理", 3)
+    add_para(doc, "功能说明：文档解析完成后被切分为多个知识分块（chunk），每个分块是检索和问答的基本单元。用户可预览分块内容、编辑元数据，以优化检索效果。")
+    add_para(doc, "操作步骤：")
+    add_para(doc, "第一步：在知识库详情页中，点击已解析完成的文档名称或点击文档操作栏中的【分块】按钮，进入该文档的分块列表页面。")
+    add_para(doc, "第二步：浏览分块内容。分块列表展示文档被切分后的每个知识片段，每个分块显示分块编号、文本内容摘要、所属页码/章节、字符数。点击分块可展开查看完整文本内容。")
+    add_para(doc, "第三步：编辑分块元数据。点击目标分块右侧的【编辑】按钮，可修改分块内容、添加关键词标签、标注知识类型，点击【保存】确认修改。")
+    add_para(doc, "第四步：分块过滤与管理。使用页面顶部的过滤条件筛选分块：按关键词过滤、按状态过滤（启用/禁用）、按元数据过滤。可批量操作：勾选多个分块，执行批量启用/禁用/删除。禁用的分块不会被检索到，但不删除原始数据。")
+
+    # 4.3.4
+    add_heading(doc, "检索参数配置", 3)
+    add_para(doc, "功能说明：检索参数决定了系统从知识库中查找相关内容的策略和精度。合理配置检索参数可以显著提升问答质量。")
+    add_para(doc, "操作步骤：")
+    add_para(doc, "第一步：进入助手配置页面（参见4.3.5创建助手后），找到\"检索设置\"或\"知识库绑定\"配置区域。")
+    add_para(doc, "第二步：配置检索策略。主要配置项：")
+    add_table(doc,
+        ["参数", "说明", "推荐值"],
+        [
+            ["检索方式", "选择\"向量检索\"或\"混合检索\"", "混合检索"],
+            ["相似度阈值", "检索结果最低相似度分数", "0.2（初始值）"],
+            ["返回结果数", "每次检索返回的最大分块数", "6-10"],
+            ["重排序", "是否对结果进行二次精排", "开启"],
+            ["检索权重", "向量与关键词检索的权重比例", "0.7:0.3"],
+        ],
+        None
+    )
+    add_para(doc, "第三步：调节相似度阈值。阈值范围0.0-1.0，阈值越高返回结果越少但越精确，阈值越低返回结果越多但可能包含不相关内容。建议初始设为0.2，根据问答效果逐步调整。")
+    add_para(doc, "第四步：在助手的\"检索测试\"功能中输入测试问题，查看检索到的知识分块列表及其相似度分数，根据测试结果微调参数。")
+
+    # 4.3.5
+    add_heading(doc, "创建问答助手与系统提示词配置", 3)
+    add_para(doc, "功能说明：问答助手（Chat Assistant）是用户进行智能问答的入口。每个助手绑定特定知识库，并可通过系统提示词定义其角色和行为。")
+    add_para(doc, "操作步骤：")
+    add_para(doc, "第一步：在RAG引擎管理界面顶部导航栏点击\"助手\"或\"对话\"菜单项，进入助手列表页面。")
+    add_para(doc, "第二步：点击【创建助手】按钮，在创建表单中填写：助手名称（如\"DARPA项目问答助手\"）、LLM模型（选择智谱GLM-9B）、关联知识库（勾选需要绑定的知识库）。")
+    add_para(doc, "第三步：配置系统提示词。在\"系统提示词\"（System Prompt）文本区域输入助手的角色定义和行为规范。示例提示词：")
+    add_code(doc, "你是一个专业的DARPA军事科研项目问答助手。你的职责如下：\n1. 基于提供的知识库内容回答用户关于DARPA项目的问题\n2. 回答必须基于检索到的文档内容，不得自行编造信息\n3. 如果知识库中没有相关内容，明确告知用户\n4. 回答时引用具体的文档来源和章节\n5. 使用专业、准确的语言，避免模糊表述\n6. 对于数据类问题，提供具体的数值和单位")
+    add_para(doc, "提示词编写要点：明确定义助手的角色和职责边界；指定回答的格式和风格要求；规定信息溯源要求；说明无法回答时的处理方式。")
+    add_para(doc, "第四步：保存助手配置。点击【保存】完成创建，助手出现在助手列表中，状态为\"已启用\"。")
+
+    # 4.3.6
+    add_heading(doc, "智能问答对话操作", 3)
+    add_para(doc, "功能说明：智能问答是系统的核心使用场景。用户通过自然语言提问，系统自动从知识库检索相关内容，由大语言模型生成精准回答。")
+    add_para(doc, "操作步骤：")
+    add_para(doc, "第一步：在RAG引擎管理界面或前端主界面中，点击目标助手名称进入对话页面。")
+    add_para(doc, "第二步：在页面底部的输入框中输入问题（如\"DARPA XXX项目的关键技术指标是什么？\"），点击【发送】或按Enter键提交。")
+    add_para(doc, "第三步：查看回答。系统开始处理后，回答内容以流式方式逐字显示。回答由正文回答、引用标记（如[1]、[2]）和引用来源列表组成。")
+    add_para(doc, "第四步：查看引用溯源。在回答区域下方，点击引用编号或\"查看引用\"链接，弹出引用详情面板，显示引用的原始文档名称、原文位置、完整文本和相似度分数。")
+    add_para(doc, "第五步：继续提问。在同一对话中继续输入下一个问题（系统保持上下文连贯），或点击【新建对话】开始全新对话。")
+
+    # 4.3.7
+    add_heading(doc, "多轮对话与上下文管理", 3)
+    add_para(doc, "功能说明：系统支持多轮对话，用户可以在一个对话中连续提问，系统会结合之前的问答上下文理解当前问题。")
+    add_para(doc, "操作步骤：")
+    add_para(doc, "第一步：在现有对话中直接输入后续问题，系统自动关联同一对话中的历史问答。")
+    add_para(doc, "第二步：上下文相关问题示例：第一轮\"DARPA XXX项目有哪些参与单位？\"→第二轮\"该项目的预算是多少？\"（系统理解\"该项目\"上下文）→第三轮\"项目启动时间是什么时候？\"")
+    add_para(doc, "第三步：管理对话历史。对话列表显示在页面左侧或导航区域，点击历史对话可查看完整问答记录，点击【删除】可删除不需要的对话记录。")
+    add_para(doc, "第四步：如需清除上下文，点击【新建对话】按钮开始全新的对话。")
+
+    # 4.3.8
+    add_heading(doc, "引用溯源查看", 3)
+    add_para(doc, "功能说明：引用溯源功能让用户验证回答的可靠性，每个回答中的信息都可以追溯到源文档的具体位置。")
+    add_para(doc, "操作步骤：")
+    add_para(doc, "第一步：查看回答中的引用标记。每个回答中，基于知识库生成的语句后方标注引用编号（如[1]、[2]）。")
+    add_para(doc, "第二步：点击引用编号，跳转到引用详情。引用详情展示来源文档、内容预览（关键词高亮）、相似度分数和位置信息。")
+    add_para(doc, "第三步：评估回答可靠性。通过检查引用来源判断回答的准确性和完整性——如果引用内容与回答不符，说明可能存在幻觉，应以引用原文为准；如果所有引用的相似度都很低，说明知识库中可能缺乏相关知识。")
+
+    # 4.3.9
+    add_heading(doc, "提示模板定制", 3)
+    add_para(doc, "功能说明：提示模板允许知识工程师为不同场景定制问答助手的回答风格和行为规范。")
+    add_para(doc, "操作步骤：")
+    add_para(doc, "第一步：在助手列表中点击目标助手右侧的【编辑】或【设置】按钮。")
+    add_para(doc, "第二步：修改\"系统提示词\"文本区域内容。场景示例：")
+    add_para(doc, "数据查询型提示词示例：")
+    add_code(doc, "你是一个精确的数据查询助手。回答要求：\n1. 只提供知识库中明确记载的数据\n2. 所有数据必须附带来源引用\n3. 以表格形式展示对比数据\n4. 不确定的数据标注\"[待确认]\"")
+    add_para(doc, "分析报告型提示词示例：")
+    add_code(doc, "你是一个军事科研分析助手。回答要求：\n1. 对多个相关项目进行横向对比分析\n2. 按技术指标、预算、进展等维度组织回答\n3. 给出总结性判断和建议\n4. 标注信息来源和时效性")
+    add_para(doc, "第三步：调整模型参数。温度（Temperature）推荐0.1-0.3（偏精确），最大输出长度根据需求设置，Top-P推荐0.9。")
+    add_para(doc, "第四步：点击【保存】保存配置，发送测试问题验证提示词效果，根据回答质量反复调整。")
+
+    # 4.3.18 用户管理
+    add_heading(doc, "用户管理", 3)
+    add_para(doc, "用户管理功能供系统管理员管理系统用户账号，包括新增、编辑、删除用户和分配角色权限。")
+    add_para(doc, "（系统用户管理列表页面：展示所有系统用户，显示用户名、昵称、部门、角色、状态等信息。支持按用户名、手机号、状态筛选。）")
+    add_caption(doc, "图 17  用户管理列表")
+    add_para(doc, "新增用户操作：点击列表上方"新增"按钮，在弹窗中填写用户名、昵称、密码、手机号、邮箱，选择所属部门和角色，设置用户状态，点击"确定"创建用户。")
+    add_para(doc, "（新增用户弹窗：填写用户信息、选择角色和部门后创建。）")
+    add_caption(doc, "图 18  新增用户弹窗")
+
+    # 4.3.19 角色管理
+    add_heading(doc, "角色管理", 3)
+    add_para(doc, "角色管理功能用于定义系统角色和权限策略，控制不同用户的功能访问范围。")
+    add_para(doc, "（角色管理列表页面：展示所有系统角色，显示角色名称、权限标识、排序、状态等信息。）")
+    add_caption(doc, "图 19  角色管理列表")
+    add_para(doc, "新增角色操作：点击"新增"按钮，填写角色名称、权限标识，勾选角色可访问的菜单权限树，点击"确定"创建。")
+    add_para(doc, "（新增角色弹窗：填写角色信息并勾选菜单权限树。）")
+    add_caption(doc, "图 20  新增角色弹窗")
+
+    # 4.3.20 菜单管理
+    add_heading(doc, "菜单管理", 3)
+    add_para(doc, "菜单管理功能用于配置系统导航菜单结构，控制各角色可见的功能模块。")
+    add_para(doc, "（菜单管理列表页面：以树形结构展示系统菜单层级关系，显示菜单名称、图标、排序、路由地址等信息。）")
+    add_caption(doc, "图 21  菜单管理列表")
+
+    # 4.3.21 参数设置
+    add_heading(doc, "参数设置", 3)
+    add_para(doc, "参数设置功能用于管理系统运行参数和配置项。")
+    add_para(doc, "（系统参数设置列表页面：以表格形式展示所有系统配置参数，显示参数名称、参数键名、参数值、系统内置标识。）")
+    add_caption(doc, "图 22  参数设置列表")
+
+    # 4.3.22 在线用户监控
+    add_heading(doc, "在线用户监控", 3)
+    add_para(doc, "在线用户监控功能展示当前系统中处于登录状态的用户会话信息。")
+    add_para(doc, "（在线用户监控页面：展示当前所有在线用户，包括用户名、登录IP、浏览器、操作系统、登录时间。）")
+    add_caption(doc, "图 23  在线用户监控")
+
+    # 4.3.23 服务器监控
+    add_heading(doc, "服务器监控", 3)
+    add_para(doc, "服务器监控功能展示系统运行环境的实时状态信息。")
+    add_para(doc, "（服务器状态监控页面：以仪表盘形式展示服务器CPU使用率、内存占用、JVM堆内存、磁盘空间等关键指标。）")
+    add_caption(doc, "图 24  服务器监控")
+
+    # 4.3.24 操作日志
+    add_heading(doc, "操作日志", 3)
+    add_para(doc, "操作日志功能记录系统中所有用户的关键操作行为，用于审计追溯。")
+    add_para(doc, "（操作日志列表页面：按时间倒序展示操作记录，显示操作模块、操作类型、操作人、操作时间、操作IP等信息。）")
+    add_caption(doc, "图 25  操作日志列表")
+
+    # ── 4.4 有关的处理 ──
+    add_heading(doc, "有关的处理", 2)
+    add_para(doc, "以下处理过程不直接面向普通用户，由系统管理员在服务器命令行操作。")
+    add_para(doc, "后端服务更新（修复bug、增加功能时执行）：")
+    add_code(doc, "# Linux/macOS\ncd /opt/knovaq/docker\nbash scripts/build-mes.sh <项目名>\n\n# Windows (PowerShell)\ncd E:\\knovaq\\docker\n.\\scripts\\build-mes.ps1 <项目名>")
+    add_para(doc, "脚本自动完成：复制最新jar包到docker/gaisoft/jar/目录→重启gaisoft-server容器。")
+    add_para(doc, "前端界面更新：")
+    add_code(doc, "# Linux/macOS\nbash scripts/build-ui.sh <项目名>\n\n# Windows\n.\\scripts\\build-ui.ps1 <项目名>")
+    add_para(doc, "脚本自动完成：清除旧前端文件→复制最新构建产物→重新加载nginx。")
+    add_para(doc, "离线镜像包制作（在联网环境中制作，供离线环境加载）：")
+    add_code(doc, "bash scripts/offline-save.sh\n# 然后打包：Compress-Archive -Path docker -DestinationPath knovaq-offline.zip")
+
+    # ── 4.5 数据备份 ──
+    add_heading(doc, "数据备份", 2)
+    add_para(doc, "MySQL数据备份：")
+    add_code(doc, "# 备份rag_flow数据库\ndocker exec ragflow-mysql mysqldump -uroot -p<密码> rag_flow > rag_flow_backup.sql\n\n# 备份darpa_iqas数据库\ndocker exec ragflow-mysql mysqldump -uroot -p<密码> darpa_iqas > darpa_iqas_backup.sql")
+    add_para(doc, "上传文件备份（MinIO数据卷）：")
+    add_code(doc, "docker run --rm -v minio_data:/data -v $(pwd):/backup alpine \\\n  tar czf /backup/minio_backup.tar.gz /data")
+    add_para(doc, "数据恢复：")
+    add_code(doc, "# 恢复MySQL\ndocker exec -i ragflow-mysql mysql -uroot -p<密码> rag_flow < rag_flow_backup.sql\n\n# 恢复MinIO\ndocker run --rm -v minio_data:/data -v $(pwd):/backup alpine \\\n  tar xzf /backup/minio_backup.tar.gz -C /")
+
+    # ── 4.6 错误恢复 ──
+    add_heading(doc, "错误、误动作和紧急情况时的恢复", 2)
+    add_para(doc, "常见故障排查见表5。")
+    add_table(doc,
+        ["故障现象", "可能原因", "处理方法"],
+        [
+            ["浏览器无法访问系统", "服务未启动或端口被占", "1.执行docker ps查看容器状态 2.检查端口 3.重新执行start"],
+            ["前端页面白屏", "nginx配置缺失", "确认通过start脚本启动"],
+            ["文档解析失败", "文件格式损坏或不支持", "检查文件完整性，确认支持格式"],
+            ["问答无响应", "LLM模型未加载", "检查ragflow容器日志"],
+            ["问答质量差", "检索参数不当", "调节阈值、更换策略、优化提示词"],
+            ["检索不到内容", "知识库未绑定或分块未完成", "确认助手绑定知识库，文档已解析"],
+            ["服务频繁重启", "内存不足", "检查服务器内存（ES默认8GB）"],
+        ],
+        "表5  常见故障排查"
+    )
+    add_para(doc, "服务健康检查命令：")
+    add_code(doc, "docker compose ps                              # 查看所有服务状态\ndocker logs ragflow-server --tail 100          # 查看ragflow日志\ndocker logs equipment-server --tail 100        # 查看后端日志\ndocker exec ragflow-mysql mysqladmin ping -uroot -p<密码>  # 检查MySQL\ndocker exec ragflow-redis valkey-cli -a <密码> ping        # 检查Redis")
+
+    # ── 4.7 消息 ──
+    add_heading(doc, "消息", 2)
+    add_para(doc, "完成用户功能时可能发生的所有错误消息、诊断消息和信息消息见表6。")
+    add_table(doc,
+        ["消息类别", "消息名称", "消息内容", "消息含义", "需采取的动作"],
+        [
+            ["信息消息", "登录成功", "登录成功", "用户认证通过", "正常进入主界面"],
+            ["错误消息", "登录失败", "用户名或密码错误", "登录凭据不正确", "检查输入，联系管理员重置"],
+            ["信息消息", "上传成功", "文件上传成功", "文档已上传到知识库", "等待系统自动解析"],
+            ["信息消息", "解析完成", "文档解析完成", "文档已成功解析为知识分块", "可开始检索和问答"],
+            ["错误消息", "解析失败", "文档解析失败", "文档解析出错", "查看故障排查表"],
+            ["警告消息", "无结果", "未找到相关知识", "检索未命中知识库内容", "检查知识库绑定和文档解析状态"],
+            ["警告消息", "会话过期", "会话已过期", "JWT令牌过期", "重新登录"],
+            ["错误消息", "网络异常", "网络连接异常", "浏览器与服务器断开", "检查网络连接"],
+            ["信息消息", "启动中", "服务启动中，请稍候", "系统正在初始化", "等待1-2分钟后刷新页面"],
+        ],
+        "表6  消息列表"
+    )
+
+    # ── 4.8 快速引用指南 ──
+    add_heading(doc, "快速引用指南", 2)
+    add_table(doc,
+        ["任务", "操作路径", "关键步骤"],
+        [
+            ["登录系统", "浏览器访问http://IP:8899", "输入admin/admin123→登录"],
+            ["创建知识库", "RAG管理→知识库→创建", "填写名称/描述→选择分块方法→确定"],
+            ["上传文档", "知识库详情→上传文件", "选择文件→上传→等待解析"],
+            ["查看解析状态", "知识库详情→文档列表", "查看状态列"],
+            ["预览分块", "文档详情→分块列表", "浏览/编辑分块内容和元数据"],
+            ["创建问答助手", "RAG管理→助手→创建", "填写名称→绑定知识库→配置提示词"],
+            ["配置检索参数", "助手设置→检索配置", "选择检索方式→设置阈值→开启重排序"],
+            ["开始问答", "助手列表→开始对话", "输入问题→查看回答和引用"],
+            ["查看引用", "回答下方引用列表", "点击引用编号→查看源文档"],
+            ["新建对话", "对话页面→新建对话", "点击【新建】→开始新会话"],
+            ["启动系统", "命令行", "scripts/start.sh <项目名>"],
+            ["停止系统", "命令行", "scripts/stop.sh"],
+            ["更新后端", "命令行", "scripts/build-mes.sh <项目名>"],
+            ["更新前端", "命令行", "scripts/build-ui.sh <项目名>"],
+        ],
+        "表7  常用操作速查表"
+    )
+
+    # ════════════════════════════════════════════════════════════════
+    # CHAPTER 5: 典型业务流程
+    # ════════════════════════════════════════════════════════════════
+    add_heading(doc, "典型业务流程", 1)
+
+    add_heading(doc, "流程1：军事文档知识入库", 2)
+    add_para(doc, "适用角色：知识工程师。前置条件：系统已部署启动，用户已登录。")
+    add_para(doc, "操作流程：创建知识库→配置分块策略→上传军事文档→等待自动解析→检查解析状态→预览分块→确认入库。")
+    add_para(doc, "详细步骤：")
+    add_para(doc, "第一步：访问RAG引擎管理界面（http://<服务器IP>:8070），登录后进入\"知识库\"页面。")
+    add_para(doc, "第二步：点击【创建知识库】，输入名称（如\"DARPA 2024年度项目文档\"），选择分块方法为\"自动\"，点击【确定】。")
+    add_para(doc, "第三步：进入新建的知识库，点击【上传文件】，选择待处理的军事文档（支持PDF/Word/Excel/TXT/图片），点击【上传】。")
+    add_para(doc, "第四步：等待系统自动解析。大型PDF文档可能需要2-5分钟。在文档列表中查看状态：状态变为\"已完成\"（绿色）表示解析成功；状态变为\"失败\"（红色）需根据错误信息排查。")
+    add_para(doc, "第五步：解析完成后，点击文档名称进入分块列表，逐一检查分块质量：分块大小是否合理、分块内容是否完整、关键信息是否被正确识别。")
+    add_para(doc, "第六步：对质量不佳的分块进行编辑调整，或重新上传优化后的文档。")
+    add_para(doc, "第七步：知识入库完成，可进入流程2配置检索或进行问答。")
+
+    add_heading(doc, "流程2：领域问答调优", 2)
+    add_para(doc, "适用角色：知识工程师。前置条件：知识库已创建且文档解析完成。")
+    add_para(doc, "操作流程：创建助手→配置系统提示词→绑定知识库→配置检索参数→测试问答→评估效果→调整参数→反复迭代。")
+    add_para(doc, "详细步骤：")
+    add_para(doc, "第一步：进入\"助手\"页面，点击【创建助手】，输入助手名称，选择LLM模型（智谱GLM-9B）。")
+    add_para(doc, "第二步：在\"系统提示词\"区域编写提示词，明确助手角色、回答规范、引用要求（参见4.3.9模板示例）。")
+    add_para(doc, "第三步：在\"关联知识库\"区域勾选需要绑定的知识库。")
+    add_para(doc, "第四步：配置检索参数：检索方式选择\"混合检索\"，相似度阈值初始设为0.2，开启重排序，返回结果数设为8。")
+    add_para(doc, "第五步：保存助手配置后，进入对话页面。")
+    add_para(doc, "第六步：使用典型问题进行测试，评估回答质量——准确性（内容是否正确）、完整性（是否覆盖所有方面）、引用性（是否有准确溯源）、语言质量（表述是否清晰专业）。")
+    add_para(doc, "第七步：根据测试结果调整参数——回答包含无关内容则提高阈值；回答信息不足则降低阈值或增加返回结果数；回答格式不规范则优化提示词；关键文档未被检索到则检查分块质量。")
+    add_para(doc, "第八步：反复测试和调优，直到问答质量满足要求。")
+
+    add_heading(doc, "流程3：离线环境部署", 2)
+    add_para(doc, "适用角色：系统管理员。前置条件：目标服务器已安装Docker和Docker Compose，离线交付包已准备。")
+    add_para(doc, "操作流程：传输交付包→加载离线镜像→配置环境→启动系统→验证运行。")
+    add_para(doc, "详细步骤：")
+    add_para(doc, "第一步：将离线交付包（knovaq-offline.zip或docker/目录）通过U盘或内网传输到目标服务器。")
+    add_para(doc, "第二步：解压交付包到目标目录。")
+    add_para(doc, "第三步：加载Docker离线镜像：执行scripts/offline-load.sh，等待显示\"All images loaded\"。")
+    add_para(doc, "第四步：检查/修改环境配置。查看.env文件，如需修改端口或密码则编辑.env。")
+    add_para(doc, "第五步：启动系统：执行scripts/start.sh <项目名>。首次启动需等待2-3分钟。")
+    add_para(doc, "第六步：验证系统运行：执行docker compose ps查看容器状态（应全部为Up/healthy）；检查关键服务日志。")
+    add_para(doc, "第七步：浏览器验证——访问http://<服务器IP>:8899确认前端界面正常；使用admin/admin123登录确认操作正常；访问http://<服务器IP>:8070确认RAG引擎正常。")
+    add_para(doc, "第八步：部署完成。系统在离线环境下持续运行，无需外网连接。")
+
+    # ── Save ──
+    doc.save(str(OUT))
+    print(f"OK Generated {OUT}")
+    print(f"  Paragraphs: {len(doc.paragraphs)}")
+    print(f"  Tables: {len(doc.tables)}")
+
+
+if __name__ == "__main__":
+    build()

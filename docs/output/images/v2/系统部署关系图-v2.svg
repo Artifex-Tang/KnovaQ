@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2761"/>
+      <stop offset="100%" stop-color="#2A3A7E"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F8FAFC"/>
+  <rect width="1280" height="65" fill="url(#headerGrad)"/>
+  <text x="60" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="28" fill="#FFFFFF" font-weight="bold">系统部署架构</text>
+  <text x="300" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC">Docker Compose容器化编排 · 离线部署 · 7个服务容器</text>
+
+  <!-- Outer Docker Compose box -->
+  <rect x="40" y="80" width="1200" height="600" rx="12" fill="none" stroke="#1E2761" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="80" y="105" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#1E2761" font-weight="bold">Docker Compose 容器编排</text>
+
+  <!-- Row 1: Application services -->
+  <!-- gaisoft-frontend -->
+  <rect x="70" y="125" width="340" height="100" rx="8" fill="#4A7BF7" fill-opacity="0.12" stroke="#4A7BF7" stroke-width="1.5"/>
+  <text x="240" y="160" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#1E2761" text-anchor="middle" font-weight="bold">gaisoft-frontend</text>
+  <text x="240" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">nginx:1.27-alpine · :8899</text>
+  <text x="240" y="200" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">Vue 3 前端静态资源托管</text>
+
+  <!-- gaisoft-server -->
+  <rect x="440" y="125" width="340" height="100" rx="8" fill="#2DD4A8" fill-opacity="0.12" stroke="#2DD4A8" stroke-width="1.5"/>
+  <text x="610" y="160" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#1E2761" text-anchor="middle" font-weight="bold">gaisoft-server</text>
+  <text x="610" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">Spring Boot · :8088</text>
+  <text x="610" y="200" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">业务逻辑与API服务</text>
+
+  <!-- ragflow-server -->
+  <rect x="810" y="125" width="400" height="100" rx="8" fill="#1E2761" fill-opacity="0.1" stroke="#1E2761" stroke-width="1.5"/>
+  <text x="1010" y="160" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#1E2761" text-anchor="middle" font-weight="bold">ragflow-server v0.18.0</text>
+  <text x="1010" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">RAG核心引擎 · :9380/:8070</text>
+  <text x="1010" y="200" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">文档解析/向量索引/混合检索/LLM对话</text>
+
+  <!-- Network bar -->
+  <rect x="70" y="245" width="1140" height="35" rx="6" fill="#E0E7FF"/>
+  <text x="640" y="268" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle" font-weight="bold">ragflow 桥接网络 (bridge) — 所有服务共享</text>
+
+  <!-- Arrows from app layer to network -->
+  <line x1="240" y1="225" x2="240" y2="245" stroke="#4A7BF7" stroke-width="1.5"/>
+  <line x1="610" y1="225" x2="610" y2="245" stroke="#2DD4A8" stroke-width="1.5"/>
+  <line x1="1010" y1="225" x2="1010" y2="245" stroke="#1E2761" stroke-width="1.5"/>
+
+  <!-- Arrows from network to data layer -->
+  <line x1="240" y1="280" x2="240" y2="300" stroke="#4A7BF7" stroke-width="1.5"/>
+  <line x1="610" y1="280" x2="610" y2="300" stroke="#2DD4A8" stroke-width="1.5"/>
+  <line x1="1010" y1="280" x2="1010" y2="300" stroke="#1E2761" stroke-width="1.5"/>
+
+  <!-- Row 2: Data services -->
+  <!-- MySQL -->
+  <rect x="70" y="300" width="260" height="110" rx="8" fill="#FFFFFF" stroke="#1E2761" stroke-width="1.5"/>
+  <rect x="70" y="300" width="260" height="30" rx="8" fill="#1E2761"/>
+  <rect x="70" y="318" width="260" height="12" fill="#1E2761"/>
+  <text x="200" y="320" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">MySQL 8.0</text>
+  <text x="200" y="355" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">:5455</text>
+  <text x="200" y="375" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">rag_flow + equipment_iqas</text>
+  <text x="200" y="395" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">结构化数据 + 初始化脚本</text>
+
+  <!-- Elasticsearch -->
+  <rect x="360" y="300" width="260" height="110" rx="8" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1.5"/>
+  <rect x="360" y="300" width="260" height="30" rx="8" fill="#2DD4A8"/>
+  <rect x="360" y="318" width="260" height="12" fill="#2DD4A8"/>
+  <text x="490" y="320" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Elasticsearch 8.11</text>
+  <text x="490" y="355" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">:1200</text>
+  <text x="490" y="375" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">向量索引 + 全文检索</text>
+  <text x="490" y="395" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">8GB JVM Heap</text>
+
+  <!-- Redis -->
+  <rect x="650" y="300" width="260" height="110" rx="8" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1.5"/>
+  <rect x="650" y="300" width="260" height="30" rx="8" fill="#4A7BF7"/>
+  <rect x="650" y="318" width="260" height="12" fill="#4A7BF7"/>
+  <text x="780" y="320" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Valkey/Redis 8</text>
+  <text x="780" y="355" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">:6380</text>
+  <text x="780" y="375" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">会话缓存 + 检索缓存</text>
+  <text x="780" y="395" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">DB8 for gaisoft</text>
+
+  <!-- MinIO -->
+  <rect x="940" y="300" width="280" height="110" rx="8" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5"/>
+  <rect x="940" y="300" width="280" height="30" rx="8" fill="#94A3B8"/>
+  <rect x="940" y="318" width="280" height="12" fill="#94A3B8"/>
+  <text x="1080" y="320" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">MinIO</text>
+  <text x="1080" y="355" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E293B" text-anchor="middle">:9100</text>
+  <text x="1080" y="375" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">文档文件对象存储</text>
+  <text x="1080" y="395" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">PDF/Word/Excel/TXT...</text>
+
+  <!-- Volume bar -->
+  <rect x="70" y="430" width="1140" height="30" rx="6" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="640" y="450" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">Docker Volume 数据持久化 — mysql_data / es_data / minio_data / redis_data</text>
+
+  <!-- Offline deploy flow -->
+  <rect x="70" y="480" width="1140" height="90" rx="8" fill="#1E2761" fill-opacity="0.05" stroke="#1E2761" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="90" y="508" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E2761" font-weight="bold">离线部署链路</text>
+
+  <rect x="90" y="520" width="180" height="35" rx="6" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1"/>
+  <text x="180" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle">联网环境 docker pull</text>
+
+  <text x="290" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#4A7BF7">→</text>
+
+  <rect x="320" y="520" width="180" height="35" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="410" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle">offline-save 导出tar</text>
+
+  <text x="520" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#2DD4A8">→</text>
+
+  <rect x="550" y="520" width="120" height="35" rx="6" fill="#1E2761"/>
+  <text x="610" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle">USB传输</text>
+
+  <text x="690" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#1E2761">→</text>
+
+  <rect x="720" y="520" width="180" height="35" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="810" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle">offline-load 加载</text>
+
+  <text x="920" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#1E2761">→</text>
+
+  <rect x="950" y="520" width="180" height="35" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="1040" y="542" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle">start 启动全部服务</text>
+
+  <!-- restart policy note -->
+  <text x="90" y="580" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">所有服务 restart: unless-stopped — 主机重启后自动恢复</text>
+
+  <!-- Page number -->
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="end">5 / 14</text>
+</svg>

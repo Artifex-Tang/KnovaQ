@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2761" />
+      <stop offset="100%" stop-color="#2A3A7E" />
+    </linearGradient>
+    <marker id="flowArrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2DD4A8" />
+    </marker>
+    <marker id="flowArrowDark" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#1E2761" />
+    </marker>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F8FAFC" />
+  <rect width="1280" height="65" fill="url(#headerGrad)" />
+  <text x="60" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="28" fill="#FFFFFF" font-weight="bold">信息流程 / 数据流</text>
+  <text x="350" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC">从文档上传到智能问答的完整数据链路</text>
+
+  
+  
+  <path fill="#1E2761" d="M48,100 H202 A8,8 0 0 1 210,108 V182 A8,8 0 0 1 202,190 H48 A8,8 0 0 1 40,182 V108 A8,8 0 0 1 48,100 Z" />
+  <text x="125" y="135" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">文档上传</text>
+  <text x="125" y="158" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#CADCFC" text-anchor="middle">PDF/Word/Excel</text>
+  <text x="125" y="175" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#CADCFC" text-anchor="middle">TXT/Markdown/图片</text>
+
+  <line x1="210" y1="145" x2="240" y2="145" stroke="#2DD4A8" stroke-width="2" marker-end="url(#flowArrow)" />
+
+  
+  <path fill="#1E2761" fill-opacity="0.85" d="M253,100 H407 A8,8 0 0 1 415,108 V182 A8,8 0 0 1 407,190 H253 A8,8 0 0 1 245,182 V108 A8,8 0 0 1 253,100 Z" />
+  <text x="330" y="135" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">文档解析</text>
+  <text x="330" y="158" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#CADCFC" text-anchor="middle">版面分析</text>
+  <text x="330" y="175" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#CADCFC" text-anchor="middle">表格提取 · 图文识别</text>
+
+  <line x1="415" y1="145" x2="445" y2="145" stroke="#2DD4A8" stroke-width="2" marker-end="url(#flowArrow)" />
+
+  
+  <path fill="#1E2761" fill-opacity="0.7" d="M458,100 H612 A8,8 0 0 1 620,108 V182 A8,8 0 0 1 612,190 H458 A8,8 0 0 1 450,182 V108 A8,8 0 0 1 458,100 Z" />
+  <text x="535" y="135" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">智能分块</text>
+  <text x="535" y="158" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#CADCFC" text-anchor="middle">多策略分块</text>
+  <text x="535" y="175" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#CADCFC" text-anchor="middle">元数据自动标注</text>
+
+  <line x1="620" y1="145" x2="650" y2="145" stroke="#2DD4A8" stroke-width="2" marker-end="url(#flowArrow)" />
+
+  
+  <path fill="#2DD4A8" fill-opacity="0.85" d="M663,100 H817 A8,8 0 0 1 825,108 V182 A8,8 0 0 1 817,190 H663 A8,8 0 0 1 655,182 V108 A8,8 0 0 1 663,100 Z" />
+  <text x="740" y="135" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">向量索引</text>
+  <text x="740" y="158" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">Embedding编码</text>
+  <text x="740" y="175" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">Elasticsearch存储</text>
+
+  <line x1="825" y1="145" x2="855" y2="145" stroke="#2DD4A8" stroke-width="2" marker-end="url(#flowArrow)" />
+
+  
+  <path fill="#2DD4A8" d="M868,100 H1022 A8,8 0 0 1 1030,108 V182 A8,8 0 0 1 1022,190 H868 A8,8 0 0 1 860,182 V108 A8,8 0 0 1 868,100 Z" />
+  <text x="945" y="135" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">知识库就绪</text>
+  <text x="945" y="158" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">结构化知识块</text>
+  <text x="945" y="175" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">向量+元数据</text>
+
+  
+  <path fill="#1E2761" d="M49,85 H81 A9,9 0 0 1 90,94 V94 A9,9 0 0 1 81,103 H49 A9,9 0 0 1 40,94 V94 A9,9 0 0 1 49,85 Z" />
+  <text x="65" y="98" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">M1</text>
+
+  
+  <line x1="40" y1="215" x2="1240" y2="215" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4,4" />
+  <text x="60" y="240" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#64748B" font-weight="bold">查询流程</text>
+
+  
+  
+  <path fill="#4A7BF7" d="M90,260 H170 A30,30 0 0 1 200,290 V290 A30,30 0 0 1 170,320 H90 A30,30 0 0 1 60,290 V290 A30,30 0 0 1 90,260 Z" />
+  <text x="130" y="295" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="bold">用户提问</text>
+
+  <line x1="200" y1="290" x2="250" y2="290" stroke="#4A7BF7" stroke-width="2" marker-end="url(#flowArrow)" />
+
+  
+  <path fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1.5" d="M263,260 H427 A8,8 0 0 1 435,268 V312 A8,8 0 0 1 427,320 H263 A8,8 0 0 1 255,312 V268 A8,8 0 0 1 263,260 Z" />
+  <text x="345" y="285" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle" font-weight="bold">查询预处理</text>
+  <text x="345" y="305" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">意图识别 · Query改写</text>
+
+  <line x1="435" y1="290" x2="485" y2="290" stroke="#2DD4A8" stroke-width="2" marker-end="url(#flowArrow)" />
+
+  
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1.5" d="M498,260 H662 A8,8 0 0 1 670,268 V312 A8,8 0 0 1 662,320 H498 A8,8 0 0 1 490,312 V268 A8,8 0 0 1 498,260 Z" />
+  <text x="580" y="285" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle" font-weight="bold">混合检索</text>
+  <text x="580" y="305" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">向量 + 关键词双路</text>
+
+  <line x1="670" y1="290" x2="720" y2="290" stroke="#2DD4A8" stroke-width="2" marker-end="url(#flowArrow)" />
+
+  
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1.5" d="M733,260 H887 A8,8 0 0 1 895,268 V312 A8,8 0 0 1 887,320 H733 A8,8 0 0 1 725,312 V268 A8,8 0 0 1 733,260 Z" />
+  <text x="810" y="285" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle" font-weight="bold">语义重排序</text>
+  <text x="810" y="305" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#64748B" text-anchor="middle">相关度评分 · Top-K</text>
+
+  
+  <path fill="#2DD4A8" d="M499,245 H531 A9,9 0 0 1 540,254 V254 A9,9 0 0 1 531,263 H499 A9,9 0 0 1 490,254 V254 A9,9 0 0 1 499,245 Z" />
+  <text x="515" y="258" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">M2</text>
+
+  
+  <line x1="810" y1="320" x2="810" y2="355" stroke="#1E2761" stroke-width="2" marker-end="url(#flowArrowDark)" />
+
+  
+  <path fill="#4A7BF7" fill-opacity="0.1" stroke="#4A7BF7" stroke-width="1.5" d="M548,360 H1072 A8,8 0 0 1 1080,368 V422 A8,8 0 0 1 1072,430 H548 A8,8 0 0 1 540,422 V368 A8,8 0 0 1 548,360 Z" />
+  <text x="810" y="388" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E2761" text-anchor="middle" font-weight="bold">提示词组装</text>
+  <text x="810" y="412" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">系统提示词 + 检索结果 + 用户问题 + 对话历史 → 结构化 Prompt</text>
+
+  
+  <path fill="#4A7BF7" d="M549,345 H581 A9,9 0 0 1 590,354 V354 A9,9 0 0 1 581,363 H549 A9,9 0 0 1 540,354 V354 A9,9 0 0 1 549,345 Z" />
+  <text x="565" y="358" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">M3</text>
+
+  
+  <line x1="810" y1="430" x2="810" y2="455" stroke="#1E2761" stroke-width="2" marker-end="url(#flowArrowDark)" />
+
+  
+  <path fill="#1E2761" d="M668,460 H952 A8,8 0 0 1 960,468 V512 A8,8 0 0 1 952,520 H668 A8,8 0 0 1 660,512 V468 A8,8 0 0 1 668,460 Z" />
+  <text x="810" y="488" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="bold">智谱 GLM-9B 本地推理</text>
+  <text x="810" y="508" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#CADCFC" text-anchor="middle">流式生成 · 引用标注</text>
+
+  
+  <line x1="810" y1="520" x2="810" y2="545" stroke="#2DD4A8" stroke-width="2" marker-end="url(#flowArrow)" />
+
+  
+  <path fill="#2DD4A8" d="M668,550 H952 A8,8 0 0 1 960,558 V597 A8,8 0 0 1 952,605 H668 A8,8 0 0 1 660,597 V558 A8,8 0 0 1 668,550 Z" />
+  <text x="810" y="578" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#FFFFFF" text-anchor="middle" font-weight="bold">结构化回答 + 引用溯源</text>
+  <text x="810" y="596" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle">返回给用户</text>
+
+  
+  <path fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" d="M68,360 H492 A8,8 0 0 1 500,368 V492 A8,8 0 0 1 492,500 H68 A8,8 0 0 1 60,492 V368 A8,8 0 0 1 68,360 Z" />
+  <text x="80" y="388" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">知识库支撑</text>
+
+  <path fill="#E0E7FF" d="M86,400 H194 A6,6 0 0 1 200,406 V424 A6,6 0 0 1 194,430 H86 A6,6 0 0 1 80,424 V406 A6,6 0 0 1 86,400 Z" />
+  <text x="140" y="420" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">向量索引</text>
+
+  <path fill="#E0E7FF" d="M221,400 H329 A6,6 0 0 1 335,406 V424 A6,6 0 0 1 329,430 H221 A6,6 0 0 1 215,424 V406 A6,6 0 0 1 221,400 Z" />
+  <text x="275" y="420" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">全文索引</text>
+
+  <path fill="#D1FAE5" d="M356,400 H464 A6,6 0 0 1 470,406 V424 A6,6 0 0 1 464,430 H356 A6,6 0 0 1 350,424 V406 A6,6 0 0 1 356,400 Z" />
+  <text x="410" y="420" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#059669" text-anchor="middle">知识图谱</text>
+
+  <text x="80" y="460" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">Elasticsearch 8.11 提供向量+全文混合索引</text>
+  <text x="80" y="480" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">MinIO 存储原始文档文件</text>
+
+  
+  <text x="60" y="660" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8">全链路数据在本地服务器内闭环，无外网传输</text>
+
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="end">7 / 14</text>
+</svg>

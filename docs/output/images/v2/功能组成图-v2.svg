@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2761"/>
+      <stop offset="100%" stop-color="#2A3A7E"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F8FAFC"/>
+  <rect width="1280" height="65" fill="url(#headerGrad)"/>
+  <text x="60" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="28" fill="#FFFFFF" font-weight="bold">功能组成</text>
+  <text x="230" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC">三大核心模块 + 集成部署基础设施</text>
+
+  <!-- M1 外挂知识库 -->
+  <rect x="40" y="85" width="370" height="430" rx="10" fill="#1E2761" fill-opacity="0.04" stroke="#1E2761" stroke-width="2"/>
+  <rect x="40" y="85" width="370" height="50" rx="10" fill="#1E2761"/>
+  <rect x="40" y="115" width="370" height="20" fill="#1E2761"/>
+  <text x="225" y="116" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M1 外挂知识库模块</text>
+
+  <rect x="60" y="155" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="225" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">知识库 CRUD 管理</text>
+
+  <rect x="60" y="215" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="225" y="242" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">文档上传（PDF/Word/Excel/TXT/图片）</text>
+
+  <rect x="60" y="275" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="225" y="302" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">文档解析（版面分析/表格提取/OCR）</text>
+
+  <rect x="60" y="335" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="225" y="362" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">智能分块（通用/手册/Q&amp;A/论文/法律）</text>
+
+  <rect x="60" y="395" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="225" y="422" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">元数据标注 · 分块预览</text>
+
+  <rect x="60" y="455" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="225" y="482" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">多源异构数据整合</text>
+
+  <!-- M2 RAG检索增强 -->
+  <rect x="430" y="85" width="370" height="430" rx="10" fill="#2DD4A8" fill-opacity="0.04" stroke="#2DD4A8" stroke-width="2"/>
+  <rect x="430" y="85" width="370" height="50" rx="10" fill="#2DD4A8"/>
+  <rect x="430" y="115" width="370" height="20" fill="#2DD4A8"/>
+  <text x="615" y="116" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M2 RAG检索增强模块</text>
+
+  <rect x="450" y="155" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="615" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">向量语义检索</text>
+
+  <rect x="450" y="215" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="615" y="242" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">混合检索（向量 + 关键词双路召回）</text>
+
+  <rect x="450" y="275" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="615" y="302" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">相似度阈值动态调节</text>
+
+  <rect x="450" y="335" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="615" y="362" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">检索结果语义重排序</text>
+
+  <rect x="450" y="395" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="615" y="422" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">知识图谱辅助检索（GraphRAG）</text>
+
+  <rect x="450" y="455" width="330" height="44" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="615" y="482" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">跨语言检索（中英文混合）</text>
+
+  <!-- M3 交互式提示词工程 -->
+  <rect x="820" y="85" width="420" height="430" rx="10" fill="#4A7BF7" fill-opacity="0.04" stroke="#4A7BF7" stroke-width="2"/>
+  <rect x="820" y="85" width="420" height="50" rx="10" fill="#4A7BF7"/>
+  <rect x="820" y="115" width="420" height="20" fill="#4A7BF7"/>
+  <text x="1030" y="116" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M3 交互式提示词工程模块</text>
+
+  <rect x="840" y="155" width="380" height="44" rx="6" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1"/>
+  <text x="1030" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">聊天助手创建与管理</text>
+
+  <rect x="840" y="215" width="380" height="44" rx="6" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1"/>
+  <text x="1030" y="242" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">系统提示词配置 · 角色定制</text>
+
+  <rect x="840" y="275" width="380" height="44" rx="6" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1"/>
+  <text x="1030" y="302" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">多轮上下文对话</text>
+
+  <rect x="840" y="335" width="380" height="44" rx="6" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1"/>
+  <text x="1030" y="362" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">流式响应输出（SSE）</text>
+
+  <rect x="840" y="395" width="380" height="44" rx="6" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1"/>
+  <text x="1030" y="422" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">引用溯源 · 来源文档可追溯</text>
+
+  <rect x="840" y="455" width="380" height="44" rx="6" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1"/>
+  <text x="1030" y="482" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">动态提示模板 · 结构化约束</text>
+
+  <!-- Bottom: Infrastructure -->
+  <rect x="40" y="540" width="1200" height="80" rx="8" fill="#94A3B8" fill-opacity="0.08" stroke="#94A3B8" stroke-width="1"/>
+  <text x="60" y="570" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#64748B" font-weight="bold">集成部署基础设施</text>
+
+  <rect x="60" y="585" width="180" height="26" rx="13" fill="#E0E7FF"/>
+  <text x="150" y="603" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">用户认证 (JWT)</text>
+
+  <rect x="260" y="585" width="180" height="26" rx="13" fill="#E0E7FF"/>
+  <text x="350" y="603" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">离线Docker部署</text>
+
+  <rect x="460" y="585" width="180" height="26" rx="13" fill="#E0E7FF"/>
+  <text x="550" y="603" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">多客户环境隔离</text>
+
+  <rect x="660" y="585" width="180" height="26" rx="13" fill="#D1FAE5"/>
+  <text x="750" y="603" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#059669" text-anchor="middle">数据安全保障</text>
+
+  <rect x="860" y="585" width="180" height="26" rx="13" fill="#D1FAE5"/>
+  <text x="950" y="603" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#059669" text-anchor="middle">服务自动恢复</text>
+
+  <!-- Arrows between columns -->
+  <line x1="410" y1="300" x2="430" y2="300" stroke="#2DD4A8" stroke-width="2"/>
+  <polygon points="425,295 435,300 425,305" fill="#2DD4A8"/>
+
+  <line x1="800" y1="300" x2="820" y2="300" stroke="#4A7BF7" stroke-width="2"/>
+  <polygon points="815,295 825,300 815,305" fill="#4A7BF7"/>
+
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="end">6 / 14</text>
+</svg>

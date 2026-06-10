@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2761"/>
+      <stop offset="100%" stop-color="#2A3A7E"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F8FAFC"/>
+  <rect width="1280" height="65" fill="url(#headerGrad)"/>
+  <text x="60" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="28" fill="#FFFFFF" font-weight="bold">M3 交互式提示词工程模块</text>
+  <text x="460" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC">第三级：用户意图对齐与结构化回答生成</text>
+
+  <!-- Left: capabilities -->
+  <rect x="40" y="85" width="550" height="400" rx="10" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="40" y="85" width="6" height="400" fill="#4A7BF7"/>
+  <text x="70" y="118" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="20" fill="#1E2761" font-weight="bold">核心能力</text>
+
+  <rect x="70" y="138" width="5" height="38" fill="#2DD4A8"/>
+  <text x="88" y="153" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E2761" font-weight="bold">聊天助手管理</text>
+  <text x="88" y="170" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">创建、配置和管理专属 AI 助手，绑定知识库</text>
+
+  <rect x="70" y="190" width="5" height="38" fill="#2DD4A8"/>
+  <text x="88" y="205" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E2761" font-weight="bold">系统提示词配置</text>
+  <text x="88" y="222" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">定制助手角色、行为规范和回答风格</text>
+
+  <rect x="70" y="242" width="5" height="38" fill="#2DD4A8"/>
+  <text x="88" y="257" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E2761" font-weight="bold">多轮上下文对话</text>
+  <text x="88" y="274" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">保持对话历史和上下文连贯，支持追问</text>
+
+  <rect x="70" y="294" width="5" height="38" fill="#2DD4A8"/>
+  <text x="88" y="309" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E2761" font-weight="bold">流式响应输出</text>
+  <text x="88" y="326" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">SSE 实时逐字输出，提升交互体验</text>
+
+  <rect x="70" y="346" width="5" height="38" fill="#2DD4A8"/>
+  <text x="88" y="361" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E2761" font-weight="bold">引用溯源</text>
+  <text x="88" y="378" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">回答附带来源文档引用，可追溯验证</text>
+
+  <rect x="70" y="398" width="5" height="38" fill="#2DD4A8"/>
+  <text x="88" y="413" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E2761" font-weight="bold">动态提示模板</text>
+  <text x="88" y="430" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">模板引擎支持结构化约束，灵活定制</text>
+
+  <!-- Right: screenshot -->
+  <rect x="620" y="85" width="620" height="400" rx="10" fill="#FFFFFF" filter="url(#shadow)"/>
+  <text x="640" y="115" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#64748B">智能问答界面</text>
+  <image href="../images/03-智能问答页.png" x="640" y="130" width="580" height="340" preserveAspectRatio="xMidYMid slice"/>
+
+  <!-- Bottom: tech tags -->
+  <rect x="40" y="510" width="1200" height="70" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <rect x="80" y="525" width="160" height="35" rx="6" fill="#1E2761"/>
+  <text x="160" y="548" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle">GLM-9B 本地LLM</text>
+
+  <rect x="260" y="525" width="160" height="35" rx="6" fill="#D1FAE5"/>
+  <text x="340" y="548" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#059669" text-anchor="middle">流式 SSE 响应</text>
+
+  <rect x="440" y="525" width="160" height="35" rx="6" fill="#E0E7FF"/>
+  <text x="520" y="548" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle">引用溯源</text>
+
+  <rect x="620" y="525" width="180" height="35" rx="6" fill="#E0E7FF"/>
+  <text x="710" y="548" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle">动态提示模板引擎</text>
+
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="end">10 / 14</text>
+</svg>

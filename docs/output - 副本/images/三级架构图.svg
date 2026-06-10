@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" width="960" height="720">
+  <style>
+    text { font-family: "Microsoft YaHei", "SimHei", Arial, sans-serif; }
+  </style>
+  <defs>
+    <marker id="arr-up" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arr-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/>
+    </marker>
+    <marker id="arr-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#9333ea"/>
+    </marker>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="108%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="960" height="720" fill="#ffffff"/>
+  <text x="480" y="32" text-anchor="middle" fill="#111827" font-size="18" font-weight="600">DARPA智能问答服务工具 - 三级架构设计</text>
+  <rect x="40" y="52" width="880" height="168" rx="12" fill="#faf5ff" stroke="#d8b4fe" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="60" y="74" fill="#7c3aed" font-size="13" font-weight="600">第三级：交互式提示词工程模块</text>
+  <text x="60" y="90" fill="#9333ea" font-size="11">用户意图、提问方式、行为习惯与DARPA文档知识精准对齐</text>
+  <rect x="90" y="102" width="170" height="56" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="175" y="134" text-anchor="middle" fill="#111827" font-size="13">动态模板引擎</text>
+  <rect x="300" y="102" width="170" height="56" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="385" y="134" text-anchor="middle" fill="#111827" font-size="13">结构化约束机制</text>
+  <rect x="510" y="102" width="170" height="56" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="595" y="134" text-anchor="middle" fill="#111827" font-size="13">多轮上下文对话</text>
+  <rect x="720" y="102" width="170" height="56" rx="8" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="805" y="134" text-anchor="middle" fill="#111827" font-size="13">引用溯源追踪</text>
+  <text x="490" y="240" text-anchor="middle" fill="#6b7280" font-size="11">检索结果 + 上下文增强</text>
+  <line x1="180" y1="254" x2="180" y2="228" stroke="#9333ea" stroke-width="1.8" marker-end="url(#arr-purple)"/>
+  <line x1="400" y1="254" x2="400" y2="228" stroke="#9333ea" stroke-width="1.8" marker-end="url(#arr-purple)"/>
+  <line x1="600" y1="254" x2="600" y2="228" stroke="#9333ea" stroke-width="1.8" marker-end="url(#arr-purple)"/>
+  <rect x="40" y="262" width="880" height="168" rx="12" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="60" y="284" fill="#2563eb" font-size="13" font-weight="600">第二级：RAG文档检索增强模块</text>
+  <text x="60" y="300" fill="#2563eb" font-size="11">多文本特征融合混合检索体系（基于成熟框架领域适配）</text>
+  <rect x="90" y="312" width="170" height="56" rx="8" fill="#ffffff" stroke="#7dd3fc" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="175" y="344" text-anchor="middle" fill="#111827" font-size="13">向量语义检索</text>
+  <rect x="300" y="312" width="170" height="56" rx="8" fill="#ffffff" stroke="#7dd3fc" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="385" y="344" text-anchor="middle" fill="#111827" font-size="13">混合多特征检索</text>
+  <rect x="510" y="312" width="170" height="56" rx="8" fill="#ffffff" stroke="#7dd3fc" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="595" y="344" text-anchor="middle" fill="#111827" font-size="13">智能重排序</text>
+  <rect x="720" y="312" width="170" height="56" rx="8" fill="#ffffff" stroke="#7dd3fc" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="805" y="344" text-anchor="middle" fill="#111827" font-size="13">跨语言检索</text>
+  <text x="490" y="450" text-anchor="middle" fill="#6b7280" font-size="11">结构化知识片段 / 语义向量</text>
+  <line x1="180" y1="464" x2="180" y2="438" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arr-up)"/>
+  <line x1="400" y1="464" x2="400" y2="438" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arr-up)"/>
+  <line x1="600" y1="464" x2="600" y2="438" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arr-up)"/>
+  <rect x="40" y="472" width="880" height="168" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5" stroke-dasharray="8,4"/>
+  <text x="60" y="494" fill="#16a34a" font-size="13" font-weight="600">第一级：外挂知识库模块</text>
+  <text x="60" y="510" fill="#16a34a" font-size="11">非结构化军事文档的深度加工与语义化重构</text>
+  <rect x="90" y="522" width="170" height="56" rx="8" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="175" y="554" text-anchor="middle" fill="#111827" font-size="13">文档深度解析</text>
+  <rect x="300" y="522" width="170" height="56" rx="8" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="385" y="554" text-anchor="middle" fill="#111827" font-size="13">智能语义分块</text>
+  <rect x="510" y="522" width="170" height="56" rx="8" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="595" y="554" text-anchor="middle" fill="#111827" font-size="13">元数据标注</text>
+  <rect x="720" y="522" width="170" height="56" rx="8" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.2" filter="url(#shadow)"/>
+  <text x="805" y="554" text-anchor="middle" fill="#111827" font-size="13">知识图谱构建</text>
+  <rect x="320" y="660" width="320" height="40" rx="6" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.2"/>
+  <text x="480" y="684" text-anchor="middle" fill="#6b7280" font-size="13">非结构化军事文档 (PDF/Word/Excel/TXT)</text>
+  <line x1="400" y1="660" x2="400" y2="644" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arr-green)"/>
+  <line x1="560" y1="660" x2="560" y2="644" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arr-green)"/>
+</svg>

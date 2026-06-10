@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 750" font-family="Microsoft YaHei, SimHei, sans-serif">
+  <defs>
+    <style>
+      .module { fill: #E8F5E9; stroke: #2E7D32; stroke-width: 2; rx: 8; }
+      .module-header { fill: #2E7D32; }
+      .module-header-text { fill: white; font-size: 14px; font-weight: bold; }
+      .api { fill: #FFF8E1; stroke: #F57F17; stroke-width: 1.5; rx: 4; }
+      .api-text { fill: #333; font-size: 11px; }
+      .arrow-http { stroke: #1565C0; stroke-width: 2; fill: none; marker-end: url(#blue-arrow); }
+      .arrow-api { stroke: #2E7D32; stroke-width: 2; fill: none; marker-end: url(#green-arrow); stroke-dasharray: 6,3; }
+      .arrow-data { stroke: #E65100; stroke-width: 2; fill: none; marker-end: url(#orange-arrow); }
+      .label-http { fill: #1565C0; font-size: 10px; font-weight: bold; }
+      .label-api { fill: #2E7D32; font-size: 10px; }
+      .label-data { fill: #E65100; font-size: 10px; }
+      .title { font-size: 20px; font-weight: bold; fill: #1a237e; }
+      .proto-label { fill: #555; font-size: 10px; font-style: italic; }
+    </style>
+    <marker id="blue-arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1565C0"/>
+    </marker>
+    <marker id="green-arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2E7D32"/>
+    </marker>
+    <marker id="orange-arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#E65100"/>
+    </marker>
+  </defs>
+
+  <text x="550" y="30" text-anchor="middle" class="title">知枢(KnovaQ) 内部接口示意图</text>
+
+  <!-- gaisoft-frontend -->
+  <g transform="translate(30, 55)">
+    <rect class="module" x="0" y="0" width="200" height="280"/>
+    <rect class="module-header" x="0" y="0" width="200" height="35" rx="8"/>
+    <text x="100" y="23" text-anchor="middle" class="module-header-text">gaisoft-frontend</text>
+    <text x="100" y="55" text-anchor="middle" class="proto-label">(Vue 3 SPA)</text>
+    <rect class="api" x="10" y="70" width="180" height="22"/>
+    <text x="100" y="85" text-anchor="middle" class="api-text">POST /api/login</text>
+    <rect class="api" x="10" y="96" width="180" height="22"/>
+    <text x="100" y="111" text-anchor="middle" class="api-text">GET /api/kb/session/list</text>
+    <rect class="api" x="10" y="122" width="180" height="22"/>
+    <text x="100" y="137" text-anchor="middle" class="api-text">POST /api/kb/chat/send</text>
+    <rect class="api" x="10" y="148" width="180" height="22"/>
+    <text x="100" y="163" text-anchor="middle" class="api-text">POST /api/kb/source/upload</text>
+    <rect class="api" x="10" y="174" width="180" height="22"/>
+    <text x="100" y="189" text-anchor="middle" class="api-text">GET /api/issue/list</text>
+    <rect class="api" x="10" y="200" width="180" height="22"/>
+    <text x="100" y="215" text-anchor="middle" class="api-text">GET /api/device/inventory</text>
+    <rect class="api" x="10" y="226" width="180" height="22"/>
+    <text x="100" y="241" text-anchor="middle" class="api-text">GET /api/system/user/info</text>
+  </g>
+
+  <!-- gaisoft-server (MES Backend) -->
+  <g transform="translate(340, 55)">
+    <rect class="module" x="0" y="0" width="240" height="280"/>
+    <rect class="module-header" x="0" y="0" width="240" height="35" rx="8"/>
+    <text x="120" y="23" text-anchor="middle" class="module-header-text">gaisoft-server</text>
+    <text x="120" y="55" text-anchor="middle" class="proto-label">(Spring Boot REST API)</text>
+    <rect class="api" x="10" y="70" width="220" height="22"/>
+    <text x="120" y="85" text-anchor="middle" class="api-text">AuthController /api/login</text>
+    <rect class="api" x="10" y="96" width="220" height="22"/>
+    <text x="120" y="111" text-anchor="middle" class="api-text">KbSessionController 会话管理</text>
+    <rect class="api" x="10" y="122" width="220" height="22"/>
+    <text x="120" y="137" text-anchor="middle" class="api-text">KbChatController 对话接口</text>
+    <rect class="api" x="10" y="148" width="220" height="22"/>
+    <text x="120" y="163" text-anchor="middle" class="api-text">KbSourceController 文件管理</text>
+    <rect class="api" x="10" y="174" width="220" height="22"/>
+    <text x="120" y="189" text-anchor="middle" class="api-text">IrIssueController 问题管理</text>
+    <rect class="api" x="10" y="200" width="220" height="22"/>
+    <text x="120" y="215" text-anchor="middle" class="api-text">RsDeviceController 备件管理</text>
+    <rect class="api" x="10" y="226" width="220" height="22"/>
+    <text x="120" y="241" text-anchor="middle" class="api-text">SysUserController 用户管理</text>
+  </g>
+
+  <!-- ragflow-server -->
+  <g transform="translate(680, 55)">
+    <rect class="module" x="0" y="0" width="220" height="280"/>
+    <rect class="module-header" x="0" y="0" width="220" height="35" rx="8"/>
+    <text x="110" y="23" text-anchor="middle" class="module-header-text">ragflow-server</text>
+    <text x="110" y="55" text-anchor="middle" class="proto-label">(RAG Engine REST API)</text>
+    <rect class="api" x="10" y="70" width="200" height="22"/>
+    <text x="110" y="85" text-anchor="middle" class="api-text">POST /api/v1/datasets</text>
+    <rect class="api" x="10" y="96" width="200" height="22"/>
+    <text x="110" y="111" text-anchor="middle" class="api-text">POST /api/v1/datasets/{id}/documents</text>
+    <rect class="api" x="10" y="122" width="200" height="22"/>
+    <text x="110" y="137" text-anchor="middle" class="api-text">POST /api/v1/retrieval</text>
+    <rect class="api" x="10" y="148" width="200" height="22"/>
+    <text x="110" y="163" text-anchor="middle" class="api-text">POST /api/v1/chats/{id}/completions</text>
+    <rect class="api" x="10" y="174" width="200" height="22"/>
+    <text x="110" y="189" text-anchor="middle" class="api-text">GET /api/v1/chats</text>
+    <rect class="api" x="10" y="200" width="200" height="22"/>
+    <text x="110" y="215" text-anchor="middle" class="api-text">GET /api/v1/datasets/{id}/documents</text>
+    <rect class="api" x="10" y="226" width="200" height="22"/>
+    <text x="110" y="241" text-anchor="middle" class="api-text">POST /api/v1/datasets/{id}/chunks</text>
+  </g>
+
+  <!-- Data Layer -->
+  <g transform="translate(200, 420)">
+    <rect class="module" x="0" y="0" width="160" height="120" style="fill:#E3F2FD;stroke:#1565C0"/>
+    <rect x="0" y="0" width="160" height="35" rx="8" style="fill:#1565C0"/>
+    <text x="80" y="23" text-anchor="middle" class="module-header-text">MySQL</text>
+    <text x="80" y="55" text-anchor="middle" class="api-text">equipment_iqas</text>
+    <text x="80" y="72" text-anchor="middle" class="api-text">rag_flow</text>
+    <text x="80" y="89" text-anchor="middle" class="api-text">kb_* / rs_* / sys_*</text>
+    <text x="80" y="106" text-anchor="middle" class="api-text">QRTZ_* 调度表</text>
+  </g>
+
+  <g transform="translate(440, 420)">
+    <rect class="module" x="0" y="0" width="160" height="120" style="fill:#FCE4EC;stroke:#C62828"/>
+    <rect x="0" y="0" width="160" height="35" rx="8" style="fill:#C62828"/>
+    <text x="80" y="23" text-anchor="middle" style="fill:white;font-size:14px;font-weight:bold">Redis</text>
+    <text x="80" y="55" text-anchor="middle" class="api-text">缓存 (DB 8)</text>
+    <text x="80" y="72" text-anchor="middle" class="api-text">会话存储</text>
+    <text x="80" y="89" text-anchor="middle" class="api-text">认证Token</text>
+    <text x="80" y="106" text-anchor="middle" class="api-text">RagFlow Token缓存</text>
+  </g>
+
+  <g transform="translate(680, 420)">
+    <rect class="module" x="0" y="0" width="160" height="120" style="fill:#F3E5F5;stroke:#6A1B9A"/>
+    <rect x="0" y="0" width="160" height="35" rx="8" style="fill:#6A1B9A"/>
+    <text x="80" y="23" text-anchor="middle" style="fill:white;font-size:14px;font-weight:bold">向量数据库</text>
+    <text x="80" y="55" text-anchor="middle" class="api-text">Elasticsearch</text>
+    <text x="80" y="72" text-anchor="middle" class="api-text">文档分块索引</text>
+    <text x="80" y="89" text-anchor="middle" class="api-text">向量嵌入存储</text>
+    <text x="80" y="106" text-anchor="middle" class="api-text">相似度检索</text>
+  </g>
+
+  <!-- LLM Service -->
+  <g transform="translate(910, 55)">
+    <rect class="module" x="0" y="0" width="160" height="120" style="fill:#FFF3E0;stroke:#E65100"/>
+    <rect x="0" y="0" width="160" height="35" rx="8" style="fill:#E65100"/>
+    <text x="80" y="23" text-anchor="middle" style="fill:white;font-size:14px;font-weight:bold">LLM服务</text>
+    <text x="80" y="55" text-anchor="middle" class="api-text">Chat Model</text>
+    <text x="80" y="72" text-anchor="middle" class="api-text">Embedding Model</text>
+    <text x="80" y="89" text-anchor="middle" class="api-text">Rerank Model</text>
+    <text x="80" y="106" text-anchor="middle" class="api-text">OCR/解析引擎</text>
+  </g>
+
+  <!-- Arrows -->
+  <!-- frontend -> server (HTTP) -->
+  <path d="M230,195 L340,195" class="arrow-http"/>
+  <text x="285" y="188" class="label-http">HTTP/REST</text>
+
+  <!-- server -> ragflow (HTTP) -->
+  <path d="M580,195 L680,195" class="arrow-http"/>
+  <text x="630" y="188" class="label-http">HTTP/REST</text>
+
+  <!-- ragflow -> LLM -->
+  <path d="M900,150 L910,150" class="arrow-api"/>
+  <text x="905" y="143" class="label-api">API</text>
+
+  <!-- server -> MySQL -->
+  <path d="M460,335 L310,420" class="arrow-data"/>
+  <text x="360" y="370" class="label-data">JDBC</text>
+
+  <!-- server -> Redis -->
+  <path d="M460,335 L520,420" class="arrow-data"/>
+  <text x="500" y="370" class="label-data">Redis</text>
+
+  <!-- ragflow -> MySQL -->
+  <path d="M790,335 L330,420" class="arrow-data" stroke-dasharray="6,3"/>
+
+  <!-- ragflow -> ES -->
+  <path d="M790,335 L760,420" class="arrow-data"/>
+  <text x="790" y="370" class="label-data">ES API</text>
+
+  <!-- Legend -->
+  <g transform="translate(30, 600)">
+    <text x="0" y="15" style="font-size:14px;font-weight:bold;fill:#333">图例</text>
+    <line x1="0" y1="35" x2="40" y2="35" class="arrow-http"/>
+    <text x="50" y="40" class="label-http">HTTP/REST 接口调用</text>
+    <line x1="0" y1="55" x2="40" y2="55" class="arrow-data"/>
+    <text x="50" y="60" class="label-data">数据访问层连接</text>
+    <line x1="0" y1="75" x2="40" y2="75" class="arrow-api"/>
+    <text x="50" y="80" class="label-api">内部API调用</text>
+  </g>
+</svg>

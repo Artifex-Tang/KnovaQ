@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="960" height="500">
+<style>text { font-family: "Microsoft YaHei", "SimHei", Arial, sans-serif; }</style>
+<defs><filter id="s1" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/></filter></defs>
+<rect width="960" height="500" fill="#ffffff"/>
+<text x="480" y="28" text-anchor="middle" fill="#111827" font-size="18" font-weight="600">DARPA智能问答服务工具 — 四层技术体系结构</text>
+
+<!-- Layer 1: Presentation -->
+<rect x="40" y="50" width="880" height="80" rx="10" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.5"/>
+<text x="60" y="72" fill="#7c3aed" font-size="13" font-weight="600">展示层</text>
+<rect x="200" y="60" width="160" height="50" rx="6" fill="#fff" stroke="#c4b5fd" stroke-width="1" filter="url(#s1)"/>
+<text x="280" y="82" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">Vue 3 前端</text>
+<text x="280" y="100" text-anchor="middle" fill="#6b7280" font-size="10">知识库/对话/管理界面</text>
+<rect x="400" y="60" width="160" height="50" rx="6" fill="#fff" stroke="#c4b5fd" stroke-width="1" filter="url(#s1)"/>
+<text x="480" y="82" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">nginx 反向代理</text>
+<text x="480" y="100" text-anchor="middle" fill="#6b7280" font-size="10">路由/负载/SSL</text>
+<rect x="600" y="60" width="160" height="50" rx="6" fill="#fff" stroke="#c4b5fd" stroke-width="1" filter="url(#s1)"/>
+<text x="680" y="82" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">SSE 流式推送</text>
+<text x="680" y="100" text-anchor="middle" fill="#6b7280" font-size="10">实时对话输出</text>
+
+<!-- Layer 2: Business -->
+<rect x="40" y="150" width="880" height="80" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+<text x="60" y="172" fill="#2563eb" font-size="13" font-weight="600">业务层</text>
+<rect x="140" y="160" width="180" height="50" rx="6" fill="#fff" stroke="#7dd3fc" stroke-width="1" filter="url(#s1)"/>
+<text x="230" y="182" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">M1 知识库管理</text>
+<text x="230" y="200" text-anchor="middle" fill="#6b7280" font-size="10">CRUD/文档/分块</text>
+<rect x="390" y="160" width="180" height="50" rx="6" fill="#fff" stroke="#7dd3fc" stroke-width="1" filter="url(#s1)"/>
+<text x="480" y="182" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">M2 检索增强服务</text>
+<text x="480" y="200" text-anchor="middle" fill="#6b7280" font-size="10">向量/混合/重排序</text>
+<rect x="640" y="160" width="180" height="50" rx="6" fill="#fff" stroke="#7dd3fc" stroke-width="1" filter="url(#s1)"/>
+<text x="730" y="182" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">M3 提示词工程</text>
+<text x="730" y="200" text-anchor="middle" fill="#6b7280" font-size="10">模板/对话/引用</text>
+
+<!-- Layer 3: Engine -->
+<rect x="40" y="250" width="880" height="80" rx="10" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+<text x="60" y="272" fill="#16a34a" font-size="13" font-weight="600">引擎层</text>
+<rect x="140" y="260" width="180" height="50" rx="6" fill="#fff" stroke="#6ee7b7" stroke-width="1" filter="url(#s1)"/>
+<text x="230" y="282" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">ragflow v0.18.0</text>
+<text x="230" y="300" text-anchor="middle" fill="#6b7280" font-size="10">RAG核心引擎</text>
+<rect x="390" y="260" width="180" height="50" rx="6" fill="#fff" stroke="#6ee7b7" stroke-width="1" filter="url(#s1)"/>
+<text x="480" y="282" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">GLM-9B 本地推理</text>
+<text x="480" y="300" text-anchor="middle" fill="#6b7280" font-size="10">离线LLM对话生成</text>
+<rect x="640" y="260" width="180" height="50" rx="6" fill="#fff" stroke="#6ee7b7" stroke-width="1" filter="url(#s1)"/>
+<text x="730" y="282" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">文档解析引擎</text>
+<text x="730" y="300" text-anchor="middle" fill="#6b7280" font-size="10">多格式深度解析</text>
+
+<!-- Layer 4: Data -->
+<rect x="40" y="350" width="880" height="80" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+<text x="60" y="372" fill="#9a3412" font-size="13" font-weight="600">数据层</text>
+<rect x="80" y="360" width="180" height="50" rx="6" fill="#fff" stroke="#fdba74" stroke-width="1" filter="url(#s1)"/>
+<text x="170" y="382" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">MySQL 8.0</text>
+<text x="170" y="400" text-anchor="middle" fill="#6b7280" font-size="10">结构化数据存储</text>
+<rect x="300" y="360" width="180" height="50" rx="6" fill="#fff" stroke="#fdba74" stroke-width="1" filter="url(#s1)"/>
+<text x="390" y="382" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">Elasticsearch</text>
+<text x="390" y="400" text-anchor="middle" fill="#6b7280" font-size="10">向量+全文索引</text>
+<rect x="520" y="360" width="180" height="50" rx="6" fill="#fff" stroke="#fdba74" stroke-width="1" filter="url(#s1)"/>
+<text x="610" y="382" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">MinIO</text>
+<text x="610" y="400" text-anchor="middle" fill="#6b7280" font-size="10">文档对象存储</text>
+<rect x="740" y="360" width="150" height="50" rx="6" fill="#fff" stroke="#fdba74" stroke-width="1" filter="url(#s1)"/>
+<text x="815" y="382" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">Redis/Valkey</text>
+<text x="815" y="400" text-anchor="middle" fill="#6b7280" font-size="10">缓存与会话</text>
+
+<!-- Infra -->
+<rect x="40" y="454" width="880" height="36" rx="6" fill="#f9fafb" stroke="#d1d5db" stroke-width="1" stroke-dasharray="6,3"/>
+<text x="480" y="476" text-anchor="middle" fill="#6b7280" font-size="11">基础设施层：Docker Compose 容器编排 · 离线镜像交付 · Linux 服务器部署</text>
+</svg>

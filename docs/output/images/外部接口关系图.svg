@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440">
+<style>text { font-family: "Microsoft YaHei", "SimHei", Arial, sans-serif; }</style>
+<defs>
+  <marker id="ab" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+  <filter id="s1" x="-4%" y="-4%" width="108%" height="108%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/></filter>
+</defs>
+<rect width="960" height="440" fill="#ffffff"/>
+<text x="480" y="28" text-anchor="middle" fill="#111827" font-size="18" font-weight="600">DARPA智能问答服务工具 — 外部接口关系</text>
+
+<!-- Browser -->
+<rect x="60" y="70" width="140" height="60" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.2" filter="url(#s1)"/>
+<text x="130" y="96" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">用户浏览器</text>
+<text x="130" y="114" text-anchor="middle" fill="#6b7280" font-size="10">HTTP :8899</text>
+
+<!-- nginx -->
+<rect x="280" y="70" width="140" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2" filter="url(#s1)"/>
+<text x="350" y="96" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="600">nginx</text>
+<text x="350" y="114" text-anchor="middle" fill="#6b7280" font-size="10">反向代理/路由</text>
+
+<!-- gaisoft-server -->
+<rect x="500" y="50" width="180" height="90" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5" filter="url(#s1)"/>
+<text x="590" y="72" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="600">应用服务层</text>
+<text x="590" y="90" text-anchor="middle" fill="#111827" font-size="10">Spring Boot :8088</text>
+<text x="590" y="108" text-anchor="middle" fill="#6b7280" font-size="9">/api/knowledge/**</text>
+<text x="590" y="122" text-anchor="middle" fill="#6b7280" font-size="9">/api/chat/** /api/auth/**</text>
+
+<!-- ragflow -->
+<rect x="500" y="190" width="180" height="90" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5" filter="url(#s1)"/>
+<text x="590" y="212" text-anchor="middle" fill="#16a34a" font-size="12" font-weight="600">RAG引擎</text>
+<text x="590" y="230" text-anchor="middle" fill="#111827" font-size="10">ragflow v0.18.0</text>
+<text x="590" y="248" text-anchor="middle" fill="#6b7280" font-size="9">/api/v1/datasets</text>
+<text x="590" y="262" text-anchor="middle" fill="#6b7280" font-size="9">/api/v1/chats /api/v1/retrieval</text>
+
+<!-- MySQL -->
+<rect x="200" y="210" width="140" height="60" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.2" filter="url(#s1)"/>
+<text x="270" y="236" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">MySQL 8.0</text>
+<text x="270" y="254" text-anchor="middle" fill="#6b7280" font-size="10">:5455</text>
+
+<!-- ES -->
+<rect x="760" y="190" width="140" height="60" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.2" filter="url(#s1)"/>
+<text x="830" y="216" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">Elasticsearch</text>
+<text x="830" y="234" text-anchor="middle" fill="#6b7280" font-size="10">:1200</text>
+
+<!-- GLM-9B -->
+<rect x="760" y="280" width="140" height="60" rx="8" fill="#faf5ff" stroke="#c4b5fd" stroke-width="1.2" filter="url(#s1)"/>
+<text x="830" y="306" text-anchor="middle" fill="#7c3aed" font-size="12" font-weight="600">GLM-9B</text>
+<text x="830" y="324" text-anchor="middle" fill="#6b7280" font-size="10">本地推理</text>
+
+<!-- MinIO -->
+<rect x="200" y="310" width="140" height="60" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.2" filter="url(#s1)"/>
+<text x="270" y="336" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">MinIO</text>
+<text x="270" y="354" text-anchor="middle" fill="#6b7280" font-size="10">:9100</text>
+
+<!-- Redis -->
+<rect x="420" y="340" width="140" height="60" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.2" filter="url(#s1)"/>
+<text x="490" y="366" text-anchor="middle" fill="#111827" font-size="12" font-weight="600">Redis/Valkey</text>
+<text x="490" y="384" text-anchor="middle" fill="#6b7280" font-size="10">:6580</text>
+
+<!-- Arrows -->
+<line x1="200" y1="100" x2="280" y2="100" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ab)"/>
+<line x1="420" y1="95" x2="500" y2="90" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ab)"/>
+<line x1="590" y1="140" x2="590" y2="190" stroke="#2563eb" stroke-width="1.5" marker-end="url(#ab)"/>
+<text x="604" y="168" fill="#6b7280" font-size="9">REST API</text>
+
+<line x1="500" y1="115" x2="340" y2="210" stroke="#2563eb" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#ab)"/>
+<text x="390" y="160" fill="#6b7280" font-size="9">JDBC</text>
+
+<line x1="680" y1="230" x2="760" y2="218" stroke="#16a34a" stroke-width="1.2" marker-end="url(#ab)"/>
+<line x1="680" y1="245" x2="760" y2="300" stroke="#9333ea" stroke-width="1.2" marker-end="url(#ab)"/>
+<text x="730" y="284" fill="#6b7280" font-size="9">LLM调用</text>
+
+<line x1="500" y1="255" x2="340" y2="230" stroke="#16a34a" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#ab)"/>
+<line x1="520" y1="270" x2="340" y2="320" stroke="#16a34a" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#ab)"/>
+<line x1="560" y1="280" x2="500" y2="340" stroke="#16a34a" stroke-width="1" stroke-dasharray="4,2" marker-end="url(#ab)"/>
+</svg>

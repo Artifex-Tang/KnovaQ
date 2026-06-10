@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2761"/>
+      <stop offset="100%" stop-color="#2A3A7E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="#F8FAFC"/>
+
+  <!-- Header bar -->
+  <rect width="1280" height="65" fill="url(#headerGrad)"/>
+  <text x="60" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="28" fill="#FFFFFF" font-weight="bold">三级架构设计</text>
+  <text x="340" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC">"外挂知识库—RAG检索增强—交互式提示" 三级架构</text>
+
+  <!-- === M3: 交互式提示词工程 (Top Layer) === -->
+  <rect x="80" y="100" width="1120" height="160" rx="10" fill="#4A7BF7" fill-opacity="0.08" stroke="#4A7BF7" stroke-width="2"/>
+  <rect x="80" y="100" width="8" height="160" fill="#4A7BF7"/>
+
+  <!-- M3 Label -->
+  <rect x="100" y="115" width="50" height="26" rx="13" fill="#4A7BF7"/>
+  <text x="125" y="133" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M3</text>
+  <text x="165" y="133" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="20" fill="#1E2761" font-weight="bold">第三级：交互式提示词工程</text>
+
+  <!-- M3 Sub-items -->
+  <rect x="110" y="155" width="200" height="44" rx="6" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1"/>
+  <text x="210" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">聊天助手管理</text>
+
+  <rect x="330" y="155" width="200" height="44" rx="6" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1"/>
+  <text x="430" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">系统提示词配置</text>
+
+  <rect x="550" y="155" width="200" height="44" rx="6" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1"/>
+  <text x="650" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">多轮上下文对话</text>
+
+  <rect x="770" y="155" width="200" height="44" rx="6" fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1"/>
+  <text x="870" y="182" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">引用溯源 · 流式响应</text>
+
+  <text x="110" y="225" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">输入：用户查询 + 第二级检索结果</text>
+  <text x="500" y="225" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">输出：精准提示 → LLM生成 → 结构化回答</text>
+
+  <!-- Arrow M3 → M2 -->
+  <line x1="640" y1="260" x2="640" y2="285" stroke="#2DD4A8" stroke-width="3"/>
+  <polygon points="632,285 648,285 640,298" fill="#2DD4A8"/>
+  <text x="660" y="282" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#2DD4A8">精准提示 + 检索结果</text>
+
+  <!-- === M2: RAG文档检索增强 (Middle Layer) === -->
+  <rect x="80" y="300" width="1120" height="160" rx="10" fill="#2DD4A8" fill-opacity="0.08" stroke="#2DD4A8" stroke-width="2"/>
+  <rect x="80" y="300" width="8" height="160" fill="#2DD4A8"/>
+
+  <rect x="100" y="315" width="50" height="26" rx="13" fill="#2DD4A8"/>
+  <text x="125" y="333" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M2</text>
+  <text x="165" y="333" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="20" fill="#1E2761" font-weight="bold">第二级：RAG文档检索增强</text>
+
+  <!-- M2 Sub-items -->
+  <rect x="110" y="355" width="170" height="44" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="195" y="382" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">向量语义检索</text>
+
+  <rect x="300" y="355" width="170" height="44" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="385" y="382" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">混合检索</text>
+
+  <rect x="490" y="355" width="170" height="44" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="575" y="382" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">相似度阈值调节</text>
+
+  <rect x="680" y="355" width="170" height="44" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="765" y="382" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">检索结果重排序</text>
+
+  <rect x="870" y="355" width="170" height="44" rx="6" fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1"/>
+  <text x="955" y="382" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">知识图谱 · 跨语言</text>
+
+  <text x="110" y="425" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">输入：用户查询 + 第一级知识库</text>
+  <text x="500" y="425" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">输出：结构化知识片段 + 相关度评分</text>
+
+  <!-- Arrow M2 → M1 -->
+  <line x1="640" y1="460" x2="640" y2="485" stroke="#1E2761" stroke-width="3"/>
+  <polygon points="632,485 648,485 640,498" fill="#1E2761"/>
+  <text x="660" y="482" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761">结构化知识片段</text>
+
+  <!-- === M1: 外挂知识库 (Bottom Layer) === -->
+  <rect x="80" y="500" width="1120" height="160" rx="10" fill="#1E2761" fill-opacity="0.06" stroke="#1E2761" stroke-width="2"/>
+  <rect x="80" y="500" width="8" height="160" fill="#1E2761"/>
+
+  <rect x="100" y="515" width="50" height="26" rx="13" fill="#1E2761"/>
+  <text x="125" y="533" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M1</text>
+  <text x="165" y="533" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="20" fill="#1E2761" font-weight="bold">第一级：外挂知识库</text>
+
+  <!-- M1 Sub-items -->
+  <rect x="110" y="555" width="170" height="44" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="195" y="582" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">知识库CRUD</text>
+
+  <rect x="300" y="555" width="170" height="44" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="385" y="582" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">文档上传解析</text>
+
+  <rect x="490" y="555" width="170" height="44" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="575" y="582" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">智能分块</text>
+
+  <rect x="680" y="555" width="170" height="44" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="765" y="582" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">元数据标注</text>
+
+  <rect x="870" y="555" width="170" height="44" rx="6" fill="#FFFFFF" stroke="#1E2761" stroke-width="1"/>
+  <text x="955" y="582" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle">多源数据整合</text>
+
+  <text x="110" y="625" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">输入：非结构化军事文档</text>
+  <text x="500" y="625" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">输出：结构化知识块 + 向量索引 + 元数据</text>
+
+  <!-- Right side annotation -->
+  <text x="1080" y="680" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#94A3B8">基于 ragflow v0.18.0 领域适配</text>
+
+  <!-- Page number -->
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="end">3 / 14</text>
+</svg>

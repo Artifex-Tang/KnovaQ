@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2761" />
+      <stop offset="100%" stop-color="#2A3A7E" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F8FAFC" />
+  <rect width="1280" height="65" fill="url(#headerGrad)" />
+  <text x="60" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="28" fill="#FFFFFF" font-weight="bold">测试验证</text>
+  <text x="215" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC">64条自动化测试用例 · 92%通过率 · 6大测试模块</text>
+
+  
+  <path fill="#1E2761" filter="url(#shadow)" d="M50,85 H380 A10,10 0 0 1 390,95 V325 A10,10 0 0 1 380,335 H50 A10,10 0 0 1 40,325 V95 A10,10 0 0 1 50,85 Z" />
+  <text x="215" y="170" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="80" fill="#2DD4A8" text-anchor="middle" font-weight="bold">92%</text>
+  <text x="215" y="210" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="22" fill="#FFFFFF" text-anchor="middle">综合通过率</text>
+  <text x="215" y="245" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC" text-anchor="middle">64条用例 · 59条通过 · 5条待优化</text>
+
+  
+  
+  <path fill="#FFFFFF" filter="url(#shadow)" d="M428,85 H672 A8,8 0 0 1 680,93 V192 A8,8 0 0 1 672,200 H428 A8,8 0 0 1 420,192 V93 A8,8 0 0 1 428,85 Z" />
+  <rect x="420" y="85" width="260" height="4" fill="#4A7BF7" />
+  <text x="440" y="115" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">M1 知识库测试</text>
+  <text x="440" y="148" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#4A7BF7" font-weight="bold">90%</text>
+  <text x="440" y="180" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">9/10 通过</text>
+
+  
+  <path fill="#FFFFFF" filter="url(#shadow)" d="M708,85 H952 A8,8 0 0 1 960,93 V192 A8,8 0 0 1 952,200 H708 A8,8 0 0 1 700,192 V93 A8,8 0 0 1 708,85 Z" />
+  <rect x="700" y="85" width="260" height="4" fill="#2DD4A8" />
+  <text x="720" y="115" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">M2 RAG检索测试</text>
+  <text x="720" y="148" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#2DD4A8" font-weight="bold">90%</text>
+  <text x="720" y="180" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">9/10 通过</text>
+
+  
+  <path fill="#FFFFFF" filter="url(#shadow)" d="M988,85 H1232 A8,8 0 0 1 1240,93 V192 A8,8 0 0 1 1232,200 H988 A8,8 0 0 1 980,192 V93 A8,8 0 0 1 988,85 Z" />
+  <rect x="980" y="85" width="260" height="4" fill="#4A7BF7" />
+  <text x="1000" y="115" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">M3 交互式测试</text>
+  <text x="1000" y="148" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#4A7BF7" font-weight="bold">92%</text>
+  <text x="1000" y="180" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">11/12 通过</text>
+
+  
+  <path fill="#FFFFFF" filter="url(#shadow)" d="M428,220 H672 A8,8 0 0 1 680,228 V327 A8,8 0 0 1 672,335 H428 A8,8 0 0 1 420,327 V228 A8,8 0 0 1 428,220 Z" />
+  <rect x="420" y="220" width="260" height="4" fill="#2DD4A8" />
+  <text x="440" y="250" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">身份认证测试</text>
+  <text x="440" y="283" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#2DD4A8" font-weight="bold">100%</text>
+  <text x="440" y="315" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">10/10 通过</text>
+
+  
+  <path fill="#FFFFFF" filter="url(#shadow)" d="M708,220 H952 A8,8 0 0 1 960,228 V327 A8,8 0 0 1 952,335 H708 A8,8 0 0 1 700,327 V228 A8,8 0 0 1 708,220 Z" />
+  <rect x="700" y="220" width="260" height="4" fill="#4A7BF7" />
+  <text x="720" y="250" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">UI 端到端测试</text>
+  <text x="720" y="283" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#4A7BF7" font-weight="bold">93%</text>
+  <text x="720" y="315" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">13/14 通过</text>
+
+  
+  <path fill="#FFFFFF" filter="url(#shadow)" d="M988,220 H1232 A8,8 0 0 1 1240,228 V327 A8,8 0 0 1 1232,335 H988 A8,8 0 0 1 980,327 V228 A8,8 0 0 1 988,220 Z" />
+  <rect x="980" y="220" width="260" height="4" fill="#1E2761" />
+  <text x="1000" y="250" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" font-weight="bold">菜单验证测试</text>
+  <text x="1000" y="283" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="32" fill="#1E2761" font-weight="bold">88%</text>
+  <text x="1000" y="315" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B">7/8 通过</text>
+
+  
+  <path fill="#FFFFFF" filter="url(#shadow)" d="M48,360 H1232 A8,8 0 0 1 1240,368 V432 A8,8 0 0 1 1232,440 H48 A8,8 0 0 1 40,432 V368 A8,8 0 0 1 48,360 Z" />
+  <text x="60" y="390" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#1E2761" font-weight="bold">测试技术栈</text>
+
+  <path fill="#1E2761" d="M73,405 H217 A13,13 0 0 1 230,418 V418 A13,13 0 0 1 217,431 H73 A13,13 0 0 1 60,418 V418 A13,13 0 0 1 73,405 Z" />
+  <text x="145" y="423" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle">pytest 自动化框架</text>
+
+  <path fill="#4A7BF7" d="M263,405 H397 A13,13 0 0 1 410,418 V418 A13,13 0 0 1 397,431 H263 A13,13 0 0 1 250,418 V418 A13,13 0 0 1 263,405 Z" />
+  <text x="330" y="423" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle">Playwright UI</text>
+
+  <path fill="#2DD4A8" d="M443,405 H577 A13,13 0 0 1 590,418 V418 A13,13 0 0 1 577,431 H443 A13,13 0 0 1 430,418 V418 A13,13 0 0 1 443,405 Z" />
+  <text x="510" y="423" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#FFFFFF" text-anchor="middle">Allure 报告</text>
+
+  <path fill="#E0E7FF" d="M623,405 H757 A13,13 0 0 1 770,418 V418 A13,13 0 0 1 757,431 H623 A13,13 0 0 1 610,418 V418 A13,13 0 0 1 623,405 Z" />
+  <text x="690" y="423" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">Docker 容器化</text>
+
+  
+  <path fill="#FFFFFF" filter="url(#shadow)" d="M48,460 H1232 A8,8 0 0 1 1240,468 V532 A8,8 0 0 1 1232,540 H48 A8,8 0 0 1 40,532 V468 A8,8 0 0 1 48,460 Z" />
+  <rect x="40" y="460" width="6" height="80" fill="#2DD4A8" />
+  <text x="65" y="488" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E2761" font-weight="bold">测试方法</text>
+  <text x="65" y="512" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B">API 接口测试（pytest + requests）— 验证后端 API 功能正确性</text>
+  <text x="65" y="530" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B">UI 端到端测试（Playwright）— 验证前端交互与业务流程完整性</text>
+
+  
+  <path fill="#D1FAE5" fill-opacity="0.5" stroke="#2DD4A8" stroke-width="1" d="M48,560 H1232 A8,8 0 0 1 1240,568 V607 A8,8 0 0 1 1232,615 H48 A8,8 0 0 1 40,607 V568 A8,8 0 0 1 48,560 Z" />
+  <text x="60" y="585" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#059669" font-weight="bold">质量保障</text>
+  <text x="170" y="585" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#059669">自动化测试覆盖全链路 · CI/CD 集成 · Allure 详细报告 · 5条待优化用例已定位根因</text>
+
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="end">13 / 14</text>
+</svg>

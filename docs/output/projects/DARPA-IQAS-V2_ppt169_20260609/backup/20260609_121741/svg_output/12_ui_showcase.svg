@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2761"/>
+      <stop offset="100%" stop-color="#2A3A7E"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F8FAFC"/>
+  <rect width="1280" height="65" fill="url(#headerGrad)"/>
+  <text x="60" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="28" fill="#FFFFFF" font-weight="bold">系统界面展示</text>
+  <text x="280" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC">主要功能页面截图</text>
+
+  <!-- 2x3 grid -->
+  <!-- Row 1 -->
+  <!-- Col 1: 登录页 -->
+  <rect x="40" y="85" width="380" height="280" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <image href="../images/01-登录页.png" x="50" y="90" width="360" height="230" preserveAspectRatio="xMidYMid slice"/>
+  <text x="230" y="345" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#64748B" text-anchor="middle">用户登录</text>
+
+  <!-- Col 2: 首页 -->
+  <rect x="440" y="85" width="380" height="280" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <image href="../images/02-首页主界面.png" x="450" y="90" width="360" height="230" preserveAspectRatio="xMidYMid slice"/>
+  <text x="630" y="345" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#64748B" text-anchor="middle">系统首页</text>
+
+  <!-- Col 3: 智能问答 -->
+  <rect x="840" y="85" width="400" height="280" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <image href="../images/03-智能问答页.png" x="850" y="90" width="380" height="230" preserveAspectRatio="xMidYMid slice"/>
+  <text x="1040" y="345" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#64748B" text-anchor="middle">智能问答</text>
+
+  <!-- Row 2 -->
+  <!-- Col 1: 配置助理 -->
+  <rect x="40" y="390" width="380" height="280" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <image href="../images/05-配置助理页.png" x="50" y="395" width="360" height="230" preserveAspectRatio="xMidYMid slice"/>
+  <text x="230" y="650" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#64748B" text-anchor="middle">配置助理</text>
+
+  <!-- Col 2: 模型管理 -->
+  <rect x="440" y="390" width="380" height="280" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <image href="../images/09-模型管理页.png" x="450" y="395" width="360" height="230" preserveAspectRatio="xMidYMid slice"/>
+  <text x="630" y="650" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#64748B" text-anchor="middle">模型管理</text>
+
+  <!-- Col 3: 参数设置 -->
+  <rect x="840" y="390" width="400" height="280" rx="8" fill="#FFFFFF" filter="url(#shadow)"/>
+  <image href="../images/12-参数设置页.png" x="850" y="395" width="380" height="230" preserveAspectRatio="xMidYMid slice"/>
+  <text x="1040" y="650" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#64748B" text-anchor="middle">参数设置</text>
+
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="end">12 / 14</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F1A3E"/>
+      <stop offset="100%" stop-color="#1E2761"/>
+    </linearGradient>
+    <radialGradient id="bgDecor" cx="85%" cy="15%" r="45%">
+      <stop offset="0%" stop-color="#4A7BF7" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#4A7BF7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Full dark background -->
+  <rect width="1280" height="720" fill="url(#headerGradient)"/>
+  <rect width="1280" height="720" fill="url(#bgDecor)"/>
+
+  <!-- Left accent bar -->
+  <rect x="0" y="0" width="8" height="720" fill="#2DD4A8"/>
+
+  <!-- Title area -->
+  <text x="70" y="200" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="56" fill="#FFFFFF" font-weight="bold">DARPA智能问答服务工具</text>
+  <text x="70" y="260" font-family="Microsoft YaHei, Arial, sans-serif" font-size="32" fill="#2DD4A8" font-weight="bold">DARPA-IQAS V1.0</text>
+
+  <!-- Accent line -->
+  <rect x="70" y="285" width="300" height="4" fill="#2DD4A8"/>
+
+  <!-- Subtitle -->
+  <text x="70" y="330" font-family="Microsoft YaHei, Arial, sans-serif" font-size="24" fill="#CADCFC">项目汇报</text>
+
+  <!-- Info lines -->
+  <text x="70" y="410" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#94A3B8">研究内容四 —— DARPA智能问答服务工具开发</text>
+  <text x="70" y="445" font-family="Microsoft YaHei, Arial, sans-serif" font-size="18" fill="#94A3B8">军事科学院军事科学信息研究中心</text>
+  <text x="70" y="480" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#64748B">2026年6月</text>
+
+  <!-- Right side: Three-tier architecture示意 -->
+  <!-- M3 -->
+  <rect x="820" y="150" width="380" height="120" rx="8" fill="#4A7BF7" fill-opacity="0.25" stroke="#4A7BF7" stroke-width="1.5"/>
+  <text x="1010" y="195" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M3 交互式提示词工程</text>
+  <text x="1010" y="225" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC" text-anchor="middle">动态模板 · 结构化约束 · 用户意图对齐</text>
+
+  <!-- Arrow M3→M2 -->
+  <line x1="1010" y1="270" x2="1010" y2="300" stroke="#2DD4A8" stroke-width="2" marker-end="url(#arrowDown)"/>
+  <defs>
+    <marker id="arrowDown" markerWidth="8" markerHeight="8" refX="4" refY="8" orient="auto">
+      <path d="M0,0 L8,0 L4,8 Z" fill="#2DD4A8"/>
+    </marker>
+  </defs>
+
+  <!-- M2 -->
+  <rect x="820" y="310" width="380" height="120" rx="8" fill="#2DD4A8" fill-opacity="0.2" stroke="#2DD4A8" stroke-width="1.5"/>
+  <text x="1010" y="355" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M2 RAG检索增强</text>
+  <text x="1010" y="385" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC" text-anchor="middle">向量检索 · 混合检索 · 语义重排序</text>
+
+  <!-- Arrow M2→M1 -->
+  <line x1="1010" y1="430" x2="1010" y2="460" stroke="#2DD4A8" stroke-width="2" marker-end="url(#arrowDown)"/>
+
+  <!-- M1 -->
+  <rect x="820" y="470" width="380" height="120" rx="8" fill="#1E2761" fill-opacity="0.6" stroke="#64748B" stroke-width="1.5"/>
+  <text x="1010" y="515" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="20" fill="#FFFFFF" text-anchor="middle" font-weight="bold">M1 外挂知识库</text>
+  <text x="1010" y="545" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC" text-anchor="middle">文档解析 · 智能分块 · 元数据标注</text>
+
+  <!-- Page number -->
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="end">1 / 14</text>
+</svg>

@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2761" />
+      <stop offset="100%" stop-color="#2A3A7E" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="#F8FAFC" />
+  <rect width="1280" height="65" fill="url(#headerGrad)" />
+  <text x="60" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="28" fill="#FFFFFF" font-weight="bold">技术体系架构</text>
+  <text x="300" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC">四层技术架构：用户交互层 / 应用服务层 / 数据存储层 / 基础设施层</text>
+
+  
+  <path fill="#4A7BF7" fill-opacity="0.06" stroke="#4A7BF7" stroke-width="1.5" d="M68,90 H1212 A8,8 0 0 1 1220,98 V182 A8,8 0 0 1 1212,190 H68 A8,8 0 0 1 60,182 V98 A8,8 0 0 1 68,90 Z" />
+  <rect x="60" y="90" width="6" height="100" fill="#4A7BF7" />
+  <text x="85" y="115" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#4A7BF7" font-weight="bold">用户交互层</text>
+
+  <path fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1" d="M91,127 H259 A6,6 0 0 1 265,133 V166 A6,6 0 0 1 259,172 H91 A6,6 0 0 1 85,166 V133 A6,6 0 0 1 91,127 Z" />
+  <text x="175" y="148" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle" font-weight="bold">gaisoft-frontend</text>
+  <text x="175" y="164" font-family="Microsoft YaHei, Arial, sans-serif" font-size="10" fill="#64748B" text-anchor="middle">Vue 3 SPA</text>
+
+  <path fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1" d="M291,127 H459 A6,6 0 0 1 465,133 V166 A6,6 0 0 1 459,172 H291 A6,6 0 0 1 285,166 V133 A6,6 0 0 1 291,127 Z" />
+  <text x="375" y="148" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle" font-weight="bold">ragflow Web UI</text>
+  <text x="375" y="164" font-family="Microsoft YaHei, Arial, sans-serif" font-size="10" fill="#64748B" text-anchor="middle">RAG管理界面</text>
+
+  <path fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1" d="M491,127 H659 A6,6 0 0 1 665,133 V166 A6,6 0 0 1 659,172 H491 A6,6 0 0 1 485,166 V133 A6,6 0 0 1 491,127 Z" />
+  <text x="575" y="148" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle" font-weight="bold">Nginx 反向代理</text>
+  <text x="575" y="164" font-family="Microsoft YaHei, Arial, sans-serif" font-size="10" fill="#64748B" text-anchor="middle">统一入口 :80</text>
+
+  <path fill="#FFFFFF" stroke="#4A7BF7" stroke-width="1" d="M691,127 H859 A6,6 0 0 1 865,133 V166 A6,6 0 0 1 859,172 H691 A6,6 0 0 1 685,166 V133 A6,6 0 0 1 691,127 Z" />
+  <text x="775" y="148" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle" font-weight="bold">JWT 认证</text>
+  <text x="775" y="164" font-family="Microsoft YaHei, Arial, sans-serif" font-size="10" fill="#64748B" text-anchor="middle">Token 鉴权</text>
+
+  
+  <line x1="640" y1="190" x2="640" y2="202" stroke="#94A3B8" stroke-width="2" />
+  <polygon points="634,202 646,202 640,212" fill="#94A3B8" />
+
+  
+  <path fill="#2DD4A8" fill-opacity="0.05" stroke="#2DD4A8" stroke-width="1.5" d="M68,215 H1212 A8,8 0 0 1 1220,223 V467 A8,8 0 0 1 1212,475 H68 A8,8 0 0 1 60,467 V223 A8,8 0 0 1 68,215 Z" />
+  <rect x="60" y="215" width="6" height="260" fill="#2DD4A8" />
+  <text x="85" y="240" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#2DD4A8" font-weight="bold">应用服务层</text>
+
+  
+  <path fill="#2DD4A8" fill-opacity="0.06" stroke="#2DD4A8" stroke-width="1.5" d="M88,255 H592 A8,8 0 0 1 600,263 V447 A8,8 0 0 1 592,455 H88 A8,8 0 0 1 80,447 V263 A8,8 0 0 1 88,255 Z" />
+  <path fill="#2DD4A8" d="M88,255 H592 A8,8 0 0 1 600,263 V279 A8,8 0 0 1 592,287 H88 A8,8 0 0 1 80,279 V263 A8,8 0 0 1 88,255 Z" />
+  <rect x="80" y="275" width="520" height="12" fill="#2DD4A8" />
+  <text x="340" y="277" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">gaisoft-server (Spring Boot 2.x)</text>
+
+  
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M100,298 H245 A5,5 0 0 1 250,303 V331 A5,5 0 0 1 245,336 H100 A5,5 0 0 1 95,331 V303 A5,5 0 0 1 100,298 Z" />
+  <text x="172" y="321" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">用户认证 (JWT)</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M265,298 H410 A5,5 0 0 1 415,303 V331 A5,5 0 0 1 410,336 H265 A5,5 0 0 1 260,331 V303 A5,5 0 0 1 265,298 Z" />
+  <text x="337" y="321" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">知识库管理</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M430,298 H575 A5,5 0 0 1 580,303 V331 A5,5 0 0 1 575,336 H430 A5,5 0 0 1 425,331 V303 A5,5 0 0 1 430,298 Z" />
+  <text x="502" y="321" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">对话管理</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M100,346 H245 A5,5 0 0 1 250,351 V379 A5,5 0 0 1 245,384 H100 A5,5 0 0 1 95,379 V351 A5,5 0 0 1 100,346 Z" />
+  <text x="172" y="369" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">文件管理</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M265,346 H410 A5,5 0 0 1 415,351 V379 A5,5 0 0 1 410,384 H265 A5,5 0 0 1 260,379 V351 A5,5 0 0 1 265,346 Z" />
+  <text x="337" y="369" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">模型管理</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M430,346 H575 A5,5 0 0 1 580,351 V379 A5,5 0 0 1 575,384 H430 A5,5 0 0 1 425,379 V351 A5,5 0 0 1 430,346 Z" />
+  <text x="502" y="369" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">参数/字典管理</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M100,394 H325 A5,5 0 0 1 330,399 V427 A5,5 0 0 1 325,432 H100 A5,5 0 0 1 95,427 V399 A5,5 0 0 1 100,394 Z" />
+  <text x="212" y="417" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">系统管理（用户/角色/菜单/日志）</text>
+
+  <path fill="#FFFFFF" stroke="#2DD4A8" stroke-width="1" d="M350,394 H575 A5,5 0 0 1 580,399 V427 A5,5 0 0 1 575,432 H350 A5,5 0 0 1 345,427 V399 A5,5 0 0 1 350,394 Z" />
+  <text x="462" y="417" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">ragflow API 封装 (BFF层)</text>
+
+  
+  <path fill="#1E2761" fill-opacity="0.05" stroke="#1E2761" stroke-width="1.5" d="M628,255 H1192 A8,8 0 0 1 1200,263 V447 A8,8 0 0 1 1192,455 H628 A8,8 0 0 1 620,447 V263 A8,8 0 0 1 628,255 Z" />
+  <path fill="#1E2761" d="M628,255 H1192 A8,8 0 0 1 1200,263 V279 A8,8 0 0 1 1192,287 H628 A8,8 0 0 1 620,279 V263 A8,8 0 0 1 628,255 Z" />
+  <rect x="620" y="275" width="580" height="12" fill="#1E2761" />
+  <text x="910" y="277" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">ragflow-server v0.18.0 (RAG核心引擎)</text>
+
+  
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M640,298 H800 A5,5 0 0 1 805,303 V331 A5,5 0 0 1 800,336 H640 A5,5 0 0 1 635,331 V303 A5,5 0 0 1 640,298 Z" />
+  <text x="720" y="321" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">文档解析引擎</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M820,298 H980 A5,5 0 0 1 985,303 V331 A5,5 0 0 1 980,336 H820 A5,5 0 0 1 815,331 V303 A5,5 0 0 1 820,298 Z" />
+  <text x="900" y="321" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">向量索引管理</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M1000,298 H1180 A5,5 0 0 1 1185,303 V331 A5,5 0 0 1 1180,336 H1000 A5,5 0 0 1 995,331 V303 A5,5 0 0 1 1000,298 Z" />
+  <text x="1090" y="321" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">混合检索引擎</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M640,346 H800 A5,5 0 0 1 805,351 V379 A5,5 0 0 1 800,384 H640 A5,5 0 0 1 635,379 V351 A5,5 0 0 1 640,346 Z" />
+  <text x="720" y="369" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">LLM 对话管理</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M820,346 H980 A5,5 0 0 1 985,351 V379 A5,5 0 0 1 980,384 H820 A5,5 0 0 1 815,379 V351 A5,5 0 0 1 820,346 Z" />
+  <text x="900" y="369" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">知识图谱 GraphRAG</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M1000,346 H1180 A5,5 0 0 1 1185,351 V379 A5,5 0 0 1 1180,384 H1000 A5,5 0 0 1 995,379 V351 A5,5 0 0 1 1000,346 Z" />
+  <text x="1090" y="369" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">智能分块引擎</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M640,394 H900 A5,5 0 0 1 905,399 V427 A5,5 0 0 1 900,432 H640 A5,5 0 0 1 635,427 V399 A5,5 0 0 1 640,394 Z" />
+  <text x="770" y="417" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#1E2761" text-anchor="middle">重排序 / 跨语言 / 相似度阈值</text>
+
+  <path fill="#1E2761" d="M925,394 H1180 A5,5 0 0 1 1185,399 V427 A5,5 0 0 1 1180,432 H925 A5,5 0 0 1 920,427 V399 A5,5 0 0 1 925,394 Z" />
+  <text x="1052" y="417" font-family="Microsoft YaHei, Arial, sans-serif" font-size="11" fill="#FFFFFF" text-anchor="middle">智谱 GLM-9B 本地推理</text>
+
+  
+  <line x1="640" y1="475" x2="640" y2="493" stroke="#94A3B8" stroke-width="2" />
+  <polygon points="634,493 646,493 640,503" fill="#94A3B8" />
+
+  
+  <path fill="#1E2761" fill-opacity="0.05" stroke="#1E2761" stroke-width="1.5" d="M68,505 H1212 A8,8 0 0 1 1220,513 V592 A8,8 0 0 1 1212,600 H68 A8,8 0 0 1 60,592 V513 A8,8 0 0 1 68,505 Z" />
+  <rect x="60" y="505" width="6" height="95" fill="#1E2761" />
+  <text x="85" y="530" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#1E2761" font-weight="bold">数据存储层</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M91,542 H279 A6,6 0 0 1 285,548 V578 A6,6 0 0 1 279,584 H91 A6,6 0 0 1 85,578 V548 A6,6 0 0 1 91,542 Z" />
+  <text x="185" y="562" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle" font-weight="bold">MySQL 8.0</text>
+  <text x="185" y="578" font-family="Microsoft YaHei, Arial, sans-serif" font-size="10" fill="#64748B" text-anchor="middle">结构化数据</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M311,542 H499 A6,6 0 0 1 505,548 V578 A6,6 0 0 1 499,584 H311 A6,6 0 0 1 305,578 V548 A6,6 0 0 1 311,542 Z" />
+  <text x="405" y="562" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle" font-weight="bold">Elasticsearch 8.11</text>
+  <text x="405" y="578" font-family="Microsoft YaHei, Arial, sans-serif" font-size="10" fill="#64748B" text-anchor="middle">向量+全文检索</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M531,542 H719 A6,6 0 0 1 725,548 V578 A6,6 0 0 1 719,584 H531 A6,6 0 0 1 525,578 V548 A6,6 0 0 1 531,542 Z" />
+  <text x="625" y="562" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle" font-weight="bold">Valkey/Redis 8</text>
+  <text x="625" y="578" font-family="Microsoft YaHei, Arial, sans-serif" font-size="10" fill="#64748B" text-anchor="middle">会话缓存</text>
+
+  <path fill="#FFFFFF" stroke="#1E2761" stroke-width="1" d="M751,542 H939 A6,6 0 0 1 945,548 V578 A6,6 0 0 1 939,584 H751 A6,6 0 0 1 745,578 V548 A6,6 0 0 1 751,542 Z" />
+  <text x="845" y="562" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="13" fill="#1E2761" text-anchor="middle" font-weight="bold">MinIO</text>
+  <text x="845" y="578" font-family="Microsoft YaHei, Arial, sans-serif" font-size="10" fill="#64748B" text-anchor="middle">文档文件存储</text>
+
+  
+  <line x1="640" y1="600" x2="640" y2="610" stroke="#94A3B8" stroke-width="2" />
+  <polygon points="634,610 646,610 640,618" fill="#94A3B8" />
+
+  
+  <path fill="#94A3B8" fill-opacity="0.08" stroke="#94A3B8" stroke-width="1.5" d="M68,620 H1212 A8,8 0 0 1 1220,628 V677 A8,8 0 0 1 1212,685 H68 A8,8 0 0 1 60,677 V628 A8,8 0 0 1 68,620 Z" />
+  <rect x="60" y="620" width="6" height="65" fill="#94A3B8" />
+  <text x="85" y="645" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#64748B" font-weight="bold">基础设施层</text>
+
+  <path fill="#FFFFFF" stroke="#94A3B8" stroke-width="1" d="M246,635 H454 A6,6 0 0 1 460,641 V661 A6,6 0 0 1 454,667 H246 A6,6 0 0 1 240,661 V641 A6,6 0 0 1 246,635 Z" />
+  <text x="350" y="656" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">Docker Compose 容器编排</text>
+
+  <path fill="#FFFFFF" stroke="#94A3B8" stroke-width="1" d="M486,635 H694 A6,6 0 0 1 700,641 V661 A6,6 0 0 1 694,667 H486 A6,6 0 0 1 480,661 V641 A6,6 0 0 1 486,635 Z" />
+  <text x="590" y="656" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">ragflow 桥接网络</text>
+
+  <path fill="#FFFFFF" stroke="#94A3B8" stroke-width="1" d="M726,635 H934 A6,6 0 0 1 940,641 V661 A6,6 0 0 1 934,667 H726 A6,6 0 0 1 720,661 V641 A6,6 0 0 1 726,635 Z" />
+  <text x="830" y="656" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">Docker Volume 数据持久化</text>
+
+  <path fill="#FFFFFF" stroke="#94A3B8" stroke-width="1" d="M966,635 H1174 A6,6 0 0 1 1180,641 V661 A6,6 0 0 1 1174,667 H966 A6,6 0 0 1 960,661 V641 A6,6 0 0 1 966,635 Z" />
+  <text x="1070" y="656" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">离线镜像包交付</text>
+
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="end">4 / 14</text>
+</svg>

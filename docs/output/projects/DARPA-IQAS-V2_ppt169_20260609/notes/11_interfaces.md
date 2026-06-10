@@ -1,0 +1,1 @@
+系统接口分为外部接口和内部接口。外部接口包括：用户通过HTTP/HTTPS访问前端界面，管理员通过REST API管理后端，知识工程师通过RAG管理界面管理知识库。内部接口包括gaisoft-server与ragflow-server之间的API调用，以及各服务与MySQL、ES、Redis、MinIO之间的数据接口。所有接口通过JWT Token认证保护。

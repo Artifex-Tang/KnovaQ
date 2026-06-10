@@ -1,0 +1,293 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 1080" font-family="Microsoft YaHei, SimHei, sans-serif">
+  <defs>
+    <style>
+      .entity-box { fill: #E3F2FD; stroke: #1565C0; stroke-width: 2; rx: 8; }
+      .entity-header { fill: #1565C0; }
+      .entity-header-text { fill: white; font-size: 14px; font-weight: bold; }
+      .field-text { fill: #333; font-size: 11px; }
+      .pk-text { fill: #1565C0; font-size: 11px; font-weight: bold; }
+      .fk-text { fill: #E65100; font-size: 11px; }
+      .relation-line { stroke: #666; stroke-width: 1.5; fill: none; }
+      .rel-label { fill: #666; font-size: 10px; }
+      .title { font-size: 20px; font-weight: bold; fill: #1a237e; }
+      .domain-box { fill: none; stroke-dasharray: 8,4; rx: 10; stroke-width: 1.5; }
+      .domain-label { font-size: 13px; font-weight: bold; }
+    </style>
+  </defs>
+
+  <text x="650" y="35" text-anchor="middle" class="title">知枢(KnovaQ) 数据库逻辑设计 ER图</text>
+
+  <!-- Domain group boxes (behind entities) -->
+  <!-- 知识库域 -->
+  <rect class="domain-box" x="15" y="48" width="1175" height="200" stroke="#16a34a"/>
+  <text x="25" y="68" class="domain-label" fill="#16a34a">知识库域 (kb_)</text>
+
+  <!-- 维修服务域 -->
+  <rect class="domain-box" x="15" y="300" width="1030" height="255" stroke="#2563eb"/>
+  <text x="25" y="320" class="domain-label" fill="#2563eb">维修服务域 (rs_)</text>
+
+  <!-- 问题登记域 -->
+  <rect class="domain-box" x="15" y="600" width="500" height="225" stroke="#9333ea"/>
+  <text x="25" y="620" class="domain-label" fill="#9333ea">问题登记域 (ir_)</text>
+
+  <!-- 系统管理域 -->
+  <rect class="domain-box" x="540" y="600" width="745" height="225" stroke="#E65100"/>
+  <text x="550" y="620" class="domain-label" fill="#E65100">系统管理域 (sys_)</text>
+
+  <!-- 调度任务域 -->
+  <rect class="domain-box" x="15" y="860" width="450" height="125" stroke="#6A1B9A"/>
+  <text x="25" y="880" class="domain-label" fill="#6A1B9A">调度任务域 (QRTZ_)</text>
+
+  <!-- Group 1: Knowledge Base (kb_) -->
+  <g transform="translate(30, 60)">
+    <rect class="entity-box" x="0" y="0" width="200" height="190"/>
+    <rect class="entity-header" x="0" y="0" width="200" height="30" rx="8"/>
+    <text x="100" y="20" text-anchor="middle" class="entity-header-text">kb_chat 聊天记录</text>
+    <text x="10" y="50" class="pk-text">PK id</text>
+    <text x="10" y="66" class="field-text">message_id 对话ID</text>
+    <text x="10" y="82" class="field-text">chat_id 聊天窗ID</text>
+    <text x="10" y="98" class="fk-text">FK session_id</text>
+    <text x="10" y="114" class="field-text">content 原始对话JSON</text>
+    <text x="10" y="130" class="field-text">reference 引用信息</text>
+    <text x="10" y="146" class="field-text">role 角色</text>
+    <text x="10" y="162" class="field-text">create_by / create_time</text>
+    <text x="10" y="178" class="field-text">update_by / update_time</text>
+  </g>
+
+  <g transform="translate(270, 60)">
+    <rect class="entity-box" x="0" y="0" width="200" height="170"/>
+    <rect class="entity-header" x="0" y="0" width="200" height="30" rx="8"/>
+    <text x="100" y="20" text-anchor="middle" class="entity-header-text">kb_session 会话管理</text>
+    <text x="10" y="50" class="pk-text">PK id</text>
+    <text x="10" y="66" class="field-text">session_id 会话ID</text>
+    <text x="10" y="82" class="field-text">session_name 会话名称</text>
+    <text x="10" y="98" class="field-text">chat_id 聊天窗ID</text>
+    <text x="10" y="114" class="fk-text">FK user_id 用户ID</text>
+    <text x="10" y="130" class="field-text">create_by / create_time</text>
+    <text x="10" y="146" class="field-text">update_time</text>
+  </g>
+
+  <g transform="translate(510, 60)">
+    <rect class="entity-box" x="0" y="0" width="200" height="170"/>
+    <rect class="entity-header" x="0" y="0" width="200" height="30" rx="8"/>
+    <text x="100" y="20" text-anchor="middle" class="entity-header-text">kb_source_file 知识文件</text>
+    <text x="10" y="50" class="pk-text">PK id</text>
+    <text x="10" y="66" class="field-text">name 文件名称</text>
+    <text x="10" y="82" class="fk-text">FK type_id 文件类型ID</text>
+    <text x="10" y="98" class="field-text">tenant_id 租户ID</text>
+    <text x="10" y="114" class="field-text">size 文件大小</text>
+    <text x="10" y="130" class="field-text">type 文件类型</text>
+    <text x="10" y="146" class="field-text">create_by / create_time</text>
+  </g>
+
+  <g transform="translate(750, 60)">
+    <rect class="entity-box" x="0" y="0" width="200" height="150"/>
+    <rect class="entity-header" x="0" y="0" width="200" height="30" rx="8"/>
+    <text x="100" y="20" text-anchor="middle" class="entity-header-text">kb_source_type 文件分类</text>
+    <text x="10" y="50" class="pk-text">PK id</text>
+    <text x="10" y="66" class="fk-text">FK parent_id 父类ID</text>
+    <text x="10" y="82" class="field-text">source_type 类别名称</text>
+    <text x="10" y="98" class="field-text">create_by / create_time</text>
+    <text x="10" y="114" class="field-text">update_by / update_time</text>
+  </g>
+
+  <g transform="translate(990, 60)">
+    <rect class="entity-box" x="0" y="0" width="180" height="120"/>
+    <rect class="entity-header" x="0" y="0" width="180" height="30" rx="8"/>
+    <text x="90" y="20" text-anchor="middle" class="entity-header-text">kb_source_dept</text>
+    <text x="10" y="50" class="fk-text">FK source_id 来源ID</text>
+    <text x="10" y="66" class="fk-text">FK dept_id 部门ID</text>
+    <text x="10" y="82" class="field-text">ancestors 祖级列表</text>
+  </g>
+
+  <!-- Relations kb_ -->
+  <line x1="230" y1="155" x2="270" y2="155" class="relation-line"/>
+  <text x="250" y="148" class="rel-label">N:1</text>
+  <line x1="710" y1="155" x2="750" y2="155" class="relation-line"/>
+  <text x="730" y="148" class="rel-label">N:1</text>
+
+  <!-- Group 2: Repair Service (rs_) -->
+  <g transform="translate(30, 340)">
+    <rect class="entity-box" x="0" y="0" width="220" height="210"/>
+    <rect class="entity-header" x="0" y="0" width="220" height="30" rx="8"/>
+    <text x="110" y="20" text-anchor="middle" class="entity-header-text">rs_repair_service_provider</text>
+    <text x="10" y="50" class="pk-text">PK provider_id</text>
+    <text x="10" y="66" class="field-text">provider_code 服务商编码</text>
+    <text x="10" y="82" class="field-text">provider_name 服务商名称</text>
+    <text x="10" y="98" class="field-text">provider_charge 负责人</text>
+    <text x="10" y="114" class="field-text">provider_contact_person</text>
+    <text x="10" y="130" class="field-text">province / city / district</text>
+    <text x="10" y="146" class="field-text">service_region 归属区域</text>
+    <text x="10" y="162" class="field-text">is_del 是否删除</text>
+    <text x="10" y="178" class="field-text">remark 说明</text>
+    <text x="10" y="194" class="field-text">create_by / create_time</text>
+  </g>
+
+  <g transform="translate(290, 340)">
+    <rect class="entity-box" x="0" y="0" width="220" height="210"/>
+    <rect class="entity-header" x="0" y="0" width="220" height="30" rx="8"/>
+    <text x="110" y="20" text-anchor="middle" class="entity-header-text">rs_device_master 备件主表</text>
+    <text x="10" y="50" class="pk-text">PK spare_part_masterid</text>
+    <text x="10" y="66" class="fk-text">FK provider_id 服务商ID</text>
+    <text x="10" y="82" class="field-text">warehouse_code 仓库编码</text>
+    <text x="10" y="98" class="field-text">spare_part_name 备件名称</text>
+    <text x="10" y="114" class="field-text">spare_part_unit 单位</text>
+    <text x="10" y="130" class="field-text">spare_part_spec 型号</text>
+    <text x="10" y="146" class="field-text">spare_part_code SN码</text>
+    <text x="10" y="162" class="field-text">spare_part_status 状态</text>
+    <text x="10" y="178" class="field-text">remark 说明</text>
+    <text x="10" y="194" class="field-text">create_by / create_time</text>
+  </g>
+
+  <g transform="translate(550, 340)">
+    <rect class="entity-box" x="0" y="0" width="220" height="190"/>
+    <rect class="entity-header" x="0" y="0" width="220" height="30" rx="8"/>
+    <text x="110" y="20" text-anchor="middle" class="entity-header-text">rs_device_inventory 备件库存</text>
+    <text x="10" y="50" class="pk-text">PK inventory_id</text>
+    <text x="10" y="66" class="fk-text">FK provider_id 服务商ID</text>
+    <text x="10" y="82" class="field-text">spare_part_name 备件名称</text>
+    <text x="10" y="98" class="field-text">spare_part_unit 单位</text>
+    <text x="10" y="114" class="field-text">spare_part_num 本期数量</text>
+    <text x="10" y="130" class="field-text">spare_part_pnum 上期数量</text>
+    <text x="10" y="146" class="field-text">remark 说明</text>
+    <text x="10" y="162" class="field-text">create_by / create_time</text>
+  </g>
+
+  <g transform="translate(810, 340)">
+    <rect class="entity-box" x="0" y="0" width="220" height="230"/>
+    <rect class="entity-header" x="0" y="0" width="220" height="30" rx="8"/>
+    <text x="110" y="20" text-anchor="middle" class="entity-header-text">rs_device_detial 备件明细</text>
+    <text x="10" y="50" class="pk-text">PK spare_part_detailid</text>
+    <text x="10" y="66" class="fk-text">FK provider_id 服务商ID</text>
+    <text x="10" y="82" class="field-text">warehouse_code 仓库编码</text>
+    <text x="10" y="98" class="field-text">nspare_part_name 新备件</text>
+    <text x="10" y="114" class="field-text">nspare_part_code 新备件SN</text>
+    <text x="10" y="130" class="field-text">ospare_part_code 旧备件SN</text>
+    <text x="10" y="146" class="field-text">abstract 操作摘要</text>
+    <text x="10" y="162" class="field-text">transfer_by 调拨人</text>
+    <text x="10" y="178" class="field-text">receive_by 接收人</text>
+    <text x="10" y="194" class="field-text">remark 说明</text>
+    <text x="10" y="210" class="field-text">create_by / create_time</text>
+  </g>
+
+  <!-- Relations rs_ -->
+  <line x1="250" y1="445" x2="290" y2="445" class="relation-line"/>
+  <text x="270" y="438" class="rel-label">1:N</text>
+  <line x1="250" y1="460" x2="550" y2="460" class="relation-line" stroke-dasharray="4"/>
+  <line x1="250" y1="475" x2="810" y2="475" class="relation-line" stroke-dasharray="4"/>
+
+  <!-- Group 3: Issue Record (ir_) -->
+  <g transform="translate(30, 620)">
+    <rect class="entity-box" x="0" y="0" width="220" height="210"/>
+    <rect class="entity-header" x="0" y="0" width="220" height="30" rx="8"/>
+    <text x="110" y="20" text-anchor="middle" class="entity-header-text">ir_issue_recode 问题登记</text>
+    <text x="10" y="50" class="pk-text">PK issue_id</text>
+    <text x="10" y="66" class="field-text">issue_code 问题编码</text>
+    <text x="10" y="82" class="field-text">issue_name 问题名称</text>
+    <text x="10" y="98" class="field-text">customer_name 客户名称</text>
+    <text x="10" y="114" class="field-text">product_id / product_sn</text>
+    <text x="10" y="130" class="field-text">issue_type 问题类别</text>
+    <text x="10" y="146" class="field-text">issue_level 问题等级</text>
+    <text x="10" y="162" class="field-text">service_engineer 工程师</text>
+    <text x="10" y="178" class="field-text">status 状态</text>
+    <text x="10" y="194" class="field-text">create_by / create_time</text>
+  </g>
+
+  <g transform="translate(290, 620)">
+    <rect class="entity-box" x="0" y="0" width="220" height="210"/>
+    <rect class="entity-header" x="0" y="0" width="220" height="30" rx="8"/>
+    <text x="110" y="20" text-anchor="middle" class="entity-header-text">ir_shelf_life 保质期维护</text>
+    <text x="10" y="50" class="pk-text">PK shelf_life_id</text>
+    <text x="10" y="66" class="fk-text">FK provider_id 服务商ID</text>
+    <text x="10" y="82" class="field-text">product_id / product_sn</text>
+    <text x="10" y="98" class="field-text">product_name 产品名称</text>
+    <text x="10" y="114" class="field-text">spare_part_name 备件名称</text>
+    <text x="10" y="130" class="field-text">product_sellby_date</text>
+    <text x="10" y="146" class="field-text">spare_sellby_date</text>
+    <text x="10" y="162" class="field-text">remark 说明</text>
+    <text x="10" y="178" class="field-text">create_by / create_time</text>
+  </g>
+
+  <!-- Group 4: System (sys_) -->
+  <g transform="translate(560, 620)">
+    <rect class="entity-box" x="0" y="0" width="190" height="170"/>
+    <rect class="entity-header" x="0" y="0" width="190" height="30" rx="8"/>
+    <text x="95" y="20" text-anchor="middle" class="entity-header-text">sys_user 用户</text>
+    <text x="10" y="50" class="pk-text">PK user_id</text>
+    <text x="10" y="66" class="fk-text">FK dept_id 部门ID</text>
+    <text x="10" y="82" class="field-text">user_name 用户名</text>
+    <text x="10" y="98" class="field-text">nick_name 昵称</text>
+    <text x="10" y="114" class="field-text">email / phonenumber</text>
+    <text x="10" y="130" class="field-text">status 状态</text>
+    <text x="10" y="146" class="field-text">create_time</text>
+  </g>
+
+  <g transform="translate(790, 620)">
+    <rect class="entity-box" x="0" y="0" width="190" height="150"/>
+    <rect class="entity-header" x="0" y="0" width="190" height="30" rx="8"/>
+    <text x="95" y="20" text-anchor="middle" class="entity-header-text">sys_dept 部门</text>
+    <text x="10" y="50" class="pk-text">PK dept_id</text>
+    <text x="10" y="66" class="fk-text">FK parent_id 父部门</text>
+    <text x="10" y="82" class="field-text">ancestors 祖级列表</text>
+    <text x="10" y="98" class="field-text">dept_name 部门名称</text>
+    <text x="10" y="114" class="field-text">order_num 显示顺序</text>
+    <text x="10" y="130" class="field-text">status 状态</text>
+  </g>
+
+  <g transform="translate(1010, 620)">
+    <rect class="entity-box" x="0" y="0" width="170" height="150"/>
+    <rect class="entity-header" x="0" y="0" width="170" height="30" rx="8"/>
+    <text x="85" y="20" text-anchor="middle" class="entity-header-text">sys_role 角色</text>
+    <text x="10" y="50" class="pk-text">PK role_id</text>
+    <text x="10" y="66" class="field-text">role_name 角色名</text>
+    <text x="10" y="82" class="field-text">role_key 角色权限</text>
+    <text x="10" y="98" class="field-text">role_sort 显示顺序</text>
+    <text x="10" y="114" class="field-text">status 状态</text>
+    <text x="10" y="130" class="field-text">create_time</text>
+  </g>
+
+  <g transform="translate(1200, 620)">
+    <rect class="entity-box" x="0" y="0" width="170" height="150"/>
+    <rect class="entity-header" x="0" y="0" width="170" height="30" rx="8"/>
+    <text x="85" y="20" text-anchor="middle" class="entity-header-text">sys_menu 菜单</text>
+    <text x="10" y="50" class="pk-text">PK menu_id</text>
+    <text x="10" y="66" class="fk-text">FK parent_id 父菜单</text>
+    <text x="10" y="82" class="field-text">menu_name 菜单名</text>
+    <text x="10" y="98" class="field-text">path 路由地址</text>
+    <text x="10" y="114" class="field-text">menu_type 菜单类型</text>
+    <text x="10" y="130" class="field-text">perms 权限标识</text>
+  </g>
+
+  <!-- QRTZ tables (调度任务域) -->
+  <g transform="translate(30, 890)">
+    <rect class="entity-box" x="0" y="0" width="200" height="80" style="fill:#F3E5F5;stroke:#6A1B9A"/>
+    <rect x="0" y="0" width="200" height="30" rx="8" style="fill:#6A1B9A"/>
+    <text x="100" y="20" text-anchor="middle" style="fill:white;font-size:14px;font-weight:bold">QRTZ_JOB_DETAILS</text>
+    <text x="10" y="50" class="pk-text">PK sched_name + job_name</text>
+    <text x="10" y="66" class="field-text">job_class 任务类</text>
+  </g>
+
+  <g transform="translate(260, 890)">
+    <rect class="entity-box" x="0" y="0" width="200" height="80" style="fill:#F3E5F5;stroke:#6A1B9A"/>
+    <rect x="0" y="0" width="200" height="30" rx="8" style="fill:#6A1B9A"/>
+    <text x="100" y="20" text-anchor="middle" style="fill:white;font-size:14px;font-weight:bold">QRTZ_TRIGGERS</text>
+    <text x="10" y="50" class="pk-text">PK sched_name + trigger_name</text>
+    <text x="10" y="66" class="fk-text">FK job_name 关联任务</text>
+  </g>
+
+  <!-- Relations sys_ -->
+  <line x1="750" y1="705" x2="790" y2="705" class="relation-line"/>
+  <text x="770" y="698" class="rel-label">N:1</text>
+
+  <!-- Legend -->
+  <g transform="translate(30, 1010)">
+    <rect x="0" y="0" width="15" height="10" fill="#1565C0" rx="2"/>
+    <text x="20" y="10" class="field-text">PK 主键</text>
+    <rect x="100" y="0" width="15" height="10" fill="#E65100" rx="2"/>
+    <text x="120" y="10" class="field-text">FK 外键</text>
+    <line x1="210" y1="5" x2="240" y2="5" class="relation-line"/>
+    <text x="245" y="10" class="field-text">关联关系</text>
+    <rect x="340" y="0" width="15" height="10" fill="none" stroke="#666" stroke-dasharray="4,2" rx="2"/>
+    <text x="360" y="10" class="field-text">域分组</text>
+  </g>
+</svg>

@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E2761" />
+      <stop offset="100%" stop-color="#2A3A7E" />
+    </linearGradient>
+    <filter id="cardShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1280" height="720" fill="#F8FAFC" />
+
+  
+  <rect width="1280" height="65" fill="url(#headerGrad)" />
+  <text x="60" y="42" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="28" fill="#FFFFFF" font-weight="bold">项目概述</text>
+  <text x="230" y="42" font-family="Microsoft YaHei, Arial, sans-serif" font-size="14" fill="#CADCFC">DARPA-IQAS V1.0</text>
+
+  
+  <path fill="#FFFFFF" filter="url(#cardShadow)" d="M48,85 H602 A8,8 0 0 1 610,93 V337 A8,8 0 0 1 602,345 H48 A8,8 0 0 1 40,337 V93 A8,8 0 0 1 48,85 Z" />
+  <rect x="40" y="85" width="5" height="260" fill="#1E2761" />
+  <text x="65" y="120" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="20" fill="#1E2761" font-weight="bold">系统定位</text>
+  <text x="65" y="152" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#1E293B">DARPA智能问答服务工具（DARPA-IQAS）是研究内容四的核心成果，</text>
+  <text x="65" y="176" font-family="Microsoft YaHei, Arial, sans-serif" font-size="16" fill="#1E293B">面向DARPA国防高级研究计划局相关领域的军事文档智能问答场景。</text>
+  <text x="65" y="210" font-family="Microsoft YaHei, Arial, sans-serif" font-size="15" fill="#1E293B">突破多源异构数据整合瓶颈，融合结构化知识管理与检索增强生成</text>
+  <text x="65" y="234" font-family="Microsoft YaHei, Arial, sans-serif" font-size="15" fill="#1E293B">技术（RAG），打造高精度领域适应能力的离线智能问答系统。</text>
+
+  
+  <path fill="#E0E7FF" d="M71,260 H219 A6,6 0 0 1 225,266 V319 A6,6 0 0 1 219,325 H71 A6,6 0 0 1 65,319 V266 A6,6 0 0 1 71,260 Z" />
+  <text x="145" y="285" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="30" fill="#1E2761" text-anchor="middle" font-weight="bold">3</text>
+  <text x="145" y="310" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">核心模块</text>
+
+  <path fill="#E0E7FF" d="M251,260 H399 A6,6 0 0 1 405,266 V319 A6,6 0 0 1 399,325 H251 A6,6 0 0 1 245,319 V266 A6,6 0 0 1 251,260 Z" />
+  <text x="325" y="285" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="30" fill="#1E2761" text-anchor="middle" font-weight="bold">64</text>
+  <text x="325" y="310" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">测试用例</text>
+
+  <path fill="#D1FAE5" d="M431,260 H579 A6,6 0 0 1 585,266 V319 A6,6 0 0 1 579,325 H431 A6,6 0 0 1 425,319 V266 A6,6 0 0 1 431,260 Z" />
+  <text x="505" y="285" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="30" fill="#059669" text-anchor="middle" font-weight="bold">92%</text>
+  <text x="505" y="310" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">通过率</text>
+
+  
+  <path fill="#FFFFFF" filter="url(#cardShadow)" d="M648,85 H1232 A8,8 0 0 1 1240,93 V337 A8,8 0 0 1 1232,345 H648 A8,8 0 0 1 640,337 V93 A8,8 0 0 1 648,85 Z" />
+  <rect x="640" y="85" width="5" height="260" fill="#2DD4A8" />
+  <text x="665" y="120" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="20" fill="#1E2761" font-weight="bold">核心特性</text>
+
+  
+  <rect x="665" y="140" width="4" height="40" fill="#4A7BF7" />
+  <text x="682" y="155" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E293B" font-weight="bold">完全离线运行</text>
+  <text x="682" y="173" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B">Docker Compose容器化部署，无外网依赖</text>
+
+  <rect x="665" y="192" width="4" height="40" fill="#4A7BF7" />
+  <text x="682" y="207" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E293B" font-weight="bold">本地大模型</text>
+  <text x="682" y="225" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B">智谱GLM-9B本地部署，保障数据安全</text>
+
+  <rect x="665" y="244" width="4" height="40" fill="#4A7BF7" />
+  <text x="682" y="259" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E293B" font-weight="bold">三级架构解耦</text>
+  <text x="682" y="277" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B">知识库、检索增强、提示工程独立可扩展</text>
+
+  <rect x="960" y="140" width="4" height="40" fill="#4A7BF7" />
+  <text x="977" y="155" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E293B" font-weight="bold">军事文档适配</text>
+  <text x="977" y="173" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B">多格式文档深度解析与语义化处理</text>
+
+  <rect x="960" y="192" width="4" height="40" fill="#4A7BF7" />
+  <text x="977" y="207" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E293B" font-weight="bold">混合检索</text>
+  <text x="977" y="225" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B">向量语义检索+关键词检索多特征融合</text>
+
+  
+  <path fill="#FFFFFF" filter="url(#cardShadow)" d="M48,365 H1232 A8,8 0 0 1 1240,373 V437 A8,8 0 0 1 1232,445 H48 A8,8 0 0 1 40,437 V373 A8,8 0 0 1 48,365 Z" />
+  <text x="60" y="395" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#1E2761" font-weight="bold">技术栈</text>
+
+  <path fill="#E0E7FF" d="M74,410 H176 A14,14 0 0 1 190,424 V424 A14,14 0 0 1 176,438 H74 A14,14 0 0 1 60,424 V424 A14,14 0 0 1 74,410 Z" />
+  <text x="125" y="429" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">ragflow v0.18.0</text>
+
+  <path fill="#E0E7FF" d="M219,410 H321 A14,14 0 0 1 335,424 V424 A14,14 0 0 1 321,438 H219 A14,14 0 0 1 205,424 V424 A14,14 0 0 1 219,410 Z" />
+  <text x="270" y="429" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">GLM-9B 本地LLM</text>
+
+  <path fill="#D1FAE5" d="M364,410 H446 A14,14 0 0 1 460,424 V424 A14,14 0 0 1 446,438 H364 A14,14 0 0 1 350,424 V424 A14,14 0 0 1 364,410 Z" />
+  <text x="405" y="429" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#059669" text-anchor="middle">Spring Boot</text>
+
+  <path fill="#D1FAE5" d="M489,410 H541 A14,14 0 0 1 555,424 V424 A14,14 0 0 1 541,438 H489 A14,14 0 0 1 475,424 V424 A14,14 0 0 1 489,410 Z" />
+  <text x="515" y="429" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#059669" text-anchor="middle">Vue 3</text>
+
+  <path fill="#E0E7FF" d="M584,410 H656 A14,14 0 0 1 670,424 V424 A14,14 0 0 1 656,438 H584 A14,14 0 0 1 570,424 V424 A14,14 0 0 1 584,410 Z" />
+  <text x="620" y="429" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">Docker Compose</text>
+
+  <path fill="#E0E7FF" d="M699,410 H781 A14,14 0 0 1 795,424 V424 A14,14 0 0 1 781,438 H699 A14,14 0 0 1 685,424 V424 A14,14 0 0 1 699,410 Z" />
+  <text x="740" y="429" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">MySQL 8.0</text>
+
+  <path fill="#E0E7FF" d="M824,410 H916 A14,14 0 0 1 930,424 V424 A14,14 0 0 1 916,438 H824 A14,14 0 0 1 810,424 V424 A14,14 0 0 1 824,410 Z" />
+  <text x="870" y="429" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#1E2761" text-anchor="middle">Elasticsearch 8.11</text>
+
+  
+  <path fill="#FFFFFF" filter="url(#cardShadow)" d="M48,470 H1232 A8,8 0 0 1 1240,478 V682 A8,8 0 0 1 1232,690 H48 A8,8 0 0 1 40,682 V478 A8,8 0 0 1 48,470 Z" />
+  <text x="60" y="500" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#1E2761" font-weight="bold">三级架构</text>
+
+  
+  <path fill="#4A7BF7" fill-opacity="0.15" stroke="#4A7BF7" stroke-width="1.5" d="M66,520 H414 A6,6 0 0 1 420,526 V584 A6,6 0 0 1 414,590 H66 A6,6 0 0 1 60,584 V526 A6,6 0 0 1 66,520 Z" />
+  <text x="240" y="548" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#1E2761" text-anchor="middle" font-weight="bold">M3 交互式提示词工程</text>
+  <text x="240" y="572" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">助手管理 · 提示词配置 · 多轮对话 · 引用溯源</text>
+
+  
+  <path d="M240,590 L240,600" stroke="#2DD4A8" stroke-width="2" />
+  <polygon points="234,600 246,600 240,610" fill="#2DD4A8" />
+
+  
+  <path fill="#2DD4A8" fill-opacity="0.15" stroke="#2DD4A8" stroke-width="1.5" d="M66,615 H414 A6,6 0 0 1 420,621 V659 A6,6 0 0 1 414,665 H66 A6,6 0 0 1 60,659 V621 A6,6 0 0 1 66,615 Z" />
+  <text x="240" y="645" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle" font-weight="bold">M2 RAG检索增强</text>
+
+  
+  <path d="M240,520 L240,510 L700,510 L700,520" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="4,4" />
+
+  
+  <path fill="#1E2761" fill-opacity="0.1" stroke="#1E2761" stroke-width="1.5" d="M466,520 H814 A6,6 0 0 1 820,526 V584 A6,6 0 0 1 814,590 H466 A6,6 0 0 1 460,584 V526 A6,6 0 0 1 466,520 Z" />
+  <text x="640" y="548" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="16" fill="#1E2761" text-anchor="middle" font-weight="bold">M1 外挂知识库</text>
+  <text x="640" y="572" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#64748B" text-anchor="middle">文档上传 · 智能分块 · 元数据标注 · 知识库管理</text>
+
+  
+  <path d="M640,590 L640,600" stroke="#2DD4A8" stroke-width="2" />
+  <polygon points="634,600 646,600 640,610" fill="#2DD4A8" />
+
+  <path fill="#2DD4A8" fill-opacity="0.15" stroke="#2DD4A8" stroke-width="1.5" d="M466,615 H814 A6,6 0 0 1 820,621 V659 A6,6 0 0 1 814,665 H466 A6,6 0 0 1 460,659 V621 A6,6 0 0 1 466,615 Z" />
+  <text x="640" y="645" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="14" fill="#1E2761" text-anchor="middle" font-weight="bold">向量检索 · 混合检索 · 语义重排序</text>
+
+  
+  <path fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5" d="M866,520 H1214 A6,6 0 0 1 1220,526 V659 A6,6 0 0 1 1214,665 H866 A6,6 0 0 1 860,659 V526 A6,6 0 0 1 866,520 Z" />
+  <text x="1040" y="550" font-family="SimHei, Microsoft YaHei, sans-serif" font-size="15" fill="#1E2761" text-anchor="middle" font-weight="bold">集成部署基础设施</text>
+  <text x="1040" y="575" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">用户认证 (JWT)</text>
+  <text x="1040" y="598" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">离线Docker部署</text>
+  <text x="1040" y="621" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">多客户隔离</text>
+  <text x="1040" y="644" font-family="Microsoft YaHei, Arial, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">数据安全</text>
+
+  
+  <text x="1220" y="700" font-family="Microsoft YaHei, Arial, sans-serif" font-size="12" fill="#94A3B8" text-anchor="end">2 / 14</text>
+</svg>

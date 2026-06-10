@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1050" font-family="Microsoft YaHei, SimHei, sans-serif">
+  <defs>
+    <style>
+      .start-end { fill: #1B5E20; stroke: #1B5E20; }
+      .start-end-text { fill: white; font-size: 13px; font-weight: bold; }
+      .activity { fill: #E3F2FD; stroke: #1565C0; stroke-width: 2; rx: 6; }
+      .activity-text { fill: #1565C0; font-size: 13px; font-weight: bold; }
+      .decision { fill: #FFF3E0; stroke: #E65100; stroke-width: 2; }
+      .decision-text { fill: #E65100; font-size: 12px; font-weight: bold; }
+      .arrow { stroke: #455A64; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+      .label { fill: #455A64; font-size: 11px; }
+      .lane-label { fill: #1565C0; font-size: 14px; font-weight: bold; }
+      .lane-bg { fill: #F5F5F5; stroke: #E0E0E0; stroke-width: 1; }
+      .title { font-size: 20px; font-weight: bold; fill: #1a237e; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#455A64"/>
+    </marker>
+  </defs>
+
+  <text x="450" y="30" text-anchor="middle" class="title">知枢(KnovaQ) 智能问答流程活动图</text>
+
+  <!-- Swim lanes -->
+  <rect class="lane-bg" x="0" y="50" width="180" height="970" rx="4"/>
+  <text x="90" y="75" text-anchor="middle" class="lane-label">用户</text>
+  <rect class="lane-bg" x="180" y="50" width="270" height="970" rx="4"/>
+  <text x="315" y="75" text-anchor="middle" class="lane-label">gaisoft-server</text>
+  <rect class="lane-bg" x="450" y="50" width="220" height="970" rx="4"/>
+  <text x="560" y="75" text-anchor="middle" class="lane-label">ragflow-server</text>
+  <rect class="lane-bg" x="670" y="50" width="230" height="970" rx="4"/>
+  <text x="785" y="75" text-anchor="middle" class="lane-label">LLM/向量库</text>
+
+  <!-- Start -->
+  <ellipse class="start-end" cx="90" cy="110" rx="45" ry="20"/>
+  <text x="90" y="115" text-anchor="middle" class="start-end-text">开始</text>
+
+  <!-- Step 1 -->
+  <path d="M90,130 L90,150 L315,150 L315,170" class="arrow"/>
+  <rect class="activity" x="230" y="170" width="170" height="40" rx="6"/>
+  <text x="315" y="195" text-anchor="middle" class="activity-text">用户发起提问</text>
+
+  <!-- Step 2 -->
+  <path d="M315,210 L315,240" class="arrow"/>
+  <rect class="activity" x="230" y="240" width="170" height="40" rx="6"/>
+  <text x="315" y="265" text-anchor="middle" class="activity-text">创建会话/对话</text>
+
+  <!-- Step 3 -->
+  <path d="M315,280 L315,310 L560,310 L560,330" class="arrow"/>
+  <rect class="activity" x="475" y="330" width="170" height="40" rx="6"/>
+  <text x="560" y="355" text-anchor="middle" class="activity-text">检索知识库</text>
+
+  <!-- Step 4 -->
+  <path d="M560,370 L560,400 L785,400 L785,420" class="arrow"/>
+  <rect class="activity" x="700" y="420" width="170" height="40" rx="6"/>
+  <text x="785" y="445" text-anchor="middle" class="activity-text">向量相似度检索</text>
+
+  <!-- Step 5 -->
+  <path d="M785,460 L785,490" class="arrow"/>
+  <rect class="activity" x="700" y="490" width="170" height="40" rx="6"/>
+  <text x="785" y="515" text-anchor="middle" class="activity-text">返回TopK结果</text>
+
+  <!-- Step 6 -->
+  <path d="M785,530 L785,560 L560,560 L560,580" class="arrow"/>
+  <rect class="activity" x="475" y="580" width="170" height="40" rx="6"/>
+  <text x="560" y="605" text-anchor="middle" class="activity-text">组装Prompt</text>
+
+  <!-- Step 7 - Decision -->
+  <path d="M560,620 L560,660" class="arrow"/>
+  <polygon class="decision" points="560,660 640,700 560,740 480,700"/>
+  <text x="560" y="695" text-anchor="middle" class="decision-text">流式/</text>
+  <text x="560" y="710" text-anchor="middle" class="decision-text">非流式</text>
+
+  <!-- Stream path -->
+  <path d="M560,740 L560,780 L785,780 L785,800" class="arrow"/>
+  <text x="670" y="775" class="label">流式</text>
+  <rect class="activity" x="700" y="800" width="170" height="40" rx="6"/>
+  <text x="785" y="825" text-anchor="middle" class="activity-text">SSE流式返回</text>
+
+  <!-- Non-stream path -->
+  <path d="M480,700 L400,700 L400,800" class="arrow"/>
+  <text x="420" y="695" class="label">非流式</text>
+  <rect class="activity" x="315" y="800" width="170" height="40" rx="6"/>
+  <text x="400" y="825" text-anchor="middle" class="activity-text">完整响应返回</text>
+
+  <!-- Merge -->
+  <path d="M785,840 L785,870 L400,870 L400,880" class="arrow"/>
+  <path d="M400,840 L400,880" class="arrow"/>
+
+  <!-- Step 8 -->
+  <rect class="activity" x="315" y="880" width="170" height="40" rx="6"/>
+  <text x="400" y="905" text-anchor="middle" class="activity-text">保存对话记录</text>
+
+  <!-- Step 9 -->
+  <path d="M400,920 L400,950 L90,950 L90,970" class="arrow"/>
+  <rect class="activity" x="15" y="920" width="150" height="40" rx="6"/>
+  <text x="90" y="945" text-anchor="middle" class="activity-text">展示回答结果</text>
+
+  <!-- End -->
+  <path d="M90,960 L90,980" class="arrow"/>
+  <ellipse class="start-end" cx="90" cy="1000" rx="45" ry="20"/>
+  <text x="90" y="1005" text-anchor="middle" class="start-end-text">结束</text>
+</svg>
