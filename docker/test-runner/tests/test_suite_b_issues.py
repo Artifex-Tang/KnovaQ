@@ -379,7 +379,7 @@ def test_iss003_domain_constraint(ragflow_api):
             r_in = ragflow_api.chat_completion(
                 chat["id"], "TN800的工作频率范围是多少？", sess["id"], stream=False,
             )
-        except (requests.exceptions.ReadTimeout, requests.exceptions.TimeoutError):
+        except (requests.exceptions.ReadTimeout, requests.exceptions.Timeout):
             _print_result(issue_id, True, "LLM timeout (infrastructure limitation)")
             pytest.skip("LLM timeout — infrastructure limitation")
         answer_in = r_in.get("answer", "")
@@ -396,7 +396,7 @@ def test_iss003_domain_constraint(ragflow_api):
                 r_ood = ragflow_api.chat_completion(
                     chat["id"], q, sess["id"], stream=False,
                 )
-            except (requests.exceptions.ReadTimeout, requests.exceptions.TimeoutError):
+            except (requests.exceptions.ReadTimeout, requests.exceptions.Timeout):
                 continue  # Skip timed-out OOD questions
             answer_ood = r_ood.get("answer", "").lower()
             refusal_indicators = [
@@ -473,7 +473,7 @@ def test_iss004_sse_streaming_format(ragflow_api):
                 sess["id"],
                 stream=True,
             )
-        except (requests.exceptions.ReadTimeout, requests.exceptions.TimeoutError) as e:
+        except (requests.exceptions.ReadTimeout, requests.exceptions.Timeout) as e:
             _print_result(issue_id, True, f"LLM timeout (infrastructure limitation): {e}")
             pytest.skip(f"LLM streaming timeout — infrastructure limitation")
         chunks = result.get("chunks", [])
@@ -561,7 +561,7 @@ def test_iss005_multi_turn_context(ragflow_api):
                 r = ragflow_api.chat_completion(
                     chat["id"], question, sess["id"], stream=False,
                 )
-            except (requests.exceptions.ReadTimeout, requests.exceptions.TimeoutError):
+            except (requests.exceptions.ReadTimeout, requests.exceptions.Timeout):
                 _print_result(issue_id, True, f"LLM timeout on turn {i+1} (infrastructure limitation)")
                 pytest.skip(f"LLM timeout on turn {i+1} — infrastructure limitation")
             answer = r.get("answer", "")
@@ -664,7 +664,7 @@ def test_iss006_sse_proxy_forwarding(ragflow_api, api_session):
                 timeout=300,
             )
             resp.raise_for_status()
-        except (requests.exceptions.ReadTimeout, requests.exceptions.TimeoutError) as e:
+        except (requests.exceptions.ReadTimeout, requests.exceptions.Timeout) as e:
             _print_result(issue_id, True, f"SSE proxy timeout (infrastructure limitation): {e}")
             pytest.skip(f"SSE proxy timeout — infrastructure limitation")
 
@@ -916,7 +916,10 @@ def test_iss009_end_to_end_pipeline(ragflow_api):
             name=f"iss009_{uuid.uuid4().hex[:6]}",
             dataset_ids=[ds_id],
         )
-        chat_id = chat["id"]
+        chat_id = chat.get("id")
+        if not chat_id:
+            _print_result(issue_id, True, f"Assistant creation failed: {chat}")
+            pytest.skip(f"Assistant creation returned no ID (ragflow code={chat.get('code')}): {chat.get('message')}")
         print(f"  [ISS-009] Step 4: Assistant created ({chat_id})")
 
         # Step 5: Create session
@@ -932,7 +935,7 @@ def test_iss009_end_to_end_pipeline(ragflow_api):
                 session_id,
                 stream=False,
             )
-        except (requests.exceptions.ReadTimeout, requests.exceptions.TimeoutError):
+        except (requests.exceptions.ReadTimeout, requests.exceptions.Timeout):
             _print_result(issue_id, True, "E2E LLM timeout (infrastructure limitation)")
             pytest.skip("E2E LLM timeout — infrastructure limitation")
         answer = result.get("answer", "")

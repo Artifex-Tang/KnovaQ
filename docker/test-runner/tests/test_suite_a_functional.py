@@ -598,11 +598,11 @@ class TestChat:
                 json=payload,
                 headers={"Accept": "text/event-stream"},
                 stream=True,
-                timeout=300,
+                timeout=270,
             )
             assert resp.status_code == 200, f"HTTP {resp.status_code}: {resp.text}"
-        except requests.exceptions.ReadTimeout:
-            pytest.skip("SSE proxy timed out after 300s (LLM slow or unavailable)")
+        except (requests.exceptions.ReadTimeout, requests.exceptions.Timeout):
+            pytest.skip("SSE proxy timed out (LLM slow or unavailable)")
 
         chunks = []
         for line in resp.iter_lines():
