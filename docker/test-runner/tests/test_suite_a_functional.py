@@ -625,7 +625,11 @@ class TestChat:
         ), f"SSE stream should contain data events. Combined: {combined[:200]}"
 
     def test_chat004_non_streaming_chat(self, api_session, assistant_id, session_id):
-        """CHAT-004: Non-streaming chat via proxy."""
+        """CHAT-004: Non-streaming chat via proxy.
+
+        Note: Non-streaming proxy waits for full LLM response before returning.
+        May timeout if LLM is slow — marked as soft (skip on timeout).
+        """
         payload = {
             "url": f"/api/v1/chats/{assistant_id}/completions",
             "method": "post",
@@ -638,7 +642,7 @@ class TestChat:
         try:
             resp = api_session.post(f"{API_URL}/ragflow/common", json=payload, timeout=300)
         except requests.exceptions.ReadTimeout:
-            pytest.skip("Non-streaming chat timed out after 300s (LLM slow or unavailable)")
+            pytest.skip("Non-streaming chat timed out (LLM slow through proxy, known limitation)")
         assert resp.status_code == 200, f"HTTP {resp.status_code}: {resp.text}"
         body = resp.json()
         data = body.get("data", body)
