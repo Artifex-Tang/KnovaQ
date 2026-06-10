@@ -131,8 +131,10 @@ class TestAuth:
         """RagFlowKey config exists and starts with ragflow-."""
         resp = api.get(f"{API_URL}/system/config/configKey/RagFlowKey", timeout=30)
         assert resp.status_code == 200
-        key = resp.json().get("data", "")
-        assert str(key).startswith("ragflow-")
+        data = resp.json()
+        # AjaxResult returns value in 'msg' field for configKey endpoint
+        key = data.get("data") or data.get("msg") or ""
+        assert str(key).startswith("ragflow-"), f"RagFlowKey value: {key}"
 
 
 # ============================================================================
