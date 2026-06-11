@@ -1,0 +1,60 @@
+[
+  {
+    "question": "What is the MTBF of Utility helicopter?",
+    "answer": "500 h",
+    "keywords": [
+      "mtbf",
+      "500",
+      "h"
+    ]
+  },
+  {
+    "question": "What is the Storage Temp of Utility helicopter?",
+    "answer": "-50~+70 °C",
+    "keywords": [
+      "storage temp",
+      "-50~+70",
+      "°C"
+    ]
+  },
+  {
+    "question": "What is the Detection Range of Utility helicopter?",
+    "answer": "60 km",
+    "keywords": [
+      "detection range",
+      "60",
+      "km"
+    ]
+  },
+  {
+    "question": "What category does Utility helicopter belong to?",
+    "answer": "missiles",
+    "keywords": [
+      "missiles"
+    ]
+  },
+  {
+    "question": "What is the primary function of Utility helicopter?",
+    "answer": "Utility helicopter",
+    "keywords": [
+      "z-20",
+      "utility helicopter"
+    ]
+  },
+  {
+    "question": "What maintenance interval is recommended for Utility helicopter?",
+    "answer": "daily",
+    "keywords": [
+      "maintenance",
+      "interval"
+    ]
+  },
+  {
+    "question": "What standard applies to Utility helicopter testing?",
+    "answer": "MIL-STD-810G",
+    "keywords": [
+      "standard",
+      "GJB"
+    ]
+  }
+]

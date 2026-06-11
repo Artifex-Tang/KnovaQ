@@ -1,0 +1,60 @@
+[
+  {
+    "question": "What is the MTBF of Cruise missile?",
+    "answer": "500 h",
+    "keywords": [
+      "mtbf",
+      "500",
+      "h"
+    ]
+  },
+  {
+    "question": "What is the Recognition Range of Cruise missile?",
+    "answer": "80 km",
+    "keywords": [
+      "recognition range",
+      "80",
+      "km"
+    ]
+  },
+  {
+    "question": "What is the Peak Power of Cruise missile?",
+    "answer": "45 kW",
+    "keywords": [
+      "peak power",
+      "45",
+      "kW"
+    ]
+  },
+  {
+    "question": "What category does Cruise missile belong to?",
+    "answer": "engineering",
+    "keywords": [
+      "engineering"
+    ]
+  },
+  {
+    "question": "What is the primary function of Cruise missile?",
+    "answer": "Cruise missile",
+    "keywords": [
+      "cj-100",
+      "cruise missile"
+    ]
+  },
+  {
+    "question": "What maintenance interval is recommended for Cruise missile?",
+    "answer": "monthly",
+    "keywords": [
+      "maintenance",
+      "interval"
+    ]
+  },
+  {
+    "question": "What standard applies to Cruise missile testing?",
+    "answer": "GJB 151B-2013",
+    "keywords": [
+      "standard",
+      "GJB"
+    ]
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "question": "反导拦截弹的调频带宽是多少？",
+    "answer": "100 MHz",
+    "keywords": [
+      "调频带宽",
+      "100",
+      "MHz"
+    ]
+  },
+  {
+    "question": "反导拦截弹的寿命是多少？",
+    "answer": "20 year",
+    "keywords": [
+      "寿命",
+      "20",
+      "year"
+    ]
+  },
+  {
+    "question": "反导拦截弹的拦截距离是多少？",
+    "answer": "200 km",
+    "keywords": [
+      "拦截距离",
+      "200",
+      "km"
+    ]
+  },
+  {
+    "question": "HQ-19属于哪个类别？",
+    "answer": "防化",
+    "keywords": [
+      "防化"
+    ]
+  },
+  {
+    "question": "反导拦截弹的主要用途是什么？",
+    "answer": "反导拦截弹",
+    "keywords": [
+      "HQ-19",
+      "反导拦截弹"
+    ]
+  },
+  {
+    "question": "反导拦截弹推荐的维护周期是？",
+    "answer": "每月",
+    "keywords": [
+      "维护",
+      "周期"
+    ]
+  },
+  {
+    "question": "反导拦截弹的检验依据什么标准？",
+    "answer": "GJB 151B-2013",
+    "keywords": [
+      "GJB",
+      "标准"
+    ]
+  },
+  {
+    "question": "反导拦截弹的工作温度范围是？",
+    "answer": "-40°C 至 +55°C",
+    "keywords": [
+      "温度",
+      "-40",
+      "+55"
+    ]
+  },
+  {
+    "question": "反导拦截弹的防护等级是？",
+    "answer": "IP67",
+    "keywords": [
+      "防护",
+      "IP67"
+    ]
+  }
+]

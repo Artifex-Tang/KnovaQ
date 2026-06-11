@@ -1,0 +1,64 @@
+Maintenance Procedure: engineering Road Repair
+==============================================
+Equipment: Stealth fighter (J-20)
+Date: 2026-06-19
+
+1. PURPOSE
+This maintenance procedure provides guidance for road repair operations.
+
+2. PROCEDURES
+  Step 1: Operation detail line 1 for Stealth fighter.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 2: Operation detail line 2 for Stealth fighter.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 3: Operation detail line 3 for Stealth fighter.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 4: Operation detail line 4 for Stealth fighter.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 5: Operation detail line 5 for Stealth fighter.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 6: Operation detail line 6 for Stealth fighter.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 7: Operation detail line 7 for Stealth fighter.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 8: Operation detail line 8 for Stealth fighter.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 9: Operation detail line 9 for Stealth fighter.
+    - Verify parameter within range
+    - Record measurement in log
+
+3. PRECAUTIONS
+  - Always wear appropriate PPE
+  - Follow lock-out/tag-out procedures
+  - Report anomalies immediately
+  - Maintain clean workspace
+
+4. EMERGENCY PROCEDURES
+  - Shutdown: Press emergency stop button
+  - Evacuate: Follow posted evacuation route
+  - Report: Contact maintenance at ext. 4616
+
+5. REFERENCES
+  - Technical Manual TM-77-8273
+  - GJB Standard GJB 150-2009
+
+附录A 常用数据表
+----------------------------------------
+  跳频速率: 500 hop/s
+  防护等级: IP67 
+  工作频段: 8-12 GHz
+  备用功率: 2 W
+  输出功率: 50 W
+  工作温度: -40~+55 °C
+  中频带宽: 20 MHz
+  大修间隔: 5000 h
+  大修间隔: 5000 h
+  发射功率: 20 W

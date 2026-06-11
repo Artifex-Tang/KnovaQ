@@ -1,0 +1,60 @@
+[
+  {
+    "question": "What is the MTBF of Stealth fighter?",
+    "answer": "500 h",
+    "keywords": [
+      "mtbf",
+      "500",
+      "h"
+    ]
+  },
+  {
+    "question": "What is the Comm Range of Stealth fighter?",
+    "answer": "30 km",
+    "keywords": [
+      "comm range",
+      "30",
+      "km"
+    ]
+  },
+  {
+    "question": "What is the FM Bandwidth of Stealth fighter?",
+    "answer": "100 MHz",
+    "keywords": [
+      "fm bandwidth",
+      "100",
+      "MHz"
+    ]
+  },
+  {
+    "question": "What category does Stealth fighter belong to?",
+    "answer": "engineering",
+    "keywords": [
+      "engineering"
+    ]
+  },
+  {
+    "question": "What is the primary function of Stealth fighter?",
+    "answer": "Stealth fighter",
+    "keywords": [
+      "j-20",
+      "stealth fighter"
+    ]
+  },
+  {
+    "question": "What maintenance interval is recommended for Stealth fighter?",
+    "answer": "daily",
+    "keywords": [
+      "maintenance",
+      "interval"
+    ]
+  },
+  {
+    "question": "What standard applies to Stealth fighter testing?",
+    "answer": "MIL-STD-810G",
+    "keywords": [
+      "standard",
+      "GJB"
+    ]
+  }
+]

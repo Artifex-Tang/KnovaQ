@@ -1,0 +1,77 @@
+[
+  {
+    "question": "驱逐舰的EMC等级是多少？",
+    "answer": "GJB 151B ",
+    "keywords": [
+      "EMC等级",
+      "GJB 151B",
+      ""
+    ]
+  },
+  {
+    "question": "驱逐舰的载波频率是多少？",
+    "answer": "2.4 GHz",
+    "keywords": [
+      "载波频率",
+      "2.4",
+      "GHz"
+    ]
+  },
+  {
+    "question": "驱逐舰的平均功率是多少？",
+    "answer": "5 kW",
+    "keywords": [
+      "平均功率",
+      "5",
+      "kW"
+    ]
+  },
+  {
+    "question": "Type 055属于哪个类别？",
+    "answer": "防化",
+    "keywords": [
+      "防化"
+    ]
+  },
+  {
+    "question": "驱逐舰的主要用途是什么？",
+    "answer": "驱逐舰",
+    "keywords": [
+      "Type 055",
+      "驱逐舰"
+    ]
+  },
+  {
+    "question": "驱逐舰推荐的维护周期是？",
+    "answer": "每周",
+    "keywords": [
+      "维护",
+      "周期"
+    ]
+  },
+  {
+    "question": "驱逐舰的检验依据什么标准？",
+    "answer": "GJB 151B-2013",
+    "keywords": [
+      "GJB",
+      "标准"
+    ]
+  },
+  {
+    "question": "驱逐舰的工作温度范围是？",
+    "answer": "-40°C 至 +55°C",
+    "keywords": [
+      "温度",
+      "-40",
+      "+55"
+    ]
+  },
+  {
+    "question": "驱逐舰的防护等级是？",
+    "answer": "IP67",
+    "keywords": [
+      "防护",
+      "IP67"
+    ]
+  }
+]

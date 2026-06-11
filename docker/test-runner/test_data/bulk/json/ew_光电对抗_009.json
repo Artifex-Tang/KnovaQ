@@ -1,0 +1,77 @@
+[
+  {
+    "question": "战略运输机的识别距离是多少？",
+    "answer": "80 km",
+    "keywords": [
+      "识别距离",
+      "80",
+      "km"
+    ]
+  },
+  {
+    "question": "战略运输机的抗振等级是多少？",
+    "answer": "MIL-STD-810G ",
+    "keywords": [
+      "抗振等级",
+      "MIL-STD-810G",
+      ""
+    ]
+  },
+  {
+    "question": "战略运输机的中频带宽是多少？",
+    "answer": "20 MHz",
+    "keywords": [
+      "中频带宽",
+      "20",
+      "MHz"
+    ]
+  },
+  {
+    "question": "Y-20属于哪个类别？",
+    "answer": "电子战",
+    "keywords": [
+      "电子战"
+    ]
+  },
+  {
+    "question": "战略运输机的主要用途是什么？",
+    "answer": "战略运输机",
+    "keywords": [
+      "Y-20",
+      "战略运输机"
+    ]
+  },
+  {
+    "question": "战略运输机推荐的维护周期是？",
+    "answer": "每年",
+    "keywords": [
+      "维护",
+      "周期"
+    ]
+  },
+  {
+    "question": "战略运输机的检验依据什么标准？",
+    "answer": "GJB 450B-2008",
+    "keywords": [
+      "GJB",
+      "标准"
+    ]
+  },
+  {
+    "question": "战略运输机的工作温度范围是？",
+    "answer": "-40°C 至 +55°C",
+    "keywords": [
+      "温度",
+      "-40",
+      "+55"
+    ]
+  },
+  {
+    "question": "战略运输机的防护等级是？",
+    "answer": "IP67",
+    "keywords": [
+      "防护",
+      "IP67"
+    ]
+  }
+]

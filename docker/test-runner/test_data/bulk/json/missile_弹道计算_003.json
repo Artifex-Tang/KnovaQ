@@ -1,0 +1,60 @@
+[
+  {
+    "question": "What is the Carrier Frequency of SAM system?",
+    "answer": "2.4 GHz",
+    "keywords": [
+      "carrier frequency",
+      "2.4",
+      "GHz"
+    ]
+  },
+  {
+    "question": "What is the Storage Temp of SAM system?",
+    "answer": "-50~+70 °C",
+    "keywords": [
+      "storage temp",
+      "-50~+70",
+      "°C"
+    ]
+  },
+  {
+    "question": "What is the Peak Power of SAM system?",
+    "answer": "45 kW",
+    "keywords": [
+      "peak power",
+      "45",
+      "kW"
+    ]
+  },
+  {
+    "question": "What category does SAM system belong to?",
+    "answer": "missiles",
+    "keywords": [
+      "missiles"
+    ]
+  },
+  {
+    "question": "What is the primary function of SAM system?",
+    "answer": "SAM system",
+    "keywords": [
+      "hq-9b",
+      "sam system"
+    ]
+  },
+  {
+    "question": "What maintenance interval is recommended for SAM system?",
+    "answer": "annually",
+    "keywords": [
+      "maintenance",
+      "interval"
+    ]
+  },
+  {
+    "question": "What standard applies to SAM system testing?",
+    "answer": "MIL-STD-810G",
+    "keywords": [
+      "standard",
+      "GJB"
+    ]
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "question": "巡航导弹的输出功率是多少？",
+    "answer": "50 W",
+    "keywords": [
+      "输出功率",
+      "50",
+      "W"
+    ]
+  },
+  {
+    "question": "巡航导弹的作用距离是多少？",
+    "answer": "150 km",
+    "keywords": [
+      "作用距离",
+      "150",
+      "km"
+    ]
+  },
+  {
+    "question": "巡航导弹的EMC等级是多少？",
+    "answer": "GJB 151B ",
+    "keywords": [
+      "EMC等级",
+      "GJB 151B",
+      ""
+    ]
+  },
+  {
+    "question": "CJ-100属于哪个类别？",
+    "answer": "防化",
+    "keywords": [
+      "防化"
+    ]
+  },
+  {
+    "question": "巡航导弹的主要用途是什么？",
+    "answer": "巡航导弹",
+    "keywords": [
+      "CJ-100",
+      "巡航导弹"
+    ]
+  },
+  {
+    "question": "巡航导弹推荐的维护周期是？",
+    "answer": "每月",
+    "keywords": [
+      "维护",
+      "周期"
+    ]
+  },
+  {
+    "question": "巡航导弹的检验依据什么标准？",
+    "answer": "GJB 150A-2009",
+    "keywords": [
+      "GJB",
+      "标准"
+    ]
+  },
+  {
+    "question": "巡航导弹的工作温度范围是？",
+    "answer": "-40°C 至 +55°C",
+    "keywords": [
+      "温度",
+      "-40",
+      "+55"
+    ]
+  },
+  {
+    "question": "巡航导弹的防护等级是？",
+    "answer": "IP67",
+    "keywords": [
+      "防护",
+      "IP67"
+    ]
+  }
+]

@@ -631,15 +631,16 @@ class TestDocParseBug:
         )
         print(f"  Parse trigger: code={parse_resp.json().get('code')}")
 
-        # Wait for parsing
-        for _ in range(30):
+        # Wait for parsing (ragflow 0.18.0 status: UNSTART/RUNNING/DONE/FAIL/CANCEL)
+        doc = {}
+        for _ in range(60):  # 60 x 5s = 300s max
             doc_resp = requests.get(
                 f"{RAGFLOW_URL}/api/v1/datasets/{ds_id}/documents",
                 headers=HEADERS, timeout=30
             )
             docs = doc_resp.json().get("data", {}).get("docs", [])
             doc = next((d for d in docs if d.get("id") == doc_id), None)
-            if doc and doc.get("run") == "SUCCESS":
+            if doc and doc.get("run") == "DONE":
                 break
             if doc and doc.get("run") == "FAIL":
                 _screenshot_text("parse_fail", doc)
@@ -647,9 +648,8 @@ class TestDocParseBug:
             time.sleep(5)
 
         # Verify chunks
-        doc = doc_resp.json().get("data", {}).get("docs", [{}])[0] if docs else {}
-        chunk_count = doc.get("chunk_count", 0)
-        _screenshot_text("parse_result", {"doc_id": doc_id, "run": doc.get("run"), "chunk_count": chunk_count})
+        chunk_count = doc.get("chunk_num", 0) if doc else 0
+        _screenshot_text("parse_result", {"doc_id": doc_id, "run": doc.get("run") if doc else "NOT_FOUND", "chunk_count": chunk_count})
 
         # Cleanup
         try:

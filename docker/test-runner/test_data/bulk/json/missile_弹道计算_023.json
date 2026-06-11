@@ -1,0 +1,60 @@
+[
+  {
+    "question": "What is the Standby Power of Utility helicopter?",
+    "answer": "2 W",
+    "keywords": [
+      "standby power",
+      "2",
+      "W"
+    ]
+  },
+  {
+    "question": "What is the Hop Rate of Utility helicopter?",
+    "answer": "500 hop/s",
+    "keywords": [
+      "hop rate",
+      "500",
+      "hop/s"
+    ]
+  },
+  {
+    "question": "What is the Intercept Range of Utility helicopter?",
+    "answer": "200 km",
+    "keywords": [
+      "intercept range",
+      "200",
+      "km"
+    ]
+  },
+  {
+    "question": "What category does Utility helicopter belong to?",
+    "answer": "missiles",
+    "keywords": [
+      "missiles"
+    ]
+  },
+  {
+    "question": "What is the primary function of Utility helicopter?",
+    "answer": "Utility helicopter",
+    "keywords": [
+      "z-20",
+      "utility helicopter"
+    ]
+  },
+  {
+    "question": "What maintenance interval is recommended for Utility helicopter?",
+    "answer": "quarterly",
+    "keywords": [
+      "maintenance",
+      "interval"
+    ]
+  },
+  {
+    "question": "What standard applies to Utility helicopter testing?",
+    "answer": "MIL-STD-810G",
+    "keywords": [
+      "standard",
+      "GJB"
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+DARPA Advanced Radar Signal Processing Technical Report
+
+Executive Summary
+This report presents findings from the Phase II evaluation of adaptive radar signal processing algorithms under the DARPA MTO program.
+
+1. Introduction
+Modern battlefield radar systems face increasingly complex electromagnetic environments.
+
+2. Technical Approach
+We developed a novel Space-Time Adaptive Processing (STAP) architecture.
+
+3. Key Findings
+3.1 Detection Performance
+The adaptive algorithm achieved a 12 dB improvement in SINR compared to conventional matched filtering.
+
+3.2 Computational Requirements
+Processing latency: 45 ms per CPI (128 pulses, 16 channels)
+Memory footprint: 2.3 GB for full covariance estimation
+Power consumption: 85W average on Xilinx VU9P FPGA
+
+3.3 Clutter Rejection
+Main beam clutter rejection: > 55 dB
+Sidelobe clutter rejection: > 70 dB
+
+4. Conclusions
+Recommendation: proceed to Phase III field trials with operational units.

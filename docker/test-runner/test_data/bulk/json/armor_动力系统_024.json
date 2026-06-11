@@ -1,0 +1,77 @@
+[
+  {
+    "question": "步兵战车的工作温度是多少？",
+    "answer": "-40~+55 °C",
+    "keywords": [
+      "工作温度",
+      "-40~+55",
+      "°C"
+    ]
+  },
+  {
+    "question": "步兵战车的通信距离是多少？",
+    "answer": "30 km",
+    "keywords": [
+      "通信距离",
+      "30",
+      "km"
+    ]
+  },
+  {
+    "question": "步兵战车的调频带宽是多少？",
+    "answer": "100 MHz",
+    "keywords": [
+      "调频带宽",
+      "100",
+      "MHz"
+    ]
+  },
+  {
+    "question": "ZBD-04A属于哪个类别？",
+    "answer": "装甲",
+    "keywords": [
+      "装甲"
+    ]
+  },
+  {
+    "question": "步兵战车的主要用途是什么？",
+    "answer": "步兵战车",
+    "keywords": [
+      "ZBD-04A",
+      "步兵战车"
+    ]
+  },
+  {
+    "question": "步兵战车推荐的维护周期是？",
+    "answer": "每周",
+    "keywords": [
+      "维护",
+      "周期"
+    ]
+  },
+  {
+    "question": "步兵战车的检验依据什么标准？",
+    "answer": "GJB 151B-2013",
+    "keywords": [
+      "GJB",
+      "标准"
+    ]
+  },
+  {
+    "question": "步兵战车的工作温度范围是？",
+    "answer": "-40°C 至 +55°C",
+    "keywords": [
+      "温度",
+      "-40",
+      "+55"
+    ]
+  },
+  {
+    "question": "步兵战车的防护等级是？",
+    "answer": "IP67",
+    "keywords": [
+      "防护",
+      "IP67"
+    ]
+  }
+]

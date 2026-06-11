@@ -1,0 +1,77 @@
+[
+  {
+    "question": "主战坦克的抗振等级是多少？",
+    "answer": "MIL-STD-810G ",
+    "keywords": [
+      "抗振等级",
+      "MIL-STD-810G",
+      ""
+    ]
+  },
+  {
+    "question": "主战坦克的发射功率是多少？",
+    "answer": "20 W",
+    "keywords": [
+      "发射功率",
+      "20",
+      "W"
+    ]
+  },
+  {
+    "question": "主战坦克的载波频率是多少？",
+    "answer": "2.4 GHz",
+    "keywords": [
+      "载波频率",
+      "2.4",
+      "GHz"
+    ]
+  },
+  {
+    "question": "Type 99A属于哪个类别？",
+    "answer": "通信",
+    "keywords": [
+      "通信"
+    ]
+  },
+  {
+    "question": "主战坦克的主要用途是什么？",
+    "answer": "主战坦克",
+    "keywords": [
+      "Type 99A",
+      "主战坦克"
+    ]
+  },
+  {
+    "question": "主战坦克推荐的维护周期是？",
+    "answer": "每月",
+    "keywords": [
+      "维护",
+      "周期"
+    ]
+  },
+  {
+    "question": "主战坦克的检验依据什么标准？",
+    "answer": "GJB 899A-2009",
+    "keywords": [
+      "GJB",
+      "标准"
+    ]
+  },
+  {
+    "question": "主战坦克的工作温度范围是？",
+    "answer": "-40°C 至 +55°C",
+    "keywords": [
+      "温度",
+      "-40",
+      "+55"
+    ]
+  },
+  {
+    "question": "主战坦克的防护等级是？",
+    "answer": "IP67",
+    "keywords": [
+      "防护",
+      "IP67"
+    ]
+  }
+]

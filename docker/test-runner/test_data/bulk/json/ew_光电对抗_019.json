@@ -1,0 +1,77 @@
+[
+  {
+    "question": "战略运输机的防护等级是多少？",
+    "answer": "IP67 ",
+    "keywords": [
+      "防护等级",
+      "IP67",
+      ""
+    ]
+  },
+  {
+    "question": "战略运输机的MTBF是多少？",
+    "answer": "500 h",
+    "keywords": [
+      "MTBF",
+      "500",
+      "h"
+    ]
+  },
+  {
+    "question": "战略运输机的作用距离是多少？",
+    "answer": "150 km",
+    "keywords": [
+      "作用距离",
+      "150",
+      "km"
+    ]
+  },
+  {
+    "question": "Y-20属于哪个类别？",
+    "answer": "电子战",
+    "keywords": [
+      "电子战"
+    ]
+  },
+  {
+    "question": "战略运输机的主要用途是什么？",
+    "answer": "战略运输机",
+    "keywords": [
+      "Y-20",
+      "战略运输机"
+    ]
+  },
+  {
+    "question": "战略运输机推荐的维护周期是？",
+    "answer": "每月",
+    "keywords": [
+      "维护",
+      "周期"
+    ]
+  },
+  {
+    "question": "战略运输机的检验依据什么标准？",
+    "answer": "GJB 150A-2009",
+    "keywords": [
+      "GJB",
+      "标准"
+    ]
+  },
+  {
+    "question": "战略运输机的工作温度范围是？",
+    "answer": "-40°C 至 +55°C",
+    "keywords": [
+      "温度",
+      "-40",
+      "+55"
+    ]
+  },
+  {
+    "question": "战略运输机的防护等级是？",
+    "answer": "IP67",
+    "keywords": [
+      "防护",
+      "IP67"
+    ]
+  }
+]

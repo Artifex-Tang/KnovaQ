@@ -1,0 +1,77 @@
+[
+  {
+    "question": "中程弹道导弹的平均功率是多少？",
+    "answer": "5 kW",
+    "keywords": [
+      "平均功率",
+      "5",
+      "kW"
+    ]
+  },
+  {
+    "question": "中程弹道导弹的EMC等级是多少？",
+    "answer": "GJB 151B ",
+    "keywords": [
+      "EMC等级",
+      "GJB 151B",
+      ""
+    ]
+  },
+  {
+    "question": "中程弹道导弹的调频带宽是多少？",
+    "answer": "100 MHz",
+    "keywords": [
+      "调频带宽",
+      "100",
+      "MHz"
+    ]
+  },
+  {
+    "question": "DF-26属于哪个类别？",
+    "answer": "装甲",
+    "keywords": [
+      "装甲"
+    ]
+  },
+  {
+    "question": "中程弹道导弹的主要用途是什么？",
+    "answer": "中程弹道导弹",
+    "keywords": [
+      "DF-26",
+      "中程弹道导弹"
+    ]
+  },
+  {
+    "question": "中程弹道导弹推荐的维护周期是？",
+    "answer": "每日",
+    "keywords": [
+      "维护",
+      "周期"
+    ]
+  },
+  {
+    "question": "中程弹道导弹的检验依据什么标准？",
+    "answer": "GJB 899A-2009",
+    "keywords": [
+      "GJB",
+      "标准"
+    ]
+  },
+  {
+    "question": "中程弹道导弹的工作温度范围是？",
+    "answer": "-40°C 至 +55°C",
+    "keywords": [
+      "温度",
+      "-40",
+      "+55"
+    ]
+  },
+  {
+    "question": "中程弹道导弹的防护等级是？",
+    "answer": "IP67",
+    "keywords": [
+      "防护",
+      "IP67"
+    ]
+  }
+]

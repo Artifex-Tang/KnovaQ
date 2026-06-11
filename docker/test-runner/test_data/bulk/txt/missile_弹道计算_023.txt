@@ -1,0 +1,48 @@
+Checklist: missiles Ballistic Computation
+=========================================
+Equipment: SAM system (HQ-9B)
+Date: 2026-06-03
+
+1. PURPOSE
+This checklist provides guidance for ballistic computation operations.
+
+2. PROCEDURES
+  Step 1: Operation detail line 1 for SAM system.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 2: Operation detail line 2 for SAM system.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 3: Operation detail line 3 for SAM system.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 4: Operation detail line 4 for SAM system.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 5: Operation detail line 5 for SAM system.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 6: Operation detail line 6 for SAM system.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 7: Operation detail line 7 for SAM system.
+    - Verify parameter within range
+    - Record measurement in log
+  Step 8: Operation detail line 8 for SAM system.
+    - Verify parameter within range
+    - Record measurement in log
+
+3. PRECAUTIONS
+  - Always wear appropriate PPE
+  - Follow lock-out/tag-out procedures
+  - Report anomalies immediately
+  - Maintain clean workspace
+
+4. EMERGENCY PROCEDURES
+  - Shutdown: Press emergency stop button
+  - Evacuate: Follow posted evacuation route
+  - Report: Contact maintenance at ext. 8908
+
+5. REFERENCES
+  - Technical Manual TM-12-8418
+  - GJB Standard GJB 899-2009
