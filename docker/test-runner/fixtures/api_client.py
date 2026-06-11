@@ -150,8 +150,8 @@ class RagflowClient:
 
     def create_chat(self, name: str, dataset_ids: list = None, **kwargs) -> dict:
         body = {"name": name}
-        if dataset_ids:
-            body["dataset_ids"] = dataset_ids
+        # ragflow 0.18.0 requires dataset_ids (KeyError if absent)
+        body["dataset_ids"] = dataset_ids or []
         body.update(kwargs)
         result = self._post("/api/v1/chats", json=body)
         return result.get("data", result)
