@@ -5,6 +5,10 @@
 -- ------------------------------------------------------
 -- Server version	8.0.39
 
+-- KnovaQ: mysqldump omits CREATE DATABASE/USE; add them so initdb.d has a target schema
+CREATE DATABASE IF NOT EXISTS `equipment_iqas` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `equipment_iqas`;
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;

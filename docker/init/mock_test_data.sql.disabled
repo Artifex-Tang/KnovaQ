@@ -7,6 +7,10 @@
 
 SET NAMES utf8mb4;
 
+-- KnovaQ: initdb runs each *.sql in its own session; select target DB explicitly
+-- (bare INSERTs below would otherwise fail "No database selected" and abort later seed scripts).
+USE `equipment_iqas`;
+
 -- ============================================================
 -- 1. 文件分类 (kb_source_type) — 已有 7 条，补充子分类
 -- ============================================================
