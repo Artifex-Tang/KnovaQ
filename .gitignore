@@ -2,4 +2,6 @@
 /default.conf
 /equipment_iqas.sql
 docker/test-runner/reports/
+docker/logs/
+docker/images/
 .idea/

@@ -17,5 +17,22 @@ for TAR in "$IMAGES_DIR"/*.tar; do
 done
 
 echo ""
-echo "✓ All images loaded"
+echo "Verifying expected image repositories are present..."
+MISSING=0
+for IMG in infiniflow/ragflow elasticsearch mysql minio/minio valkey/valkey gaisoftmes nginx; do
+    if docker images --format '{{.Repository}}' | grep -qx "$IMG" || \
+       docker images --format '{{.Repository}}' | grep -q "$IMG"; then
+        echo "  [OK]      $IMG"
+    else
+        echo "  [MISSING] $IMG"
+        MISSING=$((MISSING+1))
+    fi
+done
+
+if [ "$MISSING" -ne 0 ]; then
+    echo "✗ $MISSING expected image(s) missing — check that all *.tar files are present and re-run."
+    exit 1
+fi
+
+echo "✓ All images loaded and verified"
 echo "Now run: ./scripts/start.sh <project>"

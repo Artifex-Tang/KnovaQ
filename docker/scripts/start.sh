@@ -38,7 +38,11 @@ elif [ -f "$DOCKER_DIR/nginx/default.conf" ]; then
     echo "✓ nginx config copied from docker/nginx/default.conf"
 fi
 
-"${DC[@]}" up -d
+mkdir -p "$DOCKER_DIR/logs"
+LOG="$DOCKER_DIR/logs/deploy-$(date +%Y%m%d-%H%M%S).log"
+echo "Deploy log: $LOG"
+
+"${DC[@]}" up -d 2>&1 | tee -a "$LOG"
 
 # ── Post-start: seed ragflow auth ────────────────────────────────────────────
 # rag_flow.{user,tenant,api_token,tenant_llm} tables are created by ragflow-server
@@ -46,7 +50,7 @@ fi
 # ragflow-server is healthy — it cannot live in /docker-entrypoint-initdb.d.
 # Idempotent (ON DUPLICATE KEY UPDATE), safe to re-run on every start.
 SEED_FILE="/docker-entrypoint-initdb.d/post-seed/seed-ragflow-user.sql"
-echo "Waiting for ragflow-server to become healthy (then seed ragflow auth)..."
+echo "Waiting for ragflow-server to become healthy (then seed ragflow auth)..." | tee -a "$LOG"
 st=starting
 for _ in $(seq 1 60); do
     st=$(docker inspect -f '{{.State.Health.Status}}' ragflow-server 2>/dev/null || echo starting)
@@ -54,13 +58,23 @@ for _ in $(seq 1 60); do
     sleep 5
 done
 if [ "$st" = "healthy" ]; then
-    if docker exec ragflow-mysql sh -c "mysql -uroot -p'${MYSQL_PASSWORD}' < $SEED_FILE" 2>/dev/null; then
-        echo "✓ ragflow auth seeded (user / tenant / api_token / local embedding)"
+    # Capture seed stderr/stdout into the deploy log so failures are diagnosable
+    if docker exec ragflow-mysql sh -c "mysql -uroot -p'${MYSQL_PASSWORD}' < $SEED_FILE" >>"$LOG" 2>&1; then
+        echo "✓ ragflow auth seeded (user / tenant / api_token / local embedding)" | tee -a "$LOG"
     else
-        echo "⚠ ragflow seed failed — run manually: docker exec ragflow-mysql sh -c \"mysql -uroot -p\$MYSQL_PASSWORD < $SEED_FILE\""
+        echo "✗ ragflow seed FAILED — see $LOG ; retry: docker exec ragflow-mysql sh -c \"mysql -uroot -p\$MYSQL_PASSWORD < $SEED_FILE\"" | tee -a "$LOG"
     fi
 else
-    echo "⚠ ragflow-server not healthy after timeout; seed skipped. Re-run start.sh or seed manually."
+    echo "✗ ragflow-server not healthy after timeout (~5m); seed skipped. Check: docker logs ragflow-server" | tee -a "$LOG"
+    docker logs --tail 30 ragflow-server >>"$LOG" 2>&1
 fi
 
-echo "✓ KnovaQ started${PROJECT:+ for project: $PROJECT}"
+echo "✓ KnovaQ started${PROJECT:+ for project: $PROJECT}" | tee -a "$LOG"
+
+# ── Post-start verification ──────────────────────────────────────────────────
+echo "Running post-deploy verification..." | tee -a "$LOG"
+if bash "$SCRIPT_DIR/verify.sh"; then
+    echo "✓ Verification passed." | tee -a "$LOG"
+else
+    echo "✗ Verification reported FAILURES — inspect docker/logs/verify-*.log" | tee -a "$LOG"
+fi
