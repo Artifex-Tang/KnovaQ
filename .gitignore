@@ -5,3 +5,8 @@ docker/test-runner/reports/
 docker/logs/
 docker/images/
 .idea/
+
+# Python bytecode / pytest caches
+__pycache__/
+*.py[cod]
+.pytest_cache/

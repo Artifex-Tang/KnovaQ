@@ -648,7 +648,7 @@ class TestDocParseBug:
             time.sleep(5)
 
         # Verify chunks
-        chunk_count = doc.get("chunk_num", 0) if doc else 0
+        chunk_count = doc.get("chunk_count", 0) if doc else 0
         _screenshot_text("parse_result", {"doc_id": doc_id, "run": doc.get("run") if doc else "NOT_FOUND", "chunk_count": chunk_count})
 
         # Cleanup
