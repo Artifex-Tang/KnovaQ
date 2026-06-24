@@ -4,6 +4,9 @@ services:
   ragflow:
     image: ${RAGFLOW_IMAGE:-infiniflow/ragflow:v0.18.0}
     container_name: ragflow-server
+    # --workers=N: task_executor count (default 1). 2 improves parse throughput
+    # under batch upload on a 4-vCPU host without oversubscribing DeepDOC OCR.
+    command: ["--workers=${RAGFLOW_WORKERS:-2}"]
     depends_on:
       mysql:
         condition: service_healthy

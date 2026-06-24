@@ -113,11 +113,16 @@ class TestUploadFilesToKBs:
             if not topic_dir.exists():
                 pytest.skip(f"Topic directory not found: {topic_dir}")
 
+            # Cap docs/topic to keep parse load sane for a single task_executor.
+            # 0 = unlimited (full stress test). Default 15 (~90 docs total).
+            max_docs = int(os.environ.get("G_MAX_DOCS_PER_TOPIC", "15"))
             uploaded = 0
             for fmt_dir in topic_dir.iterdir():
                 if not fmt_dir.is_dir():
                     continue
                 for filepath in fmt_dir.iterdir():
+                    if max_docs and uploaded >= max_docs:
+                        break
                     if filepath.suffix == ".json":
                         continue  # Skip QA JSON files
                     try:
@@ -133,6 +138,8 @@ class TestUploadFilesToKBs:
                                 uploaded += 1
                     except Exception as e:
                         print(f"  [WARN] Upload failed: {filepath.name}: {e}")
+                if max_docs and uploaded >= max_docs:
+                    break
 
             _screenshot_text(f"upload_{topic}", {"topic": topic, "uploaded": uploaded})
             print(f"  [OK] {topic}: uploaded {uploaded} files")
@@ -195,8 +202,9 @@ class TestParseDocuments:
             )
             print(f"  {topic}: parsing {len(doc_ids)} documents (code={parse_resp.json().get('code')})")
 
+    @pytest.mark.timeout(2400)  # override global 300s; internal per-KB loop governs
     def test_wait_parsing_complete(self):
-        """Wait for all documents to finish parsing (timeout 600s)."""
+        """Wait for all documents to finish parsing (per-KB timeout 600s)."""
         if not _created_datasets:
             pytest.skip("No datasets")
 
