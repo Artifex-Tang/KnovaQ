@@ -20,6 +20,15 @@ Deployment targets Linux (Ubuntu). Run the bash scripts in `docker/scripts/`:
 
 > **Note:** After `git clone`, run `chmod +x docker/scripts/*.sh`.
 
+Testing (containerized pytest/Playwright against the running stack, run on the deploy host):
+```bash
+RAGFLOW_API_KEY=$(grep RAGFLOW_API_KEY docker/.env | cut -d= -f2) \
+  bash docker/test-runner/run_all_tests.sh   # all suites a–h serially + report
+```
+- Suites live in `docker/test-runner/tests/` (a functional … h chunk_method coverage). Run one via `docker run --network knovaq_ragflow ... knovaq-test-runner:latest tests/<file> --junitxml=...`.
+- Suites share one ragflow task_executor — run serially; drain (flush redis + restart ragflow) after load suites (G/H). ragflow `--workers=2` set in compose.
+- Design notes + reuse guide: `docker/test-runner/TESTING_METHODOLOGY.md`. ragflow doc API field is `chunk_count` (not `chunk_num`).
+
 ## Adding a New Customer Project
 
 ```bash
