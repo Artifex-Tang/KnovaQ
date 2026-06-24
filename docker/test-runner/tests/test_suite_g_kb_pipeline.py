@@ -115,16 +115,23 @@ class TestUploadFilesToKBs:
 
             # Cap docs/topic to keep parse load sane for a single task_executor.
             # 0 = unlimited (full stress test). Default 15 (~90 docs total).
+            # Quota is spread EVENLY across formats (docx/md/pdf/txt/xlsx) so a
+            # capped run still exercises every document type ragflow supports,
+            # not just whichever format dir happens to come first.
             max_docs = int(os.environ.get("G_MAX_DOCS_PER_TOPIC", "15"))
+            fmt_dirs = sorted(d for d in topic_dir.iterdir()
+                              if d.is_dir() and d.name != "json")
+            per_fmt = 0
+            if max_docs and fmt_dirs:
+                per_fmt = max(1, -(-max_docs // len(fmt_dirs)))  # ceil
             uploaded = 0
-            for fmt_dir in topic_dir.iterdir():
-                if not fmt_dir.is_dir():
-                    continue
-                for filepath in fmt_dir.iterdir():
-                    if max_docs and uploaded >= max_docs:
-                        break
+            for fmt_dir in fmt_dirs:
+                fmt_count = 0
+                for filepath in sorted(fmt_dir.iterdir()):
                     if filepath.suffix == ".json":
                         continue  # Skip QA JSON files
+                    if max_docs and (uploaded >= max_docs or fmt_count >= per_fmt):
+                        break
                     try:
                         with open(filepath, "rb") as f:
                             files = {"file": (filepath.name, f)}
@@ -136,6 +143,7 @@ class TestUploadFilesToKBs:
                             )
                             if resp.json().get("code") == 0:
                                 uploaded += 1
+                                fmt_count += 1
                     except Exception as e:
                         print(f"  [WARN] Upload failed: {filepath.name}: {e}")
                 if max_docs and uploaded >= max_docs:
