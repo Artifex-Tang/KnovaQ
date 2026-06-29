@@ -10,7 +10,7 @@ sys.path.insert(0, "/tests")
 import test_suite_h_parser_coverage as h
 from test_suite_h_parser_coverage import (  # noqa: E402
     GENERATORS, PARSER_PLAN, _create_kb, _upload, _parse, _wait_parse,
-    RAGFLOW_URL, HEADERS,
+    RAGFLOW_URL, HEADERS, _facts_slice,
 )
 from generate_kb_test_data import TOPICS  # noqa: E402
 import requests  # noqa: E402
@@ -98,6 +98,39 @@ GEN = dict(GENERATORS)
 GEN.update({"prose_csv": gen_prose_csv, "prose_json": gen_prose_json,
             "prose_html": gen_prose_html, "prose_xlsx": gen_prose_xlsx,
             "picture_jpg": gen_picture_jpg})
+
+
+def gen_prose_pdf(seq):
+    """PDF with embedded WenQuanYi TTF so ragflow DeepDOC extracts clean Chinese.
+    Overrides suite_h version: reportlab CID font (STSong-Light) extracts as
+    U+FFFD garbage, which made PDF chunks unreadable for retrieval/LLM."""
+    from reportlab.lib.pagesizes import A4
+    from reportlab.pdfgen import canvas
+    from reportlab.pdfbase import pdfmetrics
+    from reportlab.pdfbase.ttfonts import TTFont
+    try:
+        pdfmetrics.registerFont(TTFont('WQY', '/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc', subfontIndex=0))
+        font = 'WQY'
+    except Exception:
+        font = 'Helvetica'
+    buf = io.BytesIO()
+    c = canvas.Canvas(buf, pagesize=A4)
+    y = 800
+    c.setFont(font, 14)
+    c.drawString(50, y, f"军事装备技术论文 No.{seq + 1}")
+    y -= 30
+    c.setFont(font, 11)
+    for q, a, _ in _facts_slice(seq):
+        for seg in (f"问题：{q}", f"解答：{a}", ""):
+            c.drawString(50, y, seg[:60])
+            y -= 18
+            if y < 60:
+                c.showPage(); c.setFont(font, 11); y = 800
+    c.showPage(); c.save()
+    return f"doc_{seq:03d}.pdf", buf.getvalue()
+
+
+GEN["prose_pdf"] = gen_prose_pdf  # override garbled CID version with clean TTF
 
 # chunk_method -> FULL supported format set per ragflow spec (generatable subset)
 METHOD_FORMATS = {
