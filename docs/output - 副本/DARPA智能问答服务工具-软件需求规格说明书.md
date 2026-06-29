@@ -430,6 +430,27 @@ DARPA-IQAS系统CSCI能力标识如表 3 所示：
 - **自定义分块**：支持用户手动添加分块，指定内容和关键词
 - **分块大小可配置**：支持配置分块的最大/最小长度参数
 
+**分块方法与支持的文件格式（基于 ragflow v0.18.0 规格）**：
+
+创建知识库时需指定分块方法（chunk_method），每种分块方法对应一组受支持的文件格式。系统应保证上传文档的格式与所选分块方法匹配，不匹配的文档应被拒绝或提示。
+
+| 分块方法 | 适用场景 | 支持的文件格式 |
+|---------|---------|---------------|
+| naive（通用） | 普通军事文档，按语义边界智能分块 | DOCX、XLSX、XLS（Excel97~2003）、PPT、PDF、TXT、JPEG、JPG、PNG、TIF、GIF、CSV、JSON、EML、HTML |
+| book（书籍） | 书籍/长篇文档分块 | DOCX、PDF、TXT |
+| laws（法规） | 法规条文，按"第N条"结构分块 | DOCX、PDF、TXT |
+| manual（手册） | 技术手册分块 | PDF |
+| paper（论文） | 学术论文分块 | PDF |
+| presentation（演示） | 演示文稿分块 | PDF、PPTX |
+| one（整块） | 全文作为单一分块 | TXT |
+| qa（问答） | 问答对（Q/A）分块 | XLSX |
+| table（表格） | 结构化表格分块 | XLSX、CSV/TXT |
+| tag（标签） | 标签集分块（供其他知识库按相似度匹配标签） | XLSX |
+| picture（图片） | 图片经OCR识别后分块 | JPEG、JPG、PNG、TIF、GIF |
+| email（邮件） | 邮件正文分块 | EML |
+
+> 注：resume（简历）与 knowledge_graph（知识图谱）分块方法 ragflow v0.18.0 的知识库创建接口不对外暴露（resume）或需额外图谱抽取模型（knowledge_graph），本系统不纳入对外分块方法范围。
+
 **合格性标准**：
 - 分块内容完整保留原文信息
 - 手动添加的分块可被正常检索到
