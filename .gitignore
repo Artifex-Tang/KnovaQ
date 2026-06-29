@@ -10,3 +10,4 @@ docker/images/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+docker/knovaq-patch-*.tar.gz
